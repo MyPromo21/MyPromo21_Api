@@ -44,7 +44,7 @@ namespace MyPromo21_Api.Controllers
         public IActionResult Update(UpdateUsuarioViewModel updateUsuarioViewModel)
         {
 
-            var resultado = _usuarioRepository.UpdateUsuario(updateUsuarioViewModel.Usuario, updateUsuarioViewModel.Id);
+            var resultado = _usuarioRepository.UpdateUsuario(updateUsuarioViewModel.usuario, updateUsuarioViewModel.Id);
 
             if (resultado) return Ok("Usuario atualizado com sucesso. ");
             return Ok(new

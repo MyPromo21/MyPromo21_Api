@@ -17,7 +17,7 @@ namespace MyPromo21_Api.ViewModels
 
         public class UpdateUsuarioViewModel
         {
-            public UsuarioDto Usuario { get; set; }
+            public UsuarioDto usuario { get; set; }
             public int Id { get; set; }
         }
 

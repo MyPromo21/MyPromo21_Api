@@ -6,12 +6,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using MyPromo21_Api.Dtos;
 using Dapper;
+using static MyPromo21_Api.ViewModels.UsuarioViewModel;
 
 namespace MyPromo21_Api.Repositories
 {
     public class UsuarioRepository
     {
-        private readonly string _connection = @"Data Source=ITELABD12\SQLEXPRESS; Initial Catalog=AgendamentoServico; Integrated Security=True;";
+        private readonly string _connection = @"Data Source=ITELABD12\SQLEXPRESS; Initial Catalog=MyPromo21; Integrated Security=True;";
         public bool CreateUsuario(UsuarioModel usuarioModel)
         {
             try
@@ -59,7 +60,7 @@ namespace MyPromo21_Api.Repositories
             }
         }
 
-        public bool UpdateUsuario(UsuarioDto usuarioDto, int id)
+        public bool UpdateUsuario(UsuarioDto usuario, int id)
         {
             try
             {
@@ -68,9 +69,9 @@ namespace MyPromo21_Api.Repositories
                 {
                     SqlCommand command = new SqlCommand(query, sql);
                     command.Parameters.AddWithValue("@id", id);
-                    command.Parameters.AddWithValue("@usuario", usuarioDto.Usuario);
-                    command.Parameters.AddWithValue("@senha", usuarioDto.Senha);
-                    command.Parameters.AddWithValue("@nivel", usuarioDto.Nivel);
+                    command.Parameters.AddWithValue("@usuario", usuario.Usuario);
+                    command.Parameters.AddWithValue("@senha", usuario.Senha);
+                    command.Parameters.AddWithValue("@nivel", usuario.Nivel);
                     command.Connection.Open();
                     command.ExecuteScalar();
                 }

@@ -1,6 +1,6 @@
 ---------------------------------------------------------
 
-POST https://localhost:44311/usuarioModel/create
+POST https://localhost:44335/usuario/create
 
 {
     "usuarioModel":
@@ -13,11 +13,11 @@ POST https://localhost:44311/usuarioModel/create
 
 ---------------------------------------------------------
 
-GET https://localhost:44311/usuarioModel/readall
+GET https://localhost:44335/usuario/readall
 
 ---------------------------------------------------------
 
-PUT https://localhost:44311/usuarioModel/update
+PUT https://localhost:44335/usuario/update
 
 {
     "usuarioModel":
@@ -31,7 +31,7 @@ PUT https://localhost:44311/usuarioModel/update
 
 ---------------------------------------------------------
 
-DELETE https://localhost:44311/usuarioModel/delete
+DELETE https://localhost:44335/usuario/delete
 
 {
     "usuarioModel":
