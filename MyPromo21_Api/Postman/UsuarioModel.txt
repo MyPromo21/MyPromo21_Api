@@ -1,0 +1,43 @@
+---------------------------------------------------------
+
+POST https://localhost:44311/usuarioModel/create
+
+{
+    "usuarioModel":
+    {
+        "usuario": "Lechinski",
+        "senha": "12345678",
+        "nivel": true                      
+    }
+}
+
+---------------------------------------------------------
+
+GET https://localhost:44311/usuarioModel/readall
+
+---------------------------------------------------------
+
+PUT https://localhost:44311/usuarioModel/update
+
+{
+    "usuarioModel":
+    {
+        "id": 1,
+        "usuario": "Ramos",
+        "senha": "87654321",
+        "nivel": false                 
+    }
+}
+
+---------------------------------------------------------
+
+DELETE https://localhost:44311/usuarioModel/delete
+
+{
+    "usuarioModel":
+    {
+        "id": 1
+    }
+}
+
+---------------------------------------------------------
