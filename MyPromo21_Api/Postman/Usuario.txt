@@ -1,0 +1,40 @@
+---------------------------------------------------------
+
+POST https://localhost:44335/usuario/create
+
+{
+    "usuario":
+    {
+        "login": "Giulianno",
+        "senha": "12345678",
+        "nivel": false                      
+    }
+}
+
+---------------------------------------------------------
+
+GET https://localhost:44335/usuario/readall
+
+---------------------------------------------------------
+
+PUT https://localhost:44335/usuario/update
+
+{    
+    "usuario":
+    {
+        "id": 2,
+        "login": "teste",
+        "senha": "87654321",
+        "nivel": false   
+    }            
+}
+
+---------------------------------------------------------
+
+DELETE https://localhost:44335/usuario/delete
+
+{  
+   "id": 2    
+}
+
+---------------------------------------------------------

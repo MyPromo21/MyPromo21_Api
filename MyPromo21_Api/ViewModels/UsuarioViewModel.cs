@@ -7,7 +7,7 @@ namespace MyPromo21_Api.ViewModels
     {
         public class CreateUsuarioViewModel
         {
-            public UsuarioModel usuarioModel { get; set; }
+            public Usuario usuario { get; set; }
         }
 
         public class DeleteUsuarioViewModel
@@ -16,9 +16,8 @@ namespace MyPromo21_Api.ViewModels
         }
 
         public class UpdateUsuarioViewModel
-        {
-            public UsuarioDto Usuario { get; set; }
-            public int Id { get; set; }
+        {            
+            public UsuarioDto usuario { get; set; }            
         }
 
     }

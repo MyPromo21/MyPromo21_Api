@@ -1,9 +1,9 @@
-CREATE TABLE UsuarioModel
+CREATE TABLE Usuario
 (
    Id int IDENTITY(1,1) NOT NULL,
-   Usuario varchar (70) NOT NULL,
+   Login varchar (70) NOT NULL,
    Senha varchar (14) NOT NULL,
-   Nivel BIT (254) NOT NULL,   
+   Nivel BIT NOT NULL,   
    CONSTRAINT Pk_UsuarioModel PRIMARY KEY (Id)
 );
 
