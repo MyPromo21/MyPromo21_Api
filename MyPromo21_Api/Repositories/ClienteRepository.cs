@@ -6,12 +6,15 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using static MyPromo21_Api.ViewModels.ClienteViewModel;
 
 namespace MyPromo21_Api.Repositories
 {
     public class ClienteRepository
     {
-        private readonly string _connection = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=MyPromo21;Data Source=ITELABD03\SQLEXPRESS01";
+        //Conexão Bruno
+        //private readonly string _connection = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=MyPromo21;Data Source=ITELABD03\SQLEXPRESS01";
+        private readonly string _connection = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=MyPromo21;Data Source=Bruno";
         private SqlConnection _conexaoBanco
         {
             get
@@ -101,6 +104,27 @@ namespace MyPromo21_Api.Repositories
             }
 
             return cliente;
+        }
+        public bool DeleteCliente(DeleteClienteViewModel deleteClienteViewModel)
+        {
+            var result = false;
+
+            try
+            {
+                using (_conexaoBanco)
+                {
+                    var query = "delete from Cliente where Id_Cliente = @id_Cliente";
+                    var parameters = new { deleteClienteViewModel.Id_Cliente };
+                    _conexaoBanco.Query(query,parameters);
+                    result = true;
+                }
+            }
+            catch (SqlException e)
+            {
+                result = false;
+            }
+
+            return result;
         }
     }
 }

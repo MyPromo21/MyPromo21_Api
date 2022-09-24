@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MyPromo21_Api.Dtos;
+using MyPromo21_Api.Models;
 using MyPromo21_Api.Repositories;
 using MyPromo21_Api.ViewModels;
 using System;
@@ -23,15 +24,16 @@ namespace MyPromo21_Api.Controllers
         }
         
         [HttpPost]
-        public IActionResult CreateCliente(ClienteViewModel clienteViewModel)
+        public IActionResult CreateCliente(ClienteModel cliente)
         {
-            if (clienteViewModel.Cliente.Nome == "") return Ok("Nome do cliente invalido!");
-            if (clienteViewModel.Cliente.Cpf == "") return Ok("Cpf do cliente invalido!");
-            if (clienteViewModel.Cliente.Email == "") return Ok("Email do cliente invalido!");
-            if (clienteViewModel.Cliente.Telefone == "") return Ok("Telefone do cliente invalido!");
-            if (clienteViewModel.Cliente.Data_Nascimento == null) return Ok("Data de nascimento do cliente invalido!");
+            if (cliente == null) return Ok("Parâmetros informados incorretamente!");
+            if (string.IsNullOrWhiteSpace(cliente.Nome)) return Ok("Nome do cliente invalido!");
+            if (string.IsNullOrWhiteSpace(cliente.Cpf)) return Ok("Cpf do cliente invalido!");
+            if (string.IsNullOrWhiteSpace(cliente.Email)) return Ok("Email do cliente invalido!");
+            if (string.IsNullOrWhiteSpace(cliente.Telefone)) return Ok("Telefone do cliente invalido!");
+            if (cliente.Data_Nascimento == null) return Ok("Data de nascimento do cliente invalido!");
 
-            var retorno = _clienteRepository.CreateUsuario(clienteViewModel.Cliente);
+            var retorno = _clienteRepository.CreateUsuario(cliente);
 
             if (retorno) return Ok("Cliente cadastrado com sucesso!");
 
@@ -58,6 +60,17 @@ namespace MyPromo21_Api.Controllers
             if (cliente != null) return Ok(cliente);
 
             return Ok("Cliente não localizado!");
+        }
+        [HttpDelete]
+        public IActionResult DeleteCliente(DeleteClienteViewModel deleteClienteViewModel)
+        {
+            if (deleteClienteViewModel.Id_Cliente == 0) return Ok("Parâmetro inválido!");
+
+            var result = _clienteRepository.DeleteCliente(deleteClienteViewModel);
+
+            if (result) return Ok("Cliente excluido com sucesso!");
+
+            return Ok("Não foi possível excluir o cliente!");
         }
 
     }

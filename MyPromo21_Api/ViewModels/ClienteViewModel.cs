@@ -13,7 +13,7 @@ namespace MyPromo21_Api.ViewModels
 
         public class DeleteClienteViewModel
         {
-            public int Id { get; set; }
+            public int Id_Cliente { get; set; }
         }
 
         public class UpdateClienteViewModel
