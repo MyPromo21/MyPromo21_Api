@@ -13,24 +13,28 @@ namespace MyPromo21_Api.Repositories
     public class UsuarioRepository
     {
         private readonly string _connection = @"Data Source=ITELABD12\SQLEXPRESS; Initial Catalog=MyPromo21; Integrated Security=True;";
-        public bool CreateUsuario(UsuarioModel usuarioModel)
+        private SqlConnection _conexao { get
+            {
+                return new SqlConnection(_connection);
+            } }
+        public bool CreateUsuario(Usuario usuario)
         {
             try
             {
-                var query = @"INSERT INTO UsuarioModel 
-                              (Usuario, Senha, Nivel) VALUES (@usuario,@senha,@nivel)";
-                using (var sql = new SqlConnection(_connection))
+                var query = @"INSERT INTO Usuario 
+                              (Login, Senha, Nivel) VALUES (@login,@senha,@nivel)";
+                using (_conexao)
                 {
-                    SqlCommand command = new SqlCommand(query, sql);
-                    command.Parameters.AddWithValue("@usuario", usuarioModel.Usuario);
-                    command.Parameters.AddWithValue("@senha", usuarioModel.Senha);
-                    command.Parameters.AddWithValue("@nivel", usuarioModel.Nivel);                   
-                    command.Connection.Open();
-                    command.ExecuteScalar();
-                }
+                    var parameters = new
+                    {
+                        usuario.Login,
+                        usuario.Senha,
+                        usuario.Nivel                       
+                    };
 
-                Console.WriteLine("Usuário cadastrado com sucesso.");
-                return true;
+                    _conexao.Query(query, parameters);
+                    return true;
+                }                
             }
             catch (Exception ex)
             {
@@ -44,11 +48,11 @@ namespace MyPromo21_Api.Repositories
             List<UsuarioDto> usuariosEncontrados;
             try
             {
-                var query = @"SELECT Id, Usuario, Senha, Nivel FROM UsuarioModel";
+                var query = @"SELECT Id, Login, Senha, Nivel FROM Usuario";
 
-                using (var connection = new SqlConnection(_connection))
+                using (_conexao)
                 {
-                    usuariosEncontrados = connection.Query<UsuarioDto>(query).ToList();
+                    usuariosEncontrados = _conexao.Query<UsuarioDto>(query).ToList();
                 }
 
                 return usuariosEncontrados;
@@ -60,24 +64,25 @@ namespace MyPromo21_Api.Repositories
             }
         }
 
-        public bool UpdateUsuario(UsuarioDto usuario, int id)
+        public bool UpdateUsuario(UsuarioDto usuario)
         {
             try
             {
-                var query = @"UPDATE UsuarioModel SET Usuario = @usuario, Senha = @senha, Nivel = @nivel WHERE Id = @id";
-                using (var sql = new SqlConnection(_connection))
+                var query = @"UPDATE Usuario SET Login = @login, Senha = @senha, Nivel = @nivel WHERE Id = @id";
+                using (_conexao)
                 {
-                    SqlCommand command = new SqlCommand(query, sql);
-                    command.Parameters.AddWithValue("@id", id);
-                    command.Parameters.AddWithValue("@usuario", usuario.Usuario);
-                    command.Parameters.AddWithValue("@senha", usuario.Senha);
-                    command.Parameters.AddWithValue("@nivel", usuario.Nivel);
-                    command.Connection.Open();
-                    command.ExecuteScalar();
-                }
+                    var parameters = new
+                    {
+                        usuario.Login,
+                        usuario.Senha,
+                        usuario.Nivel,
+                        usuario.Id
+                    };
 
-                Console.WriteLine("Usuario atualizado com sucesso.");
-                return true;
+                    _conexao.Query(query,parameters);
+                    return true;                    
+                }               
+                
             }
             catch (Exception ex)
             {
@@ -90,19 +95,19 @@ namespace MyPromo21_Api.Repositories
         {
             try
             {
-                var query = "DELETE FROM UsuarioModel " +
+                var query = "DELETE FROM Usuario " +
                     "WHERE Id= @id";
 
-                using (var sql = new SqlConnection(_connection))
+                using (_conexao)
                 {
-                    SqlCommand command = new SqlCommand(query, sql);
-                    command.Parameters.AddWithValue("@id", id);
-                    command.Connection.Open();
-                    command.ExecuteScalar();
-                }
+                    var parameters = new
+                    {
+                        id
+                    };
 
-                Console.WriteLine("Usuario removido com sucesso.");
-                return true;
+                    _conexao.Query(query, parameters);
+                    return true;
+                }                
             }
             catch (Exception ex)
             {

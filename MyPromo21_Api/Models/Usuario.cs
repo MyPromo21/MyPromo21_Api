@@ -1,8 +1,9 @@
 ﻿namespace MyPromo21_Api.Models
 {
-    public class UsuarioModel
+    public class Usuario
     {
-        public string Usuario { get; set; }
+        public int Id { get; set; }
+        public string Login { get; set; }
         public string Senha { get; set; }
         public bool Nivel { get; set; }
     }

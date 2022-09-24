@@ -3,11 +3,11 @@
 POST https://localhost:44335/usuario/create
 
 {
-    "usuarioModel":
+    "usuario":
     {
-        "usuario": "Lechinski",
+        "login": "Giulianno",
         "senha": "12345678",
-        "nivel": true                      
+        "nivel": false                      
     }
 }
 
@@ -19,25 +19,22 @@ GET https://localhost:44335/usuario/readall
 
 PUT https://localhost:44335/usuario/update
 
-{
-    "usuarioModel":
+{    
+    "usuario":
     {
-        "id": 1,
-        "usuario": "Ramos",
+        "id": 2,
+        "login": "teste",
         "senha": "87654321",
-        "nivel": false                 
-    }
+        "nivel": false   
+    }            
 }
 
 ---------------------------------------------------------
 
 DELETE https://localhost:44335/usuario/delete
 
-{
-    "usuarioModel":
-    {
-        "id": 1
-    }
+{  
+   "id": 2    
 }
 
 ---------------------------------------------------------
