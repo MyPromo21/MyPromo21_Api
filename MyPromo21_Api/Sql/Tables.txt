@@ -1,10 +1,10 @@
 CREATE TABLE Usuario
 (
-   Id int IDENTITY(1,1) NOT NULL,
+   Id int IDENTITY (1,1) NOT NULL,
    Login varchar (70) NOT NULL,
    Senha varchar (14) NOT NULL,
    Nivel BIT NOT NULL,   
-   CONSTRAINT Pk_UsuarioModel PRIMARY KEY (Id)
+   CONSTRAINT Pk_Usuario PRIMARY KEY (Id)
 );
 
 CREATE TABLE Cliente
@@ -16,4 +16,15 @@ CREATE TABLE Cliente
 	Telefone varchar(11),
 	Email varchar(150) not null,
 	Data_Cadastro date
+);
+
+CREATE TABLE Estabelecimento
+(
+	IdUsuario INT NOT NULL,
+	NomeFantasia VARCHAR(150) NOT NULL,
+	Cnpj VARCHAR(14) NOT NULL,	
+	IdEndereco INT NOT NULL,
+	CONSTRAINT Fk_IdUsuario FOREIGN KEY (Id) REFERENCES Usuario(Id),
+	CONSTRAINT Pk_Estabelecimento PRIMARY KEY (IdUsuario),        
+	CONSTRAINT Fk_IdEndereco FOREIGN KEY (Id) REFERENCES Endereco(Id)    
 );
