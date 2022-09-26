@@ -1,0 +1,50 @@
+﻿﻿<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <!-- For IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- For Resposive Device -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registro de pessoas</title>
+    <script src="app/index.js"></script>
+
+
+    <!-- Custom Css -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+    <!--EXEMPLO FORM-->
+    <div name="formulario-inicial" id="form" class="formularios">
+        <input type="text" id="nome" placeholder="Nome" value="" />
+        <input type="text" id="cpf" placeholder="Cpf:" value="" />
+        <input type="date" id="dataNascimento" placeholder="Data de nascimento:" value="" />
+    </div>
+    <div id="dadosAdicionais">
+        <input type="button" value="Adicionar Contato" onclick="AdicionarContato()" />
+        <div id="dadosContato">
+        </div>
+        <input type="button" value="Adicionar Endereço" onclick="AdicionarEndereco()" />
+        <div id="dadosEndereco">
+        </div>
+    </div>
+    <!-- <input type="button" value="Salvar" onclick="CapturarDadosPessoa()"/>         -->
+    <input type="button" value="Salvar" onclick="EnviarApiTeste()" />
+
+
+
+    <!-- j Query -->
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+
+</body>
+
+
+</html>
