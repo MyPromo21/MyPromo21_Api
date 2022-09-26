@@ -20,11 +20,25 @@ CREATE TABLE Cliente
 
 CREATE TABLE Estabelecimento
 (
-	IdUsuario INT NOT NULL,
-	NomeFantasia VARCHAR(150) NOT NULL,
-	Cnpj VARCHAR(14) NOT NULL,	
-	IdEndereco INT NOT NULL,
+	IdUsuario int NOT NULL,
+	NomeFantasia varchar(150) NOT NULL,
+	Cnpj varchar(14) NOT NULL,	
+	IdEndereco int NOT NULL,
 	CONSTRAINT Fk_IdUsuario FOREIGN KEY (Id) REFERENCES Usuario(Id),
 	CONSTRAINT Pk_Estabelecimento PRIMARY KEY (IdUsuario),        
 	CONSTRAINT Fk_IdEndereco FOREIGN KEY (Id) REFERENCES Endereco(Id)    
+);
+
+CREATE TABLE Endereco
+(
+	Id int IDENTITY(1,1) NOT NULL,
+	Estado VARCHAR(150) NOT NULL,
+	Cidade VARCHAR(150) NOT NULL,	
+	Bairro VARCHAR(150) NOT NULL,	
+	Rua VARCHAR(150) NOT NULL,	
+	Numero VARCHAR(150) NOT NULL,	
+	Complemento VARCHAR(150) NOT NULL,	
+	Cep VARCHAR(150) NOT NULL,	
+	CONSTRAINT Pk_Endereco PRIMARY KEY (Id)        
+	   
 );
