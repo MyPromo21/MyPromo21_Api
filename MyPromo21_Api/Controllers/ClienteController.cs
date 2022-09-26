@@ -24,16 +24,16 @@ namespace MyPromo21_Api.Controllers
         }
         
         [HttpPost]
-        public IActionResult CreateCliente(ClienteModel cliente)
+        public IActionResult CreateCliente(ClienteViewModel cliente)//ClienteModel cliente)
         {
-            if (cliente == null) return Ok("Parâmetros informados incorretamente!");
-            if (string.IsNullOrWhiteSpace(cliente.Nome)) return Ok("Nome do cliente invalido!");
-            if (string.IsNullOrWhiteSpace(cliente.Cpf)) return Ok("Cpf do cliente invalido!");
-            if (string.IsNullOrWhiteSpace(cliente.Email)) return Ok("Email do cliente invalido!");
-            if (string.IsNullOrWhiteSpace(cliente.Telefone)) return Ok("Telefone do cliente invalido!");
-            if (cliente.Data_Nascimento == null) return Ok("Data de nascimento do cliente invalido!");
+            if (cliente.Cliente == null) return Ok("Parâmetros informados incorretamente!");
+            if (string.IsNullOrWhiteSpace(cliente.Cliente.Nome)) return Ok("Nome do cliente invalido!");
+            if (string.IsNullOrWhiteSpace(cliente.Cliente.Cpf)) return Ok("Cpf do cliente invalido!");
+            if (string.IsNullOrWhiteSpace(cliente.Cliente.Email)) return Ok("Email do cliente invalido!");
+            if (string.IsNullOrWhiteSpace(cliente.Cliente.Telefone)) return Ok("Telefone do cliente invalido!");
+            if (cliente.Cliente.DataNascimento == null) return Ok("Data de nascimento do cliente invalido!");
 
-            var retorno = _clienteRepository.CreateUsuario(cliente);
+            var retorno = _clienteRepository.CreateCliente(cliente.Cliente);
 
             if (retorno) return Ok("Cliente cadastrado com sucesso!");
 
@@ -51,11 +51,11 @@ namespace MyPromo21_Api.Controllers
             return Ok("Não foi possível atualizar o cliente!");
         }
         [HttpGet]
-        public IActionResult GetCliente(int id_Cliente)
+        public IActionResult GetCliente(string nome)
         {
-            if (id_Cliente == 0) return Ok("Id do cliente informado incorretamente!");
+            if (string.IsNullOrWhiteSpace(nome)) return Ok("Nome do cliente informado incorretamente!");
 
-            var cliente = _clienteRepository.GetCliente(id_Cliente);
+            var cliente = _clienteRepository.GetCliente(nome);
 
             if (cliente != null) return Ok(cliente);
 
@@ -64,7 +64,7 @@ namespace MyPromo21_Api.Controllers
         [HttpDelete]
         public IActionResult DeleteCliente(DeleteClienteViewModel deleteClienteViewModel)
         {
-            if (deleteClienteViewModel.Id_Cliente == 0) return Ok("Parâmetro inválido!");
+            if (deleteClienteViewModel.IdCliente == 0) return Ok("Parâmetro inválido!");
 
             var result = _clienteRepository.DeleteCliente(deleteClienteViewModel);
 

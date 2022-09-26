@@ -9,9 +9,9 @@ namespace MyPromo21_Api.Models
 	{
 		public string Nome { get; set; }
 		public string Cpf { get; set;}
-		public DateTime Data_Nascimento { get; set; }
+		public DateTime DataNascimento { get; set; }
 		public string Telefone { get; set; }
 		public string Email { get; set; }
-		public DateTime	Data_Cadastro { get; set; }
+		public DateTime	DataCadastro { get; set; }
 	}
 }

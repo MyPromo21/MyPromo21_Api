@@ -9,13 +9,16 @@ CREATE TABLE Usuario
 
 CREATE TABLE Cliente
 (
-	Id_Cliente int IDENTITY(1,1) NOT NULL,
+	IdCliente int IDENTITY(1,1) NOT NULL,
 	Nome varchar(150) not null,
 	Cpf varchar(11) not null,
-	Data_Nascimento date not null,
+	DataNascimento date not null,
 	Telefone varchar(11),
 	Email varchar(150) not null,
-	Data_Cadastro date
+	DataCadastro date,
+	IdUsuario int,
+	CONSTRAINT Pk_Cliente PRIMARY KEY (IdCliente),
+	CONSTRAINT Fk_IdUsuario FOREIGN KEY (IdUsuario) REFERENCES Usuario(Id)
 );
 
 CREATE TABLE Estabelecimento
@@ -41,4 +44,16 @@ CREATE TABLE Endereco
 	Cep VARCHAR(150) NOT NULL,	
 	CONSTRAINT Pk_Endereco PRIMARY KEY (Id)        
 	   
+);
+
+CREATE TABLE Produto
+(
+	Id int IDENTITY(1,1) NOT NULL,
+	Descricao VARCHAR(150) NOT NULL,
+	Preco decimal NOT NULL,	
+	Quantidade int NOT NULL,	
+	Perecivel bit NOT NULL,	
+	ValidadeProduto date NOT NULL,	
+	LinkImagem VARCHAR(150) NOT NULL,		
+	CONSTRAINT Pk_Produto PRIMARY KEY (Id)
 );

@@ -13,8 +13,8 @@ namespace MyPromo21_Api.Repositories
     public class ClienteRepository
     {
         //Conexão Bruno
-        //private readonly string _connection = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=MyPromo21;Data Source=ITELABD03\SQLEXPRESS01";
-        private readonly string _connection = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=MyPromo21;Data Source=Bruno";
+        private readonly string _connection = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=MyPromo21;Data Source=ITELABD03\SQLEXPRESS01";
+        //private readonly string _connection = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=MyPromo21;Data Source=Bruno";
         private SqlConnection _conexaoBanco
         {
             get
@@ -23,7 +23,7 @@ namespace MyPromo21_Api.Repositories
             }
         }
 
-        public bool CreateUsuario(ClienteModel cliente)
+        public bool CreateCliente(ClienteModel cliente)
         {
             var retorno = false;
 
@@ -31,16 +31,16 @@ namespace MyPromo21_Api.Repositories
             {
                 using (_conexaoBanco)
                 {
-                    var query = "insert into Cliente (Nome,Cpf,Data_Nascimento,Telefone,Email,Data_Cadastro)" +
-                        "values (@nome,@cpf,@data_Nascimento,@telefone,@email,@data_Cadastro)";
+                    var query = "insert into Cliente (Nome,Cpf,DataNascimento,Telefone,Email,DataCadastro)" +
+                        "values (@nome,@cpf,@dataNascimento,@telefone,@email,@dataCadastro)";
                     var parameters = new 
                     {
                        cliente.Nome,
                        cliente.Cpf,
-                       cliente.Data_Nascimento,
+                       cliente.DataNascimento,
                        cliente.Telefone,
                        cliente.Email,
-                       cliente.Data_Cadastro
+                       cliente.DataCadastro
                     };
 
                     _conexaoBanco.Query(query,parameters);
@@ -62,17 +62,17 @@ namespace MyPromo21_Api.Repositories
             {
                 using (_conexaoBanco)
                 {
-                    var query = "update Cliente set Nome = @nome,Cpf = @cpf,Data_Nascimento = @data_Nascimento,Telefone" +
-                        " = @telefone,Email = @email,Data_Cadastro = @data_Cadastro where Id_Cliente = @id_Cliente";
+                    var query = "update Cliente set Nome = @nome,Cpf = @cpf,DataNascimento = @dataNascimento,Telefone" +
+                        " = @telefone,Email = @email,DataCadastro = @dataCadastro where IdCliente = @idCliente";
                     var parameters = new
                     {
                         cliente.Nome,
                         cliente.Cpf,
-                        cliente.Data_Nascimento,
+                        cliente.DataNascimento,
                         cliente.Telefone,
                         cliente.Email,
-                        cliente.Data_Cadastro,
-                        cliente.Id_Cliente
+                        cliente.DataCadastro,
+                        cliente.IdCliente
                     };
                     _conexaoBanco.Query(query,parameters);
                     retorno = true;
@@ -85,7 +85,7 @@ namespace MyPromo21_Api.Repositories
 
             return retorno;
         }
-        public ClienteModel GetCliente(int id_Cliente)
+        public ClienteModel GetCliente(string nome)
         {
             var cliente = new ClienteModel();
 
@@ -93,8 +93,8 @@ namespace MyPromo21_Api.Repositories
             {
                 using (_conexaoBanco)
                 {
-                    var query = "select * from Cliente where Id_Cliente = @id_Cliente";
-                    var parameters = new { id_Cliente };
+                    var query = "select * from Cliente where Nome = @nome";
+                    var parameters = new { nome };
                     cliente = _conexaoBanco.QueryFirstOrDefault<ClienteModel>(query,parameters);
                 }
             }
@@ -113,8 +113,8 @@ namespace MyPromo21_Api.Repositories
             {
                 using (_conexaoBanco)
                 {
-                    var query = "delete from Cliente where Id_Cliente = @id_Cliente";
-                    var parameters = new { deleteClienteViewModel.Id_Cliente };
+                    var query = "delete from Cliente where IdCliente = @idCliente";
+                    var parameters = new { deleteClienteViewModel.IdCliente };
                     _conexaoBanco.Query(query,parameters);
                     result = true;
                 }
