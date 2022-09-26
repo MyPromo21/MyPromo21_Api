@@ -7,28 +7,6 @@ CREATE TABLE Usuario
    CONSTRAINT Pk_Usuario PRIMARY KEY (Id)
 );
 
-CREATE TABLE Cliente
-(
-	Id_Cliente int IDENTITY(1,1) NOT NULL,
-	Nome varchar(150) not null,
-	Cpf varchar(11) not null,
-	Data_Nascimento date not null,
-	Telefone varchar(11),
-	Email varchar(150) not null,
-	Data_Cadastro date
-);
-
-CREATE TABLE Estabelecimento
-(
-	IdUsuario int NOT NULL,
-	NomeFantasia varchar(150) NOT NULL,
-	Cnpj varchar(14) NOT NULL,	
-	IdEndereco int NOT NULL,
-	CONSTRAINT Fk_IdUsuario FOREIGN KEY (Id) REFERENCES Usuario(Id),
-	CONSTRAINT Pk_Estabelecimento PRIMARY KEY (IdUsuario),        
-	CONSTRAINT Fk_IdEndereco FOREIGN KEY (Id) REFERENCES Endereco(Id)    
-);
-
 CREATE TABLE Endereco
 (
 	Id int IDENTITY(1,1) NOT NULL,
@@ -39,6 +17,37 @@ CREATE TABLE Endereco
 	Numero VARCHAR(150) NOT NULL,	
 	Complemento VARCHAR(150) NOT NULL,	
 	Cep VARCHAR(150) NOT NULL,	
-	CONSTRAINT Pk_Endereco PRIMARY KEY (Id)        
-	   
+	CONSTRAINT Pk_Endereco PRIMARY KEY (Id)
+);
+
+CREATE TABLE Estabelecimento
+(
+	IdUsuario int NOT NULL,
+	NomeFantasia varchar(150) NOT NULL,
+	Cnpj varchar(14) NOT NULL,	
+	IdEndereco int NOT NULL,
+	CONSTRAINT Pk_Estabelecimento PRIMARY KEY (IdUsuario),	
+	CONSTRAINT Fk_IdEndereco FOREIGN KEY (IdEndereco) REFERENCES Endereco(Id),
+	CONSTRAINT Fk_IdUsuario FOREIGN KEY (IdUsuario) REFERENCES Usuario(Id)	
+);
+
+INSERT INTO Usuario (Login, Senha, Nivel) VALUES ('giulianno@gmail.com', '12345678', 'false')
+INSERT INTO Endereco (Estado, Cidade, Bairro, Rua, Numero, Complemento, Cep) VALUES ('Santa Catarina', 'Balneário Camboriú', 'Centro', 'Av.Brasil', '933', 'Apto106', '88330275')
+INSERT INTO Estabelecimento (IdUsuario, NomeFantasia, Cnpj, IdEndereco) VALUES (1, 'MyPromo', '1234567000189', 1)
+
+SELECT u.login , u.senha, e.NomeFantasia, e.Cnpj, en.Cidade, en.Estado FROM Usuario u
+INNER JOIN Estabelecimento e ON e.IdUsuario = u.Id
+INNER JOIN Endereco en ON en.Id = e.IdEndereco
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CREATE TABLE Cliente
+(
+	Id_Cliente int IDENTITY(1,1) NOT NULL,
+	Nome varchar(150) not null,
+	Cpf varchar(11) not null,
+	Data_Nascimento date not null,
+	Telefone varchar(11),
+	Email varchar(150) not null,
+	Data_Cadastro date
 );
