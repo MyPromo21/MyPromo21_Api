@@ -12,37 +12,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Registro de pessoas</title>
-    <script src="app/index.js"></script>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 
 
-    <!-- Custom Css -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+    <div class="container">
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse float_left" id="navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="dropdown-holder"><a href="index.html">Inicio</a>
+                </li>
+                <li><a href="#estrutura">Login</a></li>
+                <li><a href="cadastroUsuario.html">Registro</a></li>
+                <li><a
+                        href="www.instagram.com/giulianno_ramos">Contato</a>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+
+    </div>
+
+
 
 </head>
 
 <body>
 
-    <!--EXEMPLO FORM-->
-    <div name="formulario-inicial" id="form" class="formularios">
-        <input type="text" id="nome" placeholder="Nome" value="" />
-        <input type="text" id="cpf" placeholder="Cpf:" value="" />
-        <input type="date" id="dataNascimento" placeholder="Data de nascimento:" value="" />
-    </div>
-    <div id="dadosAdicionais">
-        <input type="button" value="Adicionar Contato" onclick="AdicionarContato()" />
-        <div id="dadosContato">
-        </div>
-        <input type="button" value="Adicionar Endereço" onclick="AdicionarEndereco()" />
-        <div id="dadosEndereco">
-        </div>
-    </div>
-    <!-- <input type="button" value="Salvar" onclick="CapturarDadosPessoa()"/>         -->
-    <input type="button" value="Salvar" onclick="EnviarApiTeste()" />
+   
 
 
 
-    <!-- j Query -->
-    <script type="text/javascript" src="js/bootstrap.js"></script>
+
 
 </body>
 
