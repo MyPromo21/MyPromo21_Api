@@ -51,11 +51,11 @@ namespace MyPromo21_Api.Controllers
             return Ok("Não foi possível atualizar o cliente!");
         }
         [HttpGet]
-        public IActionResult GetCliente(string nome)
+        public IActionResult GetCliente(string cpf)
         {
-            if (string.IsNullOrWhiteSpace(nome)) return Ok("Nome do cliente informado incorretamente!");
+            if (string.IsNullOrWhiteSpace(cpf)) return Ok("Nome do cliente informado incorretamente!");
 
-            var cliente = _clienteRepository.GetCliente(nome);
+            var cliente = _clienteRepository.GetCliente(cpf);
 
             if (cliente != null) return Ok(cliente);
 
