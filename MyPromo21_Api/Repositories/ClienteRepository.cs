@@ -23,7 +23,7 @@ namespace MyPromo21_Api.Repositories
             }
         }
 
-        public bool CreateCliente(ClienteModel cliente)
+        public bool CreateCliente(Cliente cliente)
         {
             var retorno = false;
 
@@ -85,9 +85,9 @@ namespace MyPromo21_Api.Repositories
 
             return retorno;
         }
-        public ClienteModel GetCliente(string cpf)
+        public Cliente GetCliente(string cpf)
         {
-            var cliente = new ClienteModel();
+            var cliente = new Cliente();
 
             try
             {
@@ -95,7 +95,7 @@ namespace MyPromo21_Api.Repositories
                 {
                     var query = "select * from Cliente where Cpf = @cpf";
                     var parameters = new { cpf };
-                    cliente = _conexaoBanco.QueryFirstOrDefault<ClienteModel>(query,parameters);
+                    cliente = _conexaoBanco.QueryFirstOrDefault<Cliente>(query,parameters);
                 }
             }
             catch (SqlException e)

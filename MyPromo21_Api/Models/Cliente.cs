@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MyPromo21_Api.Models
 {
-	public class ClienteModel
+	public class Cliente
 	{
 		public string Nome { get; set; }
 		public string Cpf { get; set;}

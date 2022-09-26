@@ -9,7 +9,7 @@ namespace MyPromo21_Api.ViewModels
 {
     public class ClienteViewModel
     {
-        public ClienteModel Cliente { get; set; }
+        public Cliente Cliente { get; set; }
 
         public class DeleteClienteViewModel
         {
