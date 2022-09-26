@@ -85,7 +85,7 @@ namespace MyPromo21_Api.Repositories
 
             return retorno;
         }
-        public ClienteModel GetCliente(string nome)
+        public ClienteModel GetCliente(string cpf)
         {
             var cliente = new ClienteModel();
 
@@ -93,8 +93,8 @@ namespace MyPromo21_Api.Repositories
             {
                 using (_conexaoBanco)
                 {
-                    var query = "select * from Cliente where Nome = @nome";
-                    var parameters = new { nome };
+                    var query = "select * from Cliente where Cpf = @cpf";
+                    var parameters = new { cpf };
                     cliente = _conexaoBanco.QueryFirstOrDefault<ClienteModel>(query,parameters);
                 }
             }
