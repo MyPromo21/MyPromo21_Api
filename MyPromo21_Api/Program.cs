@@ -22,5 +22,10 @@ namespace MyPromo21_Api
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
+
+
+
+
     }
 }
