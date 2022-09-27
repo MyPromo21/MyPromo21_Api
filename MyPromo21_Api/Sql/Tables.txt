@@ -7,34 +7,6 @@ CREATE TABLE Usuario
    CONSTRAINT Pk_Usuario PRIMARY KEY (Id)
 );
 
-<<<<<<< HEAD
-CREATE TABLE Cliente
-(
-	IdCliente int IDENTITY(1,1) NOT NULL,
-	Nome varchar(150) not null,
-	Cpf varchar(11) not null,
-	DataNascimento date not null,
-	Telefone varchar(11),
-	Email varchar(150) not null,
-	DataCadastro date,
-	IdUsuario int,
-	CONSTRAINT Pk_Cliente PRIMARY KEY (IdCliente),
-	CONSTRAINT Fk_IdUsuario FOREIGN KEY (IdUsuario) REFERENCES Usuario(Id)
-);
-
-CREATE TABLE Estabelecimento
-(
-	IdUsuario int NOT NULL,
-	NomeFantasia varchar(150) NOT NULL,
-	Cnpj varchar(14) NOT NULL,	
-	IdEndereco int NOT NULL,
-	CONSTRAINT Fk_IdUsuario FOREIGN KEY (Id) REFERENCES Usuario(Id),
-	CONSTRAINT Pk_Estabelecimento PRIMARY KEY (IdUsuario),        
-	CONSTRAINT Fk_IdEndereco FOREIGN KEY (Id) REFERENCES Endereco(Id)    
-);
-
-=======
->>>>>>> ed92a66665c239f30362f331ffd3eacc1a05a6b7
 CREATE TABLE Endereco
 (
 	Id int IDENTITY(1,1) NOT NULL,
@@ -44,24 +16,7 @@ CREATE TABLE Endereco
 	Rua VARCHAR(150) NOT NULL,	
 	Numero VARCHAR(150) NOT NULL,	
 	Complemento VARCHAR(150) NOT NULL,	
-	Cep VARCHAR(150) NOT NULL,	
-<<<<<<< HEAD
-	CONSTRAINT Pk_Endereco PRIMARY KEY (Id)        
-	   
-);
-
-CREATE TABLE Produto
-(
-	Id int IDENTITY(1,1) NOT NULL,
-	Descricao VARCHAR(150) NOT NULL,
-	Preco decimal NOT NULL,	
-	Quantidade int NOT NULL,	
-	Perecivel bit NOT NULL,	
-	ValidadeProduto date NOT NULL,	
-	LinkImagem VARCHAR(150) NOT NULL,		
-	CONSTRAINT Pk_Produto PRIMARY KEY (Id)
-);
-=======
+	Cep VARCHAR(150) NOT NULL,
 	CONSTRAINT Pk_Endereco PRIMARY KEY (Id)
 );
 
@@ -84,16 +39,30 @@ SELECT u.login , u.senha, e.NomeFantasia, e.Cnpj, en.Cidade, en.Estado FROM Usua
 INNER JOIN Estabelecimento e ON e.IdUsuario = u.Id
 INNER JOIN Endereco en ON en.Id = e.IdEndereco
 
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 CREATE TABLE Cliente
 (
-	Id_Cliente int IDENTITY(1,1) NOT NULL,
+	IdCliente int IDENTITY(1,1) NOT NULL,
 	Nome varchar(150) not null,
 	Cpf varchar(11) not null,
-	Data_Nascimento date not null,
+	DataNascimento date not null,
 	Telefone varchar(11),
 	Email varchar(150) not null,
-	Data_Cadastro date
+	DataCadastro date,
+	IdUsuario int,
+	CONSTRAINT Pk_Cliente PRIMARY KEY (IdCliente),
+	CONSTRAINT Fk_IdUsuario FOREIGN KEY (IdUsuario) REFERENCES Usuario(Id)
 );
->>>>>>> ed92a66665c239f30362f331ffd3eacc1a05a6b7
+
+CREATE TABLE Produto
+(
+	Id int IDENTITY(1,1) NOT NULL,
+	Descricao VARCHAR(150) NOT NULL,
+	Preco decimal NOT NULL,	
+	Quantidade int NOT NULL,	
+	Perecivel bit NOT NULL,	
+	ValidadeProduto date NOT NULL,	
+	LinkImagem VARCHAR(150) NOT NULL,		
+	CONSTRAINT Pk_Produto PRIMARY KEY (Id)
+);
