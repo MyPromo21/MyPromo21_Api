@@ -70,6 +70,7 @@ namespace MyPromo21_Api.Repositories
                         produto.Quantidade,
                         produto.Perecivel,
                         produto.ValidadeProduto,
+                        produto.LinkImagem,
                         produto.Id
                     };
                     _conexaoBanco.Query(query,parameters);
@@ -83,9 +84,9 @@ namespace MyPromo21_Api.Repositories
 
             return result;
         }
-        public Produto GetProduto(string descricao)
+        public ProdutoDto GetProduto(string descricao)
         {
-            var produto = new Produto();
+            var produto = new ProdutoDto();
 
             try
             {
@@ -95,7 +96,7 @@ namespace MyPromo21_Api.Repositories
                     descricao
                 };
 
-                produto = _conexaoBanco.QueryFirstOrDefault(query,parameters);
+                produto = _conexaoBanco.QueryFirstOrDefault<ProdutoDto>(query,parameters);
             }
             catch (SqlException e)
             {
@@ -111,8 +112,8 @@ namespace MyPromo21_Api.Repositories
             {
                 using (_conexaoBanco)
                 {
-                    var query = "delete from Produto where IdProduto = @IdProduto";
-                    var parameters = new { IdProduto.IdProduto };
+                    var query = "delete from Produto where Id = @Id";
+                    var parameters = new { IdProduto.Id };
                     _conexaoBanco.Query(query,parameters);
                     result = true;
                 }
