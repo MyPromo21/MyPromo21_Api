@@ -47,7 +47,7 @@ namespace MyPromo21_Api.Controllers
         [HttpDelete]
         public IActionResult DeleteProduto(ProdutoDeleteViewModel deleteProdutoViewModel)
         {
-            if (deleteProdutoViewModel.IdProduto == 0) return Ok("Id do produto inválido!");
+            if (deleteProdutoViewModel.Id == 0) return Ok("Id do produto inválido!");
 
             var result = _produtoRepository.DeleteProduto(deleteProdutoViewModel);
 
