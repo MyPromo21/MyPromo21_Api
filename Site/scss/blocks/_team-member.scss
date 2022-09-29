@@ -1,0 +1,50 @@
+/**
+* Team Member
+*/
+.team-member-wrapper{
+    margin-top: -50px;
+}
+.team-member{
+    margin-top: 50px;
+    .team-member-thumb{
+        height: 180px;
+        width: 180px;
+        display: inline-block;
+        border-radius: 1000px;
+        overflow: hidden;
+        margin-bottom: 20px;
+        img{
+            width: 100%;
+        }
+    }
+    h4{
+        color: $heading-color;
+        font-weight: 700;
+        font-size: 22px;
+        margin-bottom: 5px;
+    }
+    h6{
+        font-size: 16px;
+        color: $color-yellow;
+    }
+    p{
+        padding-top: 5px;
+        font-size: 15px;
+    }
+    .social-icons{
+        padding-top: 15px;
+        ul{
+            li{
+                a{
+                    color: #888888;
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+    &:hover{
+        .team-member-thumb{
+            animation: crBounceIn 0.5s ease-in 1;
+        }
+    }
+}

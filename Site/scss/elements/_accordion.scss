@@ -1,0 +1,126 @@
+/**
+* Accordion Styles
+*/
+
+.cr-accordion-wrap{
+    margin-top: 50px;
+    border-top: 1px dashed #e1e1e1;
+}
+
+.cr-accordion{
+
+    .cr-accordion-header{
+        a{
+            border-bottom: 1px dashed #e1e1e1;
+            border-collapse: collapse;
+            font-size: 14px;
+            font-family: $body-font;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #3e3e3e;
+            text-transform: uppercase;
+            display: block;
+            padding: 18px 0;
+            padding-right: 20px;
+            position: relative;
+            padding-left: 70px;
+
+            &::before{
+                content: "\f057";
+                font-family: 'fontAwesome';
+                width: 70px;
+                text-align: left;
+                display: inline-block;
+                position: absolute;
+                left: 0;
+                top: 18px;
+            }
+
+            &::after{
+                content: "\f103";
+                font-family: 'fontAwesome';
+                position: absolute;
+                right: 0;
+                top: 18px;
+            }
+
+            &:not(.collapsed){
+                color: $theme-color;
+                &::before{
+                    content: "\f058";
+                }
+                &::after{
+                    content: "\f102";
+                }
+            }
+
+        }
+    }
+
+    .cr-accordion-body{
+        padding-top: 30px;
+        padding-bottom: 60px;
+        border-bottom: 1px dashed #e1e1e1;
+    }
+
+}
+
+.faq-wrapper{
+    h5{
+        font-size: 18px;
+        font-weight: 700;
+        color: $heading-color;
+        text-transform: uppercase;
+        overflow: hidden;
+
+        span{
+            display: inline-block;
+            position: relative;
+
+            &::after{
+                content: "";
+                position: absolute;
+                left: calc( 100% + 20px );
+                top: 50%;
+                height: 1px;
+                width: 1600px;
+                background: #d7d7d7;
+            }
+
+        }
+    }
+
+    p{
+        font-size: 14px;
+        letter-spacing: 0.5px;
+        font-style: italic;
+        font-weight: 400;
+    }
+    
+}
+
+@media #{$md-layout}{
+    .cr-accordion{
+        .cr-accordion-header{
+            a{
+                padding-left: 30px;
+                &::before{
+                    width: 30px;
+                }
+            }
+        }
+    }
+}
+
+@media #{$sm-layout}{
+    .cr-accordion{
+        .cr-accordion-header{
+            a{
+                padding-left: 25px;
+                &::before{
+                    width: 25px;
+                }
+            }
+        }
+    }
+}

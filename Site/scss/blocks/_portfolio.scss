@@ -1,0 +1,163 @@
+/**
+* Portfolio Styles
+*/
+
+.portfolios{
+    margin-top: -40px;
+}
+
+.portfolio{
+    margin-top: 40px;
+    backface-visibility: hidden;
+    display: block;
+
+    .portfolio-thumb{
+        position: relative;
+        display: block;
+        overflow: hidden;
+        backface-visibility: hidden;
+        
+        img{
+            transition: all 0.5s ease-out 0s;
+            transform: scale(1);
+            width: 100%;
+        }
+
+        &::before{
+            content: "";
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background: rgba($theme-color, 0.8);
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.5s ease-out 0s;
+            z-index: 1;
+        }
+
+        &::after{
+            content: "\f002";
+            font-family: 'fontAwesome';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            font-size: 26px;
+            color: #ffffff;
+            transform: translate(-50%, -50%);
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.3s ease-out 0s;
+            margin-top: 20px;
+            z-index: 2;
+        }
+
+    }
+
+    .portfolio-content{
+        padding-top: 20px;
+        h5{
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        h6{
+            color: $heading-color;
+            font-size: 16px;
+            margin-bottom: 0;
+            a{
+                color: $heading-color;
+                &:hover{
+                    color: $theme-color;
+                }
+            }
+        }
+    }
+
+    &:hover{
+        .portfolio-thumb{
+            img{
+                transform: scale(1.2);
+            }
+            &::before, &::after{
+                visibility: visible;
+                opacity: 1;
+            }
+            &::after{
+                margin-top: 0;
+            }
+        }
+    }
+
+}
+
+
+/* Portfolio Style 2 */
+.portfolio-style-2{
+    margin: 0;
+    position: relative;
+
+    .portfolio-thumb{
+        backface-visibility: hidden;
+        &::before{
+            background: rgba(#000000, 0.6);
+        }
+        &::after{
+            display: none;
+        }
+        img{
+            vertical-align: top;
+        }
+    }
+
+    .portfolio-content{
+        position: absolute;
+        left: 0;
+        padding: 30px;
+        top: 50%;
+        width: 100%;
+        text-align: center;
+        z-index: 2;
+        backface-visibility: hidden;
+        visibility: hidden;
+        opacity: 0;
+        transition: all 0.4s ease-out 0s;
+        transform: translateX(-20px) translateY(-50%) translateZ(0);
+        span{
+            font-size: 36px;
+            color: #ffffff;
+            margin-bottom: 26px;
+            margin-top: 15px;
+        }
+        h4{
+            color: #ffffff;
+            font-family: $body-font;
+            font-weight: 700;
+            text-transform: uppercase;
+            a{
+                color: #ffffff;
+                &:hover{
+                    color: $theme-color;
+                }
+            }
+        }
+        h6{
+            color: #ffffff;
+        }
+    }
+
+    &:hover{
+        .portfolio-content{
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(0) translateY(-50%) translateZ(0);
+        }
+    }
+
+}
+
+.portfolio-loadmore-button-holder{
+    margin-top: 50px;
+    text-align: center;
+}
