@@ -24,7 +24,7 @@ namespace MyPromo21_Api.Controllers
         }
         
         [HttpPost]
-        public IActionResult CreateCliente(ClienteViewModel cliente)//ClienteModel cliente)
+        public IActionResult CreateCliente(CreateClienteViewModel cliente)//ClienteModel cliente)
         {
             if (cliente.Cliente == null) return Ok("Parâmetros informados incorretamente!");
             if (string.IsNullOrWhiteSpace(cliente.Cliente.Nome)) return Ok("Nome do cliente invalido!");

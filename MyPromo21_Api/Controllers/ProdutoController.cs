@@ -22,7 +22,7 @@ namespace MyPromo21_Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateProduto(ProdutoViewModel produto)
+        public IActionResult CreateProduto(ProdutoCreateViewModel produto)
         {
             if (produto.Produto == null) return Ok("Parâmetros informados incorretamente!");
 
@@ -65,6 +65,15 @@ namespace MyPromo21_Api.Controllers
             if (produto != null) return Ok(produto);
 
             return Ok("Produto não encontrado!");
+        }
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            var produtos = new GetAllProdutoViewModel();
+
+            produtos.Produto = _produtoRepository.GetAll();
+
+            return Ok(produtos.Produto);
         }
     }
 }

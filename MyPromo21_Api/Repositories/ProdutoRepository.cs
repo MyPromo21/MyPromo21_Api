@@ -125,6 +125,26 @@ namespace MyPromo21_Api.Repositories
 
             return result;
         }
+        public List<ProdutoDto> GetAll()
+        {
+            var produtos = new List<ProdutoDto>();
+
+            try
+            {
+                using (_conexaoBanco)
+                {
+                    var query = "select * from Produto";
+
+                    produtos = _conexaoBanco.Query<ProdutoDto>(query).ToList();
+                }
+            }
+            catch (SqlException)
+            {
+                produtos = null;
+            }
+
+            return produtos;
+        }
 
     }
 }

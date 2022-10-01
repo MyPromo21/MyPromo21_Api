@@ -22,5 +22,9 @@ namespace MyPromo21_Api.ViewModels
         {
             public ServicoDto Servico { get; set; }
         }
+        public class GetAllServicoViewModel
+        {
+            public List<ServicoDto> Servicos { get; set; } = new List<ServicoDto>();
+        }
     }
 }
