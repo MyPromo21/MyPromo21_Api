@@ -34,7 +34,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form">
+				<form name="formulario-inicial" class="login100-form validate-form">
 					<span class="login100-form-title p-b-26">
 						Novo usuario
 					</span>
@@ -47,19 +47,19 @@
 						<span class="focus-input100" data-placeholder="Login"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Password">
+					<div class="wrap-input100 validate-input" data-validate="Senha">
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
 						</span>
-						<input class="input100" type="password" name="password">
-						<span class="focus-input100" data-placeholder="Password"></span>
+						<input class="input100" type="password" name="senha">
+						<span class="focus-input100" data-placeholder="Senha"></span>
 					</div>
 
 
 					<div class="alinhar-centro validate-input" data-validate="Nivel">					
 						<select name="nivel">
 							<option value="0" selected>Cliente</option>
-							<option value="2">Estabelecimento</option>
+							<option value="1">Estabelecimento</option>
 						</select>
 					</div>
 
@@ -68,7 +68,7 @@
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">
+							<button class="login100-form-btn" onclick="SalvarUsuario()">
 								Registrar
 							</button>
 						</div>
@@ -107,6 +107,9 @@
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 	<!--===============================================================================================-->
 	<script src="js/main.js"></script>
+
+
+	<script src="../app/Usuario/criarUsuario.js"></script>
 
 </body>
 

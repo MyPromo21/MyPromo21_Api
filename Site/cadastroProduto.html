@@ -1,0 +1,95 @@
+﻿﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Cadastro de Produto</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+
+</head>
+
+<body>
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form name="formulario-inicial" class="validate-form">
+
+                    <!--id do usuario apos validação ...-->
+                    <input type="hidden" id="idEstabelecimento" value="3" />
+
+                    <span class="">
+                        Nova ficha de cliente
+                    </span>
+                    <span class="">
+                        <i class=""></i>
+                    </span>
+
+                    <div class="" data-validate="Descricao">
+                        <input type="text" id="descricao" placeholder="Descricao" value="" />
+                        <span class="" placeholder="Descricao"></span>
+                    </div>
+
+                    <div class="" data-validate="Preco">
+                        <input type="text" id="preco" placeholder="Preco" value="" />
+                        <span class="" placeholder="Preco"></span>
+                    </div>
+
+                    <div class="" data-validate="Quantidade">
+                        <input type="text" id="quantidade" placeholder="Quantidade" />
+                        <span class="" placeholder="Quantidade"></span>
+                    </div>
+
+                    <div class="" data-validate="Perecivel">					
+						<select id="perecivel">
+							<option value="0" selected>Produto perecível</option>
+							<option value="1">Produto não perecível</option>
+						</select>
+					</div>
+
+                    <div class="" data-validate="ValidadeProduto">
+                        <input type="date" id="validadeProduto" placeholder="Validade do Produto" />
+                        <span class="" placeholder="ValidadeProduto"></span>
+                    </div>
+
+                    <div class="" data-validate="LinkImagem">
+                        <input type="text" id="linkImagem" placeholder="LinkImagem" />
+                        <span class="" placeholder="LinkImagem"></span>
+                    </div>
+
+
+                    <div class="">
+                        <button class="" onclick="CadastrarProduto()">
+                            Salvar dados
+                        </button>
+                    </div>
+
+
+                    <div class="">
+                        <span class="">
+                            Deseja retornar?
+                        </span>
+
+                        <a class="" href="#">
+                            Voltar
+                        </a>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="app/Usuario/cadastroProduto.js"></script>
+
+
+
+
+
+</body>
+
+</html>

@@ -12,12 +12,12 @@ namespace MyPromo21_Api.Repositories
 {
     public class UsuarioRepository
     {
-        private readonly string _connection = @"Data Source=ITELABD12\SQLEXPRESS; Initial Catalog=MyPromo21; Integrated Security=True;";
+        private readonly string _connection = @"Data Source=ITELABD13\SQLEXPRESS;Initial Catalog=mypromo;Integrated Security=True";
         private SqlConnection _conexao { get
             {
                 return new SqlConnection(_connection);
             } }
-        public bool CreateUsuario(Usuario usuario)
+        public Usuario CreateUsuario(Usuario usuario)
         {
             try
             {
@@ -33,13 +33,13 @@ namespace MyPromo21_Api.Repositories
                     };
 
                     _conexao.Query(query, parameters);
-                    return true;
+                    return usuario;
                 }                
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Erro: " + ex.Message);
-                return false;
+                return usuario;
             }
         }
 

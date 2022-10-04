@@ -11,7 +11,11 @@ namespace MyPromo21_Api.Repositories
 {
     public class EstabelecimentoRepository
     {
-        private readonly string _connection = @"Data Source=ITELABD12\SQLEXPRESS; Initial Catalog=MyPromo21; Integrated Security=True;";
+
+        //Conexão Luiz
+        private readonly string _connection = @"Data Source=ITELABD13\SQLEXPRESS;Initial Catalog=mypromo;Integrated Security=True";
+
+        //private readonly string _connection = @"Data Source=ITELABD12\SQLEXPRESS; Initial Catalog=MyPromo21; Integrated Security=True;";
         private SqlConnection _conexao
         {
             get
@@ -24,15 +28,14 @@ namespace MyPromo21_Api.Repositories
             try
             {
                 var query = @"INSERT INTO Estabelecimento 
-                              (IdUsuario, NomeFantasia, Cnpj, IdEndereco) VALUES (@idUsuario, @nomeFantasia, @cnpj, @idEndereco)";
+                              (IdEstabelecimento, NomeFantasia, Cnpj) VALUES (@idEstabelecimento, @nomeFantasia, @cnpj)";
                 using (_conexao)
                 {
                     var parameters = new
                     {
-                        estabelecimento.IdUsuario,
+                        estabelecimento.IdEstabelecimento,
                         estabelecimento.NomeFantasia,
                         estabelecimento.Cnpj,
-                        estabelecimento.IdEndereco
                         
                     };
 

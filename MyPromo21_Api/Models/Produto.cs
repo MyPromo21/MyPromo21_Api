@@ -7,10 +7,11 @@ namespace MyPromo21_Api.Models
 {
     public class Produto
     {
+		public int IdEstabelecimento { get; set; }
 		public string Descricao { get; set; }
-		public decimal Preco { get; set; }
+		public float Preco { get; set; }
 		public int Quantidade { get; set; }
-		public bool Perecivel { get; set; }
+		public int Perecivel { get; set; }
 		public DateTime ValidadeProduto { get; set; }
 		public string LinkImagem { get; set; }
 

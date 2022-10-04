@@ -5,6 +5,10 @@ namespace MyPromo21_Api.ViewModels
 {
     public class EstabelecimentoViewModel
     {
+
+        public Estabelecimento Estabelecimento { get; set; }
+
+
         public class CreateEstabelecimentoViewModel
         {
             public Estabelecimento estabelecimento { get; set; }

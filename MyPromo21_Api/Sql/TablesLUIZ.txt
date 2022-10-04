@@ -1,0 +1,89 @@
+﻿CREATE TABLE Usuario
+(
+   Id int IDENTITY (1,1) NOT NULL,
+   Login varchar (70) NOT NULL,
+   Senha varchar (14) NOT NULL,
+   Nivel BIT NOT NULL,   
+   CONSTRAINT Pk_Usuario PRIMARY KEY (Id)
+);
+
+CREATE TABLE Cliente
+(
+	IdUsuario int NOT NULL,
+	Nome varchar(150) not null,
+	Cpf varchar(11) not null,
+	DataNascimento date not null,
+	Telefone varchar(11),
+	Email varchar(150) not null,
+	DataCadastro date,
+	CONSTRAINT Pk_Cliente PRIMARY KEY (IdUsuario),
+	CONSTRAINT Fk_IdUsuario FOREIGN KEY (IdUsuario) REFERENCES Usuario(Id)
+);
+
+
+CREATE TABLE Estabelecimento
+(
+	IdEstabelecimento int NOT NULL,
+	NomeFantasia varchar(150) NOT NULL,
+	Cnpj varchar(14) NOT NULL,	
+	CONSTRAINT Pk_Estabelecimento PRIMARY KEY (IdEstabelecimento),	
+	CONSTRAINT Fk_IdEstabelecimento FOREIGN KEY (IdEstabelecimento) REFERENCES Usuario(Id)	
+);
+
+CREATE TABLE Produto
+(
+	Id int IDENTITY(1,1) NOT NULL,
+	IdEstabelecimento int NOT NULL,
+	Descricao VARCHAR(150) NOT NULL,
+	Preco float NOT NULL,	
+	Quantidade int NOT NULL,	
+	Perecivel bit NOT NULL,	
+	ValidadeProduto date NOT NULL,	
+	LinkImagem VARCHAR(150) NOT NULL,		
+	CONSTRAINT Pk_Produto PRIMARY KEY (Id),
+	CONSTRAINT Fk_IdUser FOREIGN KEY (IdEstabelecimento) REFERENCES Estabelecimento(IdEstabelecimento)
+);
+
+CREATE TABLE Endereco
+(
+	Id int IDENTITY(1,1) NOT NULL, 
+	IdEstabelecimento int NOT NULL,
+	Estado VARCHAR(150) NOT NULL,
+	Cidade VARCHAR(150) NOT NULL,	
+	Bairro VARCHAR(150) NOT NULL,	
+	Rua VARCHAR(150) NOT NULL,	
+	Numero VARCHAR(150) NOT NULL,	
+	Complemento VARCHAR(150) NOT NULL,	
+	Cep VARCHAR(150) NOT NULL,
+	CONSTRAINT Pk_Endereco PRIMARY KEY (Id),
+	CONSTRAINT Fk_IdLocal FOREIGN KEY (IdEstabelecimento) REFERENCES Estabelecimento(IdEstabelecimento)
+);
+
+
+
+INSERT INTO Usuario (Login, Senha, Nivel) VALUES ('giulianno@gmail.com', '12345678', 'false')
+INSERT INTO Endereco (Estado, Cidade, Bairro, Rua, Numero, Complemento, Cep) VALUES ('Santa Catarina', 'Balne�rio Cambori�', 'Centro', 'Av.Brasil', '933', 'Apto106', '88330275')
+INSERT INTO Estabelecimento (IdUsuario, NomeFantasia, Cnpj, IdEndereco) VALUES (1, 'MyPromo', '1234567000189', 1)
+
+SELECT u.login , u.senha, e.NomeFantasia, e.Cnpj, en.Cidade, en.Estado FROM Usuario u
+INNER JOIN Estabelecimento e ON e.IdUsuario = u.Id
+INNER JOIN Endereco en ON en.Id = e.IdEndereco
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+CREATE TABLE Endereco
+(
+	IdUsuario int NOT NULL,
+	Estado VARCHAR(150) NOT NULL,
+	Cidade VARCHAR(150) NOT NULL,	
+	Bairro VARCHAR(150) NOT NULL,	
+	Rua VARCHAR(150) NOT NULL,	
+	Numero VARCHAR(150) NOT NULL,	
+	Complemento VARCHAR(150) NOT NULL,	
+	Cep VARCHAR(150) NOT NULL,
+	CONSTRAINT Pk_Endereco PRIMARY KEY (Id)
+);

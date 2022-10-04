@@ -8,7 +8,8 @@
             "type": "chrome",
             "request": "launch",
             "name": "Open index.html",
-            "file": "c:\\Users\\guest01\\source\\repos\\ChamadosTiApi\\ChamadosTiSite\\index.html"
+            "file": "c:\\Users\\guest01\\source\\repos\\MyPromo21_Api\\Site\\cadastroProduto.html"      
+           
         }
     ]
 }
