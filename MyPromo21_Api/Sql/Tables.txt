@@ -66,3 +66,27 @@ CREATE TABLE Produto
 	LinkImagem VARCHAR(150) NOT NULL,		
 	CONSTRAINT Pk_Produto PRIMARY KEY (Id)
 );
+
+CREATE TABLE Servico
+(
+	Id int IDENTITY(1,1) NOT NULL,
+	Descricao varchar(150) NOT NULL,
+	Preco decimal NOT NULL,
+	Link_Imagem varchar(150) NOT NULL,
+
+	CONSTRAINT Pk_Servico PRIMARY KEY (Id)
+);
+
+CREATE TABLE Promocao 
+(
+	Id int IDENTITY(1,1) NOT NULL,
+	Token varchar(10) NOT NULL,
+	Id_Produto int NOT NULL,
+	Validade_Promo date NOT NULL,
+	Id_Estabelecimento int NOT NULL,
+	Motivo varchar(150) NOT NULL,
+
+	CONSTRAINT Pk_Promocao PRIMARY KEY (Id),
+	CONSTRAINT Fk_Id_Estabelecimento FOREIGN KEY (Id_Estabelecimento) REFERENCES Estabelecimento(Id),
+	CONSTRAINT Fk_Id_Produto FOREIGN KEY (Id_Produto) REFERENCES Produto(Id)
+);
