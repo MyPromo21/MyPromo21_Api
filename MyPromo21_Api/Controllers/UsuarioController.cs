@@ -42,6 +42,18 @@ namespace MyPromo21_Api.Controllers
             return Ok(resultado);
         }
 
+        [HttpGet]
+        public IActionResult GetUsuario(string login)
+        {
+            if (string.IsNullOrWhiteSpace(login)) return Ok("Parâmetro inválido!");
+
+            var usuario = _usuarioRepository.GetUsuario(login);
+
+            if (usuario != null) return Ok(usuario);
+
+            return Ok("Usuario não encontrado!");
+        }
+
         //[HttpPut]
         //public IActionResult Update(UpdateUsuarioViewModel updateUsuarioViewModel)
         //{

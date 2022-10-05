@@ -91,6 +91,28 @@ namespace MyPromo21_Api.Repositories
             }
         }
 
+        public UsuarioDto GetUsuario(string login)
+        {
+            var usuario = new UsuarioDto();
+
+            try
+            {
+                using (_conexao)
+                {
+                    var query = "select * from Usuario where Login = @login";
+                    var parameters = new { login };
+
+                    usuario = _conexao.QueryFirstOrDefault(query, parameters);
+                }
+            }
+            catch (SqlException)
+            {
+                usuario = null;
+            }
+
+            return usuario;
+        }
+
         public bool DeleteUsuario(int id)
         {
             try
