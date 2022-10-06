@@ -91,26 +91,52 @@ namespace MyPromo21_Api.Repositories
             }
         }
 
-        public UsuarioDto GetUsuario(string login)
-        {
-            var usuario = new UsuarioDto();
+        //public UsuarioDto GetUsuario(string login)
+        //{
+        //    var usuario = new UsuarioDto();
 
+        //    try
+        //    {
+        //        using (_conexao)
+        //        {
+        //            var query = @$"SELECT * FROM Usuario where Login LIKE %{login}% ";
+
+
+        //            var parameters = new { login };
+
+        //            usuario = _conexao.QueryFirstOrDefault(query, parameters);
+        //        }
+        //    }
+        //    catch (SqlException)
+        //    {
+        //        usuario = null;
+        //    }
+
+        //    return usuario;
+        //}
+
+
+        public List<UsuarioDto> BuscarPorId(string login)
+        {
+            List<UsuarioDto> usuariosEncontrados;
             try
             {
-                using (_conexao)
+                var query = @$"SELECT * FROM Usuario where Login LIKE '%{login}%' ";
+
+                using (var connection = new SqlConnection(_connection))
                 {
-                    var query = "select * from Usuario where Login = @login";
-                    var parameters = new { login };
+                    SqlCommand command = new SqlCommand(query, connection);
+                    usuariosEncontrados = connection.Query<UsuarioDto>(query).ToList();
 
-                    usuario = _conexao.QueryFirstOrDefault(query, parameters);
                 }
-            }
-            catch (SqlException)
-            {
-                usuario = null;
-            }
 
-            return usuario;
+                return usuariosEncontrados;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro: " + ex.Message);
+                return null;
+            }
         }
 
         public bool DeleteUsuario(int id)

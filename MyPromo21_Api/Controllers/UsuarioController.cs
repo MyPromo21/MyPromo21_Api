@@ -47,7 +47,7 @@ namespace MyPromo21_Api.Controllers
         {
             if (string.IsNullOrWhiteSpace(login)) return Ok("Parâmetro inválido!");
 
-            var usuario = _usuarioRepository.GetUsuario(login);
+            var usuario = _usuarioRepository.BuscarPorId(login);
 
             if (usuario != null) return Ok(usuario);
 
