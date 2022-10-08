@@ -68,14 +68,13 @@ namespace MyPromo21_Api.Repositories
         {
             try
             {
-                var query = @"UPDATE Usuario SET Login = @login, Senha = @senha, Nivel = @nivel WHERE Id = @id";
+                var query = @$"UPDATE Usuario SET Login = @login WHERE Id = @id";
+
                 using (_conexao)
                 {
                     var parameters = new
                     {
                         usuario.Login,
-                        usuario.Senha,
-                        usuario.Nivel,
                         usuario.Id
                     };
 
@@ -91,7 +90,7 @@ namespace MyPromo21_Api.Repositories
             }
         }
 
-        //public UsuarioDto GetUsuario(string login)
+        //public UsuarioDto BuscarPorID(int id)
         //{
         //    var usuario = new UsuarioDto();
 
@@ -99,10 +98,10 @@ namespace MyPromo21_Api.Repositories
         //    {
         //        using (_conexao)
         //        {
-        //            var query = @$"SELECT * FROM Usuario where Login LIKE %{login}% ";
+        //            var query = @$"SELECT * FROM Usuario where Id = {id} ";
 
 
-        //            var parameters = new { login };
+        //            var parameters = new { id };
 
         //            usuario = _conexao.QueryFirstOrDefault(query, parameters);
         //        }
@@ -116,7 +115,32 @@ namespace MyPromo21_Api.Repositories
         //}
 
 
-        public List<UsuarioDto> BuscarPorId(string login)
+        public UsuarioDto BuscarPorID(int id)
+        {
+            UsuarioDto pessoaEncontrada;
+            try
+            {
+                var query = @$"SELECT * FROM Usuario where Id = {id} ";
+
+                using (var connection = new SqlConnection(_connection))
+                {
+                    var parametros = new
+                    {
+                        id
+                    };
+                    pessoaEncontrada = connection.QueryFirstOrDefault<UsuarioDto>(query, parametros);
+                }
+                return pessoaEncontrada;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro: " + ex.Message);
+                return null;
+            }
+        }
+
+
+        public List<UsuarioDto> BuscarPorLogin(string login)
         {
             List<UsuarioDto> usuariosEncontrados;
             try
@@ -138,6 +162,9 @@ namespace MyPromo21_Api.Repositories
                 return null;
             }
         }
+
+
+       
 
         public bool DeleteUsuario(int id)
         {

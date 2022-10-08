@@ -47,26 +47,42 @@ namespace MyPromo21_Api.Controllers
         {
             if (string.IsNullOrWhiteSpace(login)) return Ok("Parâmetro inválido!");
 
-            var usuario = _usuarioRepository.BuscarPorId(login);
+            var usuario = _usuarioRepository.BuscarPorLogin(login);
 
             if (usuario != null) return Ok(usuario);
 
             return Ok("Usuario não encontrado!");
         }
 
-        //[HttpPut]
-        //public IActionResult Update(UpdateUsuarioViewModel updateUsuarioViewModel)
-        //{
+        [HttpGet]
+        public IActionResult GetUsuarioByID(int id)
+        {            
 
-        //    var resultado = _usuarioRepository.UpdateUsuario(updateUsuarioViewModel.usuario);
+            var usuario = _usuarioRepository.BuscarPorID(id);
 
-        //    if (resultado) return Ok("Usuario atualizado com sucesso. ");
-        //    return Ok(new
-        //    {
-        //        sucesso = false,
-        //        mensagem = "Erro ao atualizar o usuario."
-        //    });
-        //}
+            if (usuario != null) return Ok(usuario);
+
+            return Ok("Usuario não encontrado!");
+        }
+
+        [HttpPut]
+        public IActionResult Update(UsuarioViewModel updateUsuarioViewModel)
+        {
+
+            var resultado = _usuarioRepository.UpdateUsuario(updateUsuarioViewModel.usuarioDto);
+
+            if (resultado) return Ok(new
+            {
+                sucesso = true,
+                mensagem = "Usuario atualizado com sucesso. "
+            }
+                );;
+            return Ok(new
+            {
+                sucesso = false,
+                mensagem = "Erro ao atualizar o usuario."
+            });
+        }
 
         //[HttpDelete]
         //public IActionResult Delete(DeleteUsuarioViewModel deleteUsuarioViewModel)

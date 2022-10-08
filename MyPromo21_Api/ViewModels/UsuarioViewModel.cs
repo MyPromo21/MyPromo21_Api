@@ -6,9 +6,13 @@ namespace MyPromo21_Api.ViewModels
     public class UsuarioViewModel
     {
         public Usuario usuario { get; set; }
+
+        public UsuarioDto usuarioDto { get; set; }
+
+
         //public class CreateUsuarioViewModel
         //{
-           
+
         //}
 
         //public class DeleteUsuarioViewModel
