@@ -3,7 +3,7 @@
    Id int IDENTITY (1,1) NOT NULL,
    Login varchar (70) NOT NULL,
    Senha varchar (14) NOT NULL,
-   Nivel BIT NOT NULL,   
+   Nivel INT NOT NULL,   
    CONSTRAINT Pk_Usuario PRIMARY KEY (Id)
 );
 
@@ -30,6 +30,90 @@ CREATE TABLE Estabelecimento
 	CONSTRAINT Fk_IdEstabelecimento FOREIGN KEY (IdEstabelecimento) REFERENCES Usuario(Id)	
 );
 
+
+CREATE TABLE Endereco
+(
+	Id int IDENTITY (1,1) NOT NULL,
+	IdEstabelecimento int NOT NULL,
+	Estado VARCHAR(150) NOT NULL,
+	Cidade VARCHAR(150) NOT NULL,	
+	Bairro VARCHAR(150) NOT NULL,	
+	Rua VARCHAR(150) NOT NULL,	
+	Numero VARCHAR(150) NOT NULL,	
+	Complemento VARCHAR(150) NOT NULL,	
+	Cep VARCHAR(150) NOT NULL,
+	CONSTRAINT Pk_Endereco PRIMARY KEY (Id),
+	CONSTRAINT Fk_IdEndereco FOREIGN KEY (IdEstabelecimento) REFERENCES Usuario(Id)	
+);
+
+CREATE TABLE Promocao 
+(
+	Id int IDENTITY(1,1) NOT NULL,
+	Token varchar(10) NOT NULL,
+	ValidadePromo date NOT NULL,
+	Motivo varchar(150) NOT NULL,
+	IdEndereco int NOT NULL,
+	IdEstabelecimento int NOT NULL,
+	
+
+	CONSTRAINT Pk_Promocao PRIMARY KEY (Id),
+	CONSTRAINT Fk_Id_Endereco FOREIGN KEY (IdEndereco) REFERENCES Endereco(Id),
+	CONSTRAINT Fk_Id_Estabelecimento FOREIGN KEY (IdEstabelecimento) REFERENCES Estabelecimento(IdEstabelecimento)
+);
+
+
+CREATE TABLE Produto
+(
+	Id int IDENTITY(1,1) NOT NULL,
+	IdPromocao int NOT NULL,
+	Descricao VARCHAR(150) NOT NULL,
+	Preco float NOT NULL,	
+	Quantidade int NOT NULL,	
+	Perecivel int NOT NULL,	
+	ValidadeProduto date NOT NULL,	
+	LinkImagem VARCHAR(150) NOT NULL,		
+	CONSTRAINT Pk_Produto PRIMARY KEY (Id),
+	CONSTRAINT Fk_IdPromocao FOREIGN KEY (IdPromocao) REFERENCES Promocao(Id),
+);
+
+
+CREATE TABLE Servico
+(
+	Id int IDENTITY(1,1) NOT NULL,
+	IdPromocao int NOT NULL,
+	Descricao varchar(150) NOT NULL,
+	Preco decimal NOT NULL,
+	Link_Imagem varchar(150) NOT NULL,
+
+	CONSTRAINT Pk_Servico PRIMARY KEY (Id),
+	CONSTRAINT Fk_Id_Promocao FOREIGN KEY (IdPromocao) REFERENCES Promocao(Id),
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 CREATE TABLE Produto
 (
 	Id int IDENTITY(1,1) NOT NULL,
@@ -37,7 +121,7 @@ CREATE TABLE Produto
 	Descricao VARCHAR(150) NOT NULL,
 	Preco float NOT NULL,	
 	Quantidade int NOT NULL,	
-	Perecivel bit NOT NULL,	
+	Perecivel int NOT NULL,	
 	ValidadeProduto date NOT NULL,	
 	LinkImagem VARCHAR(150) NOT NULL,		
 	CONSTRAINT Pk_Produto PRIMARY KEY (Id),
@@ -75,15 +159,3 @@ INNER JOIN Endereco en ON en.Id = e.IdEndereco
 
 
 
-CREATE TABLE Endereco
-(
-	IdUsuario int NOT NULL,
-	Estado VARCHAR(150) NOT NULL,
-	Cidade VARCHAR(150) NOT NULL,	
-	Bairro VARCHAR(150) NOT NULL,	
-	Rua VARCHAR(150) NOT NULL,	
-	Numero VARCHAR(150) NOT NULL,	
-	Complemento VARCHAR(150) NOT NULL,	
-	Cep VARCHAR(150) NOT NULL,
-	CONSTRAINT Pk_Endereco PRIMARY KEY (Id)
-);

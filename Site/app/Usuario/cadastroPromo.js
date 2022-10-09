@@ -15,34 +15,35 @@ function converterParaDomElement(str) {
     return doc.body;
 };
 
-async function SalvarProduto() {
-    let idPromocao = document.querySelector('#idPromocao').value;
-    console.log(idPromocao);
-    let descricao = document.querySelector('#descricao').value;
-    console.log(descricao);
-    let preco = document.querySelector('#preco').value;
-    console.log(preco);
-    let quantidade = document.querySelector('#quantidade').value;
-    console.log(quantidade);
-    let perecivel = document.querySelector('#perecivel').value;
-    console.log(perecivel);
-    let validadeProduto = document.querySelector('#validadeProduto').value;
-    console.log(validadeProduto);
-    let linkImagem = document.querySelector('#linkImagem').value;
-    console.log(linkImagem);
+async function SalvarPromo() {
+    let idEndereco = document.querySelector('#idEndereco').value;
+    console.log(idEndereco);
+
+    let idEstabelecimento = document.querySelector('#idEstabelecimento').value;
+    console.log(idEstabelecimento);
+
+    let token = document.querySelector('#token').value;
+    console.log(token);
+
+    let validadePromo = document.querySelector('#validadePromo').value;
+    console.log(validadePromo);
+
+    let motivo = document.querySelector('#motivo').value;
+    console.log(motivo);
    
+    
 
     let createEstabelecimentoViewModel = {
-        Produto :
+        Promocao :
         {
-            IdPromocao : parseInt(idPromocao),
-            Descricao : descricao,
-            Preco : parseFloat(preco),
-            Quantidade : parseInt(quantidade),
-            Perecivel : parseInt(perecivel),
-            ValidadeProduto : validadeProduto,
-            LinkImagem : linkImagem
+            
+            Token : token,
+            ValidadePromo : validadePromo,
+            Motivo : motivo, 
+            IdEndereco : parseInt(idEndereco),
+            IdEstabelecimento : parseInt(idEstabelecimento),
 
+            
         }        
     };
 
@@ -65,7 +66,7 @@ async function EnviarApi(viewmodel) {
     };
 
     //TODO: mudar a url para o seu localhost.
-    const req =  fetch('https://localhost:44335/produto/CreateProduto', options)
+    const req =  fetch('https://localhost:44335/promocao/CreatePromocao', options)
         //caso a request dê certo, retornará a resposta;
         .then(response => {
             response.text()

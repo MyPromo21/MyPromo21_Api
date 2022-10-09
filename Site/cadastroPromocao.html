@@ -17,29 +17,37 @@
                 <form name="formulario-inicial" class="validate-form">
 
                     <!--id do usuario apos validação ...-->
+                    <input type="hidden" id="idEndereco" value="1" />
                     <input type="hidden" id="idEstabelecimento" value="2" />
 
                     <span class="">
-                        Cadastrar um novo estabelecimento
+                        Cadastrar uma nova promocao para este estabelecimento
                     </span>
                     <span class="">
                         <i class=""></i>
                     </span>
 
-                    <div class="" data-validate="Nome">
-                        <input type="text" id="nomeFantasia" placeholder="Nome Fantasia" value="" />
-                        <span class="" placeholder="Nome Fantasia"></span>
+                    <div class="" data-validate="Token">
+                        <input type="text" id="token" placeholder="Token" value="" />
+                        <span class="" placeholder="Token"></span>
                     </div>
 
-                    <div class="" data-validate="Cnpj">
-                        <input type="text" id="cnpj" placeholder="Cnpj" value="" />
-                        <span class="" placeholder="Cnpj"></span>
+                    <div class="" data-validate="ValidadePromo">
+                        <input type="date" id="validadePromo" placeholder="ValidadePromo" value="" />
+                        <span class="" placeholder="ValidadePromo"></span>
                     </div>
+
+                    <div class="" data-validate="Motivo">
+                        <input type="text" id="motivo" placeholder="Motivo" value="" />
+                        <span class="" placeholder="Motivo"></span>
+                    </div>                 
+
+                   
 
 
                     <div class="">
-                        <button class="" onclick="SalvarEstabelecimento()">
-                            Cadastrar estabelecimento
+                        <button class="" onclick="SalvarPromo()">
+                            Cadastrar endereço
                         </button>
                     </div>
 
@@ -64,7 +72,7 @@
     <div id="dropDownSelect1"></div>
 
 
-    <script src="app/Usuario/cadastroEstabelecimento.js"></script>
+    <script src="app/Usuario/cadastroPromo.js"></script>
 
 
 

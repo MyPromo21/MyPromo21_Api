@@ -11,7 +11,7 @@ async function Remover() {
         method: 'DELETE',
         headers: { 'content-type': 'application/json' }
     };
-    const req = await fetch('https://localhost:44365/pessoa/remover?id=' + id, options)
+    const req = await fetch('https://localhost:44335/pessoa/remover?id=' + id, options)
         .then(response => {
             return response.json();
         })

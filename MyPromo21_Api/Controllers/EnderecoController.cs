@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MyPromo21_Api.Repositories;
 using static MyPromo21_Api.ViewModels.EnderecoViewModel;
+using MyPromo21_Api.ViewModels;
 
 namespace MyPromo21_Api.Controllers
 {
@@ -16,52 +17,54 @@ namespace MyPromo21_Api.Controllers
             _enderecoRepository = new EnderecoRepository();
         }
 
-        [HttpPost]
-        public IActionResult Create(CreateEnderecoViewModel createEnderecoViewModel)
-        {
-            if (createEnderecoViewModel.endereco == null)
-                return Ok("Dados não preenchidos.");
 
-            var resultado = _enderecoRepository.CreateEndereco(createEnderecoViewModel.endereco);
+
+        [HttpPost]
+        public IActionResult Create(EnderecoViewModel endereco)
+        {
+
+            var resultado = _enderecoRepository.CreateEndereco(endereco.Endereco);
+            
 
             if (resultado) return Ok("Endereco cadastrado com sucesso.");
 
             return Ok("Erro ao cadastrar o endereco.");
         }
 
-        [HttpGet]
-        public IActionResult ReadAll()
-        {
-            var resultado = _enderecoRepository.ReadAllEndereco();
 
-            if (resultado == null)
-                return NotFound();
+        //[HttpGet]
+        //public IActionResult ReadAll()
+        //{
+        //    var resultado = _enderecoRepository.ReadAllEndereco();
 
-            return Ok(resultado);
-        }
+        //    if (resultado == null)
+        //        return NotFound();
 
-        [HttpPut]
-        public IActionResult Update(UpdateEnderecoViewModel updateEnderecoViewModel)
-        {
+        //    return Ok(resultado);
+        //}
 
-            var resultado = _enderecoRepository.UpdateEndereco(updateEnderecoViewModel.endereco);
+        //[HttpPut]
+        //public IActionResult Update(UpdateEnderecoViewModel updateEnderecoViewModel)
+        //{
 
-            if (resultado) return Ok("Endereco atualizado com sucesso. ");
-            return Ok(new
-            {
-                sucesso = false,
-                mensagem = "Erro ao atualizar o endereco."
-            });
-        }
+        //    var resultado = _enderecoRepository.UpdateEndereco(updateEnderecoViewModel.endereco);
 
-        [HttpDelete]
-        public IActionResult Delete(DeleteEnderecoViewModel deleteEnderecoViewModel)
-        {
-            var resultado = _enderecoRepository.DeleteEndereco(deleteEnderecoViewModel.Id);
+        //    if (resultado) return Ok("Endereco atualizado com sucesso. ");
+        //    return Ok(new
+        //    {
+        //        sucesso = false,
+        //        mensagem = "Erro ao atualizar o endereco."
+        //    });
+        //}
 
-            if (resultado) return Ok("Endereco removido com sucesso.");
+        //[HttpDelete]
+        //public IActionResult Delete(DeleteEnderecoViewModel deleteEnderecoViewModel)
+        //{
+        //    var resultado = _enderecoRepository.DeleteEndereco(deleteEnderecoViewModel.Id);
 
-            return Ok("Erro ao deletar o endereco.");
-        }
+        //    if (resultado) return Ok("Endereco removido com sucesso.");
+
+        //    return Ok("Erro ao deletar o endereco.");
+        //}
     }
 }

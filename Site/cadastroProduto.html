@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Cadastro de Produto</title>
+    <title>Cadastro da ficha do Cliente</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -17,10 +17,11 @@
                 <form name="formulario-inicial" class="validate-form">
 
                     <!--id do usuario apos validação ...-->
-                    <input type="hidden" id="idEstabelecimento" value="3" />
+                    <input type="hidden" id="idPromocao" value="1" />
+
 
                     <span class="">
-                        Nova ficha de cliente
+                        Cadastrar um produto novo para esta promoção
                     </span>
                     <span class="">
                         <i class=""></i>
@@ -37,31 +38,34 @@
                     </div>
 
                     <div class="" data-validate="Quantidade">
-                        <input type="text" id="quantidade" placeholder="Quantidade" />
+                        <input type="text" id="quantidade" placeholder="Quantidade" value="" />
                         <span class="" placeholder="Quantidade"></span>
                     </div>
 
                     <div class="" data-validate="Perecivel">					
 						<select id="perecivel">
-							<option value="0" selected>Produto perecível</option>
-							<option value="1">Produto não perecível</option>
+							<option value="0" selected>não</option>
+							<option value="1">Sim</option>
 						</select>
 					</div>
 
+
                     <div class="" data-validate="ValidadeProduto">
-                        <input type="date" id="validadeProduto" placeholder="Validade do Produto" />
+                        <input type="date" id="validadeProduto" placeholder="ValidadeProduto" value="" />
                         <span class="" placeholder="ValidadeProduto"></span>
                     </div>
 
                     <div class="" data-validate="LinkImagem">
-                        <input type="text" id="linkImagem" placeholder="LinkImagem" />
+                        <input type="text" id="linkImagem" placeholder="LinkImagem" value="" />
                         <span class="" placeholder="LinkImagem"></span>
-                    </div>
+                    </div>                 
+
+                   
 
 
                     <div class="">
-                        <button class="" onclick="CadastrarProduto()">
-                            Salvar dados
+                        <button class="" onclick="SalvarProduto()">
+                            Cadastrar produto
                         </button>
                     </div>
 
@@ -76,12 +80,14 @@
                         </a>
 
                     </div>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
 
 
+    <div id="dropDownSelect1"></div>
 
 
     <script src="app/Usuario/cadastroProduto.js"></script>

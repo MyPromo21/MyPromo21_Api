@@ -15,34 +15,45 @@ function converterParaDomElement(str) {
     return doc.body;
 };
 
-async function SalvarProduto() {
-    let idPromocao = document.querySelector('#idPromocao').value;
-    console.log(idPromocao);
-    let descricao = document.querySelector('#descricao').value;
-    console.log(descricao);
-    let preco = document.querySelector('#preco').value;
-    console.log(preco);
-    let quantidade = document.querySelector('#quantidade').value;
-    console.log(quantidade);
-    let perecivel = document.querySelector('#perecivel').value;
-    console.log(perecivel);
-    let validadeProduto = document.querySelector('#validadeProduto').value;
-    console.log(validadeProduto);
-    let linkImagem = document.querySelector('#linkImagem').value;
-    console.log(linkImagem);
-   
+async function SalvarEndereco() {
+    let idEstabelecimento = document.querySelector('#idEstabelecimento').value;
+    console.log(idEstabelecimento);
+
+    let estado = document.querySelector('#estado').value;
+    console.log(estado);
+
+    let cidade = document.querySelector('#cidade').value;
+    console.log(cidade);
+
+    let bairro = document.querySelector('#bairro').value;
+    console.log(bairro);
+
+    let rua = document.querySelector('#rua').value;
+    console.log(rua);
+
+    let numero = document.querySelector('#numero').value;
+    console.log(numero);
+
+    let complemento = document.querySelector('#complemento').value;
+    console.log(complemento);
+
+    let cep = document.querySelector('#cep').value;
+    console.log(cep);
+    
 
     let createEstabelecimentoViewModel = {
-        Produto :
+        Endereco :
         {
-            IdPromocao : parseInt(idPromocao),
-            Descricao : descricao,
-            Preco : parseFloat(preco),
-            Quantidade : parseInt(quantidade),
-            Perecivel : parseInt(perecivel),
-            ValidadeProduto : validadeProduto,
-            LinkImagem : linkImagem
+            IdEstabelecimento : parseInt(idEstabelecimento),
+            Estado : estado,
+            Cidade : cidade,
+            Bairro : bairro,
+            Rua : rua,
+            Numero : numero,
+            Complemento : complemento,
+            Cep : cep,
 
+            
         }        
     };
 
@@ -65,7 +76,7 @@ async function EnviarApi(viewmodel) {
     };
 
     //TODO: mudar a url para o seu localhost.
-    const req =  fetch('https://localhost:44335/produto/CreateProduto', options)
+    const req =  fetch('https://localhost:44335/endereco/Create', options)
         //caso a request dê certo, retornará a resposta;
         .then(response => {
             response.text()

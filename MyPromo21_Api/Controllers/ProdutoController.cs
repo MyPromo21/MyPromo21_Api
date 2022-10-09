@@ -32,48 +32,48 @@ namespace MyPromo21_Api.Controllers
 
             return Ok("Não foi possível cadastrar o produto!");
         }
-        [HttpPut]
-        public IActionResult UpdateProduto(UpdateProdutoViewlModel produto)
-        {
-            if (produto.Produto == null) return Ok("Parâmetros informados incorretamente!");
+        //[HttpPut]
+        //public IActionResult UpdateProduto(UpdateProdutoViewlModel produto)
+        //{
+        //    if (produto.Produto == null) return Ok("Parâmetros informados incorretamente!");
 
-            var result = _produtoRepository.UpdateProduto(produto.Produto);
+        //    var result = _produtoRepository.UpdateProduto(produto.Produto);
 
-            if (result) return Ok("Produto atualizado com sucesso!");
+        //    if (result) return Ok("Produto atualizado com sucesso!");
 
-            return Ok("Não foi possível atualizar o produto!");
+        //    return Ok("Não foi possível atualizar o produto!");
 
-        }
-        [HttpDelete]
-        public IActionResult DeleteProduto(ProdutoDeleteViewModel deleteProdutoViewModel)
-        {
-            if (deleteProdutoViewModel.Id == 0) return Ok("Id do produto inválido!");
+        //}
+        //[HttpDelete]
+        //public IActionResult DeleteProduto(ProdutoDeleteViewModel deleteProdutoViewModel)
+        //{
+        //    if (deleteProdutoViewModel.Id == 0) return Ok("Id do produto inválido!");
 
-            var result = _produtoRepository.DeleteProduto(deleteProdutoViewModel);
+        //    var result = _produtoRepository.DeleteProduto(deleteProdutoViewModel);
 
-            if (result) return Ok("Produto excluído com sucesso!");
+        //    if (result) return Ok("Produto excluído com sucesso!");
 
-            return Ok("Não foi possível excluir o produto!");
-        }
-        [HttpGet]
-        public IActionResult GetProduto(string descricao)
-        {
-            if (string.IsNullOrWhiteSpace(descricao)) return Ok("Parâmetro inválido!");
+        //    return Ok("Não foi possível excluir o produto!");
+        //}
+        //[HttpGet]
+        //public IActionResult GetProduto(string descricao)
+        //{
+        //    if (string.IsNullOrWhiteSpace(descricao)) return Ok("Parâmetro inválido!");
 
-            var produto = _produtoRepository.GetProduto(descricao);
+        //    var produto = _produtoRepository.GetProduto(descricao);
 
-            if (produto != null) return Ok(produto);
+        //    if (produto != null) return Ok(produto);
 
-            return Ok("Produto não encontrado!");
-        }
-        [HttpGet]
-        public IActionResult GetAll()
-        {
-            var produtos = new GetAllProdutoViewModel();
+        //    return Ok("Produto não encontrado!");
+        //}
+        //[HttpGet]
+        //public IActionResult GetAll()
+        //{
+        //    var produtos = new GetAllProdutoViewModel();
 
-            produtos.Produto = _produtoRepository.GetAll();
+        //    produtos.Produto = _produtoRepository.GetAll();
 
-            return Ok(produtos.Produto);
-        }
+        //    return Ok(produtos.Produto);
+        //}
     }
 }

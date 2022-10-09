@@ -7,7 +7,7 @@ namespace MyPromo21_Api.Models
 {
     public class Produto
     {
-		public int IdEstabelecimento { get; set; }
+		public int IdPromocao { get; set; }
 		public string Descricao { get; set; }
 		public float Preco { get; set; }
 		public int Quantidade { get; set; }

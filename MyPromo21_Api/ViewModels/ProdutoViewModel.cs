@@ -11,17 +11,8 @@ namespace MyPromo21_Api.ViewModels
     {
         public Produto Produto { get; set; }
 
-        public class ProdutoDeleteViewModel
-        {
-            public int Id { get; set; }
-        }
-        public class UpdateProdutoViewlModel
-        {
-            public ProdutoDto Produto { get; set; }
-        }
-        public class GetAllProdutoViewModel
-        {
-            public List<ProdutoDto> Produto { get; set; } = new List<ProdutoDto>();
-        }
+        public ProdutoDto ProdutoDto { get; set; }
+
+
     }
 }

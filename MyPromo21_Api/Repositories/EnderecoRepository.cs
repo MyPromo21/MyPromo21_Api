@@ -10,7 +10,7 @@ namespace MyPromo21_Api.Repositories
 {
     public class EnderecoRepository
     {
-        private readonly string _connection = @"Data Source=ITELABD12\SQLEXPRESS; Initial Catalog=MyPromo21; Integrated Security=True;";
+        private readonly string _connection = @"Data Source=DESKTOP-88BTRFG\SQLEXPRESS;Initial Catalog=mypromo;Integrated Security=True";
         private SqlConnection _conexao
         {
             get
@@ -23,11 +23,12 @@ namespace MyPromo21_Api.Repositories
             try
             {
                 var query = @"INSERT INTO Endereco 
-                              (Estado, Cidade, Bairro, Rua, Numero, Complemento, Cep) VALUES (@estado,@cidade,@bairro,@rua,@numero,@complemento,@cep)";
+                              (IdEstabelecimento, Estado, Cidade, Bairro, Rua, Numero, Complemento, Cep) VALUES (@idEstabelecimento, @estado,@cidade,@bairro,@rua,@numero,@complemento,@cep)";
                 using (_conexao)
                 {
                     var parameters = new
                     {
+                        endereco.IdEstabelecimento,
                         endereco.Estado,
                         endereco.Cidade,
                         endereco.Bairro,

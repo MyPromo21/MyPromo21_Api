@@ -11,6 +11,8 @@ namespace MyPromo21_Api.ViewModels
     {
         public Promocao Promocao { get; set; }
 
+        public PromocaoDto PromocaoDto { get; set; }
+
         public class DeletePromocaoViewModel
         {
             public int Id_Promocao { get; set; }

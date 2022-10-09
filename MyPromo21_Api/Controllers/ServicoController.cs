@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MyPromo21_Api.Repositories;
+using MyPromo21_Api.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace MyPromo21_Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateServico(CreateServicoViewModel servico)
+        public IActionResult CreateServico(ServicoViewModel servico)
         {
             if (servico.Servico == null) return Ok("Parâmetros informados incorretamente!");
 
@@ -31,36 +32,39 @@ namespace MyPromo21_Api.Controllers
 
             return Ok("Não foi possível efetuar o cadastro do serviço!");
         }
-        [HttpPut]
-        public IActionResult UpdateServico(UpdateServicoViewModel servico)
-        {
-            if (servico.Servico == null) return Ok("Parâmetros informados incorretamente!");
+       
 
-            var result = _servicoRepository.UpdateServico(servico.Servico);
 
-            if (result) return Ok("Serviço atualizado com sucesso!");
+        //[HttpPut]
+        //public IActionResult UpdateServico(UpdateServicoViewModel servico)
+        //{
+        //    if (servico.Servico == null) return Ok("Parâmetros informados incorretamente!");
 
-            return Ok("Não foi possível atualizar o cadastro do serviço!");
-        }
-        [HttpGet]
-        public IActionResult GetServico(string descricao)
-        {
-            if (string.IsNullOrWhiteSpace(descricao)) return Ok("Parâmetro não informado!");
+        //    var result = _servicoRepository.UpdateServico(servico.Servico);
 
-            var servico = _servicoRepository.GetServico(descricao);
+        //    if (result) return Ok("Serviço atualizado com sucesso!");
 
-            if (servico != null) return Ok(servico);
+        //    return Ok("Não foi possível atualizar o cadastro do serviço!");
+        //}
+        //[HttpGet]
+        //public IActionResult GetServico(string descricao)
+        //{
+        //    if (string.IsNullOrWhiteSpace(descricao)) return Ok("Parâmetro não informado!");
 
-            return Ok("Serviço não localizado!");
-        }
-        [HttpGet]
-        public IActionResult GetAll()
-        {
-            var servicos = new GetAllServicoViewModel();
+        //    var servico = _servicoRepository.GetServico(descricao);
 
-            servicos.Servicos = _servicoRepository.GetAll();
+        //    if (servico != null) return Ok(servico);
 
-            return Ok(servicos.Servicos);
-        }
+        //    return Ok("Serviço não localizado!");
+        //}
+        //[HttpGet]
+        //public IActionResult GetAll()
+        //{
+        //    var servicos = new GetAllServicoViewModel();
+
+        //    servicos.Servicos = _servicoRepository.GetAll();
+
+        //    return Ok(servicos.Servicos);
+        //}
     }
 }

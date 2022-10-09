@@ -12,9 +12,7 @@ namespace MyPromo21_Api.Repositories
 {
     public class ServicoRepository
     {
-        //Conexão Bruno
-        private readonly string _connection = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=MyPromo21;Data Source=ITELABD03\SQLEXPRESS01";
-        //private readonly string _connection = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=MyPromo21;Data Source=Bruno";
+        private readonly string _connection = @"Data Source=DESKTOP-88BTRFG\SQLEXPRESS;Initial Catalog=mypromo;Integrated Security=True";
         private SqlConnection _conexaoBanco
         {
             get
@@ -31,9 +29,10 @@ namespace MyPromo21_Api.Repositories
             {
                 using (_conexaoBanco)
                 {
-                    var query = "insert into servico (Descricao,Preco,LinkImagem) values (@descricao,@preco,@linkImagem)";
+                    var query = "insert into servico (IdPromocao, Descricao,Preco,LinkImagem) values (@idPromocao, @descricao,@preco,@linkImagem)";
                     var parameters = new
                     {
+                        servico.IdPromocao,
                         servico.Descricao,
                         servico.Preco,
                         servico.LinkImagem

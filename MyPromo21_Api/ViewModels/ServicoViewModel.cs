@@ -9,9 +9,16 @@ namespace MyPromo21_Api.ViewModels
 {
     public class ServicoViewModel
     {
+
+        public Servico Servico { get; set; }
+
+        public ServicoDto ServicoDto { get; set; }
+
+
+
         public class CreateServicoViewModel
         {
-            public Servico Servico { get; set; }
+
         }
 
         public class DeleteServicoViewModel
@@ -20,7 +27,7 @@ namespace MyPromo21_Api.ViewModels
         }
         public class UpdateServicoViewModel
         {
-            public ServicoDto Servico { get; set; }
+
         }
         public class GetAllServicoViewModel
         {

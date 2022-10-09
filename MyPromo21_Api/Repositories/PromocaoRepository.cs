@@ -12,7 +12,7 @@ namespace MyPromo21_Api.Repositories
 {
     public class PromocaoRepository
     {
-        private readonly string _connection = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=MyPromo21;Data Source=Bruno";
+        private readonly string _connection = @"Data Source=DESKTOP-88BTRFG\SQLEXPRESS;Initial Catalog=mypromo;Integrated Security=True";
         private SqlConnection _conexaoBanco
         {
             get
@@ -28,15 +28,18 @@ namespace MyPromo21_Api.Repositories
             {
                 using (_conexaoBanco)
                 {
-                    var query = "insert into Promocao (Token,Id_Produto,Validade_Promo,Id_Estabelecimento,Motivo)" +
-                        "values (@token,@id_Produto,@validade_Promo,@id_Estabelecimento,@motivo)";
+                    var query = "insert into Promocao (Token,ValidadePromo,Motivo,IdEndereco,IdEstabelecimento)" +
+                        "values (@token,@validadePromo,@motivo,@idEndereco,@idEstabelecimento)";
                     var parameters = new
                     {
                         promocao.Token,
-                        promocao.Id_Produto,
-                        promocao.Validade_Promo,
-                        promocao.Id_Estabelecimento,
-                        promocao.Motivo
+
+                        promocao.ValidadePromo,
+                        
+                        promocao.Motivo,
+
+                        promocao.IdEndereco,
+                        promocao.IdEstabelecimento,
                     };
                     _conexaoBanco.Query(query,parameters);
                     result = true;
