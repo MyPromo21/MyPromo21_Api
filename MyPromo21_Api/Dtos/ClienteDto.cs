@@ -14,5 +14,7 @@ namespace MyPromo21_Api.Dtos
 		public string Telefone { get; set; }
 		public string Email { get; set; }
 		public DateTime DataCadastro { get; set; }
+
+		//nome
 	}
 }

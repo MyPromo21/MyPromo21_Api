@@ -6,6 +6,7 @@
         public string NomeFantasia { get; set; }
         public string Cnpj { get; set; }       
 
+        //cnpj 
 
     }
 }

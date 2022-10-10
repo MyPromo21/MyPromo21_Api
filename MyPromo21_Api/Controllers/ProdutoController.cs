@@ -32,6 +32,30 @@ namespace MyPromo21_Api.Controllers
 
             return Ok("Não foi possível cadastrar o produto!");
         }
+
+        [HttpGet]
+        public IActionResult GetProduto(string descricao)
+        {
+            if (string.IsNullOrWhiteSpace(descricao)) return Ok("Parâmetro inválido!");
+
+            var produto = _produtoRepository.BuscarPorDescricao(descricao);
+
+            if (produto != null) return Ok(produto);
+
+            return Ok("Produto não encontrada!");
+        }
+
+        [HttpGet]
+        public IActionResult GetProdutoByID(int id)
+        {
+
+            var produto = _produtoRepository.BuscarPorID(id);
+
+            if (produto != null) return Ok(produto);
+
+            return Ok("Produto não encontrada!");
+        }
+
         //[HttpPut]
         //public IActionResult UpdateProduto(UpdateProdutoViewlModel produto)
         //{

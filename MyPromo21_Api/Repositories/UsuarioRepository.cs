@@ -162,9 +162,7 @@ namespace MyPromo21_Api.Repositories
                 return null;
             }
         }
-
-
-       
+        
 
         public bool DeleteUsuario(int id)
         {

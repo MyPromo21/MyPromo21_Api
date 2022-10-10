@@ -120,5 +120,54 @@ namespace MyPromo21_Api.Repositories
                 return false;
             }
         }
+
+        public EstabelecimentoDto BuscarPorID(int id)
+        {
+            EstabelecimentoDto estabelecimentoEncontrado;
+            try
+            {
+                var query = @$"SELECT * FROM Estabelecimento where Id = {id} ";
+
+                using (var connection = new SqlConnection(_connection))
+                {
+                    var parametros = new
+                    {
+                        id
+                    };
+                    estabelecimentoEncontrado = connection.QueryFirstOrDefault<EstabelecimentoDto>(query, parametros);
+                }
+                return estabelecimentoEncontrado;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro: " + ex.Message);
+                return null;
+            }
+        }
+
+
+        public List<EstabelecimentoDto> BuscarPorCnpj(string cnpj)
+        {
+            List<EstabelecimentoDto> EstabelecimentosEncontrados;
+            try
+            {
+                var query = @$"SELECT * FROM Estabelecimento where Login LIKE '%{cnpj}%' ";
+
+                using (var connection = new SqlConnection(_connection))
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+                    EstabelecimentosEncontrados = connection.Query<EstabelecimentoDto>(query).ToList();
+
+                }
+
+                return EstabelecimentosEncontrados;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro: " + ex.Message);
+                return null;
+            }
+        }
+
     }
 }

@@ -136,5 +136,54 @@ namespace MyPromo21_Api.Repositories
 
             return servicos;
         }
+
+        public ServicoDto BuscarPorID(int id)
+        {
+            ServicoDto pessoaEncontrada;
+            try
+            {
+                var query = @$"SELECT * FROM Servico where Id = {id} ";
+
+                using (var connection = new SqlConnection(_connection))
+                {
+                    var parametros = new
+                    {
+                        id
+                    };
+                    pessoaEncontrada = connection.QueryFirstOrDefault<ServicoDto>(query, parametros);
+                }
+                return pessoaEncontrada;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro: " + ex.Message);
+                return null;
+            }
+        }
+
+
+        public List<ServicoDto> BuscarPorDescricao(string descricao)
+        {
+            List<ServicoDto> servicosEncontrados;
+            try
+            {
+                var query = @$"SELECT * FROM Servico where Login LIKE '%{descricao}%' ";
+
+                using (var connection = new SqlConnection(_connection))
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+                    servicosEncontrados = connection.Query<ServicoDto>(query).ToList();
+
+                }
+
+                return servicosEncontrados;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro: " + ex.Message);
+                return null;
+            }
+        }
+
     }
 }

@@ -63,5 +63,29 @@ namespace MyPromo21_Api.Controllers
 
             return Ok("Erro ao deletar o estabelecimento.");
         }
+
+        [HttpGet]
+        public IActionResult GetEstabelecimento(string cnpj)
+        {
+            if (string.IsNullOrWhiteSpace(cnpj)) return Ok("Parâmetro inválido!");
+
+            var estabelecimento = _estabelecimentoRepository.BuscarPorCnpj(cnpj);
+
+            if (estabelecimento != null) return Ok(estabelecimento);
+
+            return Ok("Estabelecimento não encontrado!");
+        }
+
+        [HttpGet]
+        public IActionResult GetEstabelecimentoByID(int id)
+        {
+
+            var estabelecimento = _estabelecimentoRepository.BuscarPorID(id);
+
+            if (estabelecimento != null) return Ok(estabelecimento);
+
+            return Ok("Estabelecimento não encontrado!");
+        }
+
     }
 }

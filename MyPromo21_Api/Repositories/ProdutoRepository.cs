@@ -35,11 +35,11 @@ namespace MyPromo21_Api.Repositories
             {
                 using (_conexaoBanco)
                 {
-                    var query = "insert into Produto(IdPromocao, Descricao,Preco,Quantidade,Perecivel,ValidadeProduto,LinkImagem) " +
-                        "Values(@idPromocao, @descricao,@preco,@quantidade,@perecivel,@validadeProduto,@linkImagem)";
+                    var query = "insert into Produto(IdProduto, Descricao,Preco,Quantidade,Perecivel,ValidadeProduto,LinkImagem) " +
+                        "Values(@idProduto, @descricao,@preco,@quantidade,@perecivel,@validadeProduto,@linkImagem)";
                     var parameters = new
                     {
-                        produto.IdPromocao,
+                        produto.IdProduto,
                         produto.Descricao,
                         produto.Preco,
                         produto.Quantidade,
@@ -149,6 +149,54 @@ namespace MyPromo21_Api.Repositories
             }
 
             return produtos;
+        }
+
+        public ProdutoDto BuscarPorID(int id)
+        {
+            ProdutoDto produtoEncontrado;
+            try
+            {
+                var query = @$"SELECT * FROM Produto where Id = {id} ";
+
+                using (var connection = new SqlConnection(_connection))
+                {
+                    var parametros = new
+                    {
+                        id
+                    };
+                    produtoEncontrado = connection.QueryFirstOrDefault<ProdutoDto>(query, parametros);
+                }
+                return produtoEncontrado;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro: " + ex.Message);
+                return null;
+            }
+        }
+
+
+        public List<ProdutoDto> BuscarPorDescricao(string descricao)
+        {
+            List<ProdutoDto> produtosEncontrados;
+            try
+            {
+                var query = @$"SELECT * FROM Produto where Login LIKE '%{descricao}%' ";
+
+                using (var connection = new SqlConnection(_connection))
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+                    produtosEncontrados = connection.Query<ProdutoDto>(query).ToList();
+
+                }
+
+                return produtosEncontrados;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro: " + ex.Message);
+                return null;
+            }
         }
 
     }

@@ -34,11 +34,10 @@ namespace MyPromo21_Api.Repositories
             {
                 using (_conexaoBanco)
                 {
-                    var query = "insert into Cliente (IdUsuario, Nome, Cpf, DataNascimento, Telefone, Email, DataCadastro)" +
-                        "values (@idUsuario, @nome, @cpf, @dataNascimento, @telefone, @email, @dataCadastro)";
+                    var query = "insert into Cliente (Nome, Cpf, DataNascimento, Telefone, Email, DataCadastro)" +
+                        "values (@nome, @cpf, @dataNascimento, @telefone, @email, @dataCadastro)";
                     var parameters = new
-                    {
-                        cliente.IdUsuario,
+                    {                        
                         cliente.Nome,
                         cliente.Cpf,
                         cliente.DataNascimento,
@@ -89,26 +88,26 @@ namespace MyPromo21_Api.Repositories
 
             return retorno;
         }
-        public Cliente GetCliente(string cpf)
-        {
-            var cliente = new Cliente();
+        //public Cliente GetCliente(string cpf)
+        //{
+        //    var cliente = new Cliente();
 
-            try
-            {
-                using (_conexaoBanco)
-                {
-                    var query = "select * from Cliente where Cpf = @cpf";
-                    var parameters = new { cpf };
-                    cliente = _conexaoBanco.QueryFirstOrDefault<Cliente>(query, parameters);
-                }
-            }
-            catch (SqlException e)
-            {
-                cliente = null;
-            }
+        //    try
+        //    {
+        //        using (_conexaoBanco)
+        //        {
+        //            var query = "select * from Cliente where Cpf = @cpf";
+        //            var parameters = new { cpf };
+        //            cliente = _conexaoBanco.QueryFirstOrDefault<Cliente>(query, parameters);
+        //        }
+        //    }
+        //    catch (SqlException e)
+        //    {
+        //        cliente = null;
+        //    }
 
-            return cliente;
-        }
+        //    return cliente;
+        //}
         public bool DeleteCliente(DeleteClienteViewModel deleteClienteViewModel)
         {
             var result = false;
@@ -130,5 +129,75 @@ namespace MyPromo21_Api.Repositories
 
             return result;
         }
+
+        public ClienteDto BuscarPorID(int id)
+        {
+            ClienteDto clienteEncontrado;
+            try
+            {
+                var query = @$"SELECT * FROM Cliente where Id = {id} ";
+
+                using (var connection = new SqlConnection(_connection))
+                {
+                    var parametros = new
+                    {
+                        id
+                    };
+                    clienteEncontrado = connection.QueryFirstOrDefault<ClienteDto>(query, parametros);
+                }
+                return clienteEncontrado;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro: " + ex.Message);
+                return null;
+            }
+        }
+
+
+        public List<ClienteDto> BuscarPorNome(string nome)
+        {
+            List<ClienteDto> clientesEncontrados;
+            try
+            {
+                var query = @$"SELECT * FROM Cliente where Login LIKE '%{nome}%' ";
+
+                using (var connection = new SqlConnection(_connection))
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+                    clientesEncontrados = connection.Query<ClienteDto>(query).ToList();
+
+                }
+
+                return clientesEncontrados;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro: " + ex.Message);
+                return null;
+            }
+        }
+
+        public List<ClienteDto> ReadAllCliente()
+        {
+            List<ClienteDto> ClientesEncontrados;
+            try
+            {
+                var query = @"SELECT IdCliente, Nome, Cpf, DataNascimento, Telefone, Email, DataCadastro FROM Cliente";
+
+                using (_conexaoBanco)
+                {
+                    ClientesEncontrados = _conexaoBanco.Query<ClienteDto>(query).ToList();
+                }
+
+                return ClientesEncontrados;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro: " + ex.Message);
+                return null;
+            }
+        }
+
     }
 }

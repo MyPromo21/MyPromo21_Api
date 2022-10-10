@@ -62,5 +62,29 @@ namespace MyPromo21_Api.Controllers
 
             return Ok("Não foi possível excluir a promoção!");
         }
+
+        [HttpGet]
+        public IActionResult GetPromocao(string token)
+        {
+            if (string.IsNullOrWhiteSpace(token)) return Ok("Parâmetro inválido!");
+
+            var promocao = _promocaoRepository.BuscarPorToken(token);
+
+            if (promocao != null) return Ok(promocao);
+
+            return Ok("Promocao não encontrada!");
+        }
+
+        [HttpGet]
+        public IActionResult GetPromocaoByID(int id)
+        {
+
+            var promocao = _promocaoRepository.BuscarPorID(id);
+
+            if (promocao != null) return Ok(promocao);
+
+            return Ok("Promocao não encontrada!");
+        }
+
     }
 }

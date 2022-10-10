@@ -66,5 +66,29 @@ namespace MyPromo21_Api.Controllers
 
         //    return Ok("Erro ao deletar o endereco.");
         //}
+
+        [HttpGet]
+        public IActionResult GetEndereco(string estado)
+        {
+            if (string.IsNullOrWhiteSpace(estado)) return Ok("Parâmetro inválido!");
+
+            var endereco = _enderecoRepository.BuscarPorEstado(estado);
+
+            if (endereco != null) return Ok(endereco);
+
+            return Ok("Endereco não encontrado!");
+        }
+
+        [HttpGet]
+        public IActionResult GetEnderecoByID(int id)
+        {
+
+            var Endereco = _enderecoRepository.BuscarPorID(id);
+
+            if (Endereco != null) return Ok(Endereco);
+
+            return Ok("Endereco não encontrado!");
+        }
+
     }
 }

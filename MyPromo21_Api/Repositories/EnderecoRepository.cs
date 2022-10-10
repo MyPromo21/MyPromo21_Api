@@ -23,7 +23,7 @@ namespace MyPromo21_Api.Repositories
             try
             {
                 var query = @"INSERT INTO Endereco 
-                              (IdEstabelecimento, Estado, Cidade, Bairro, Rua, Numero, Complemento, Cep) VALUES (@idEstabelecimento, @estado,@cidade,@bairro,@rua,@numero,@complemento,@cep)";
+                              (IdEstabelecimento, Estado, Cidade, Bairro, Rua, Numero, Complemento, Cep) VALUES (@idEstabelecimento,@estado,@cidade,@bairro,@rua,@numero,@complemento,@cep)";
                 using (_conexao)
                 {
                     var parameters = new
@@ -126,5 +126,54 @@ namespace MyPromo21_Api.Repositories
                 return false;
             }
         }
+
+        public EnderecoDto BuscarPorID(int id)
+        {
+            EnderecoDto enderecoEncontrado;
+            try
+            {
+                var query = @$"SELECT * FROM Endereco where Id = {id} ";
+
+                using (var connection = new SqlConnection(_connection))
+                {
+                    var parametros = new
+                    {
+                        id
+                    };
+                    enderecoEncontrado = connection.QueryFirstOrDefault<EnderecoDto>(query, parametros);
+                }
+                return enderecoEncontrado;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro: " + ex.Message);
+                return null;
+            }
+        }
+
+
+        public List<EnderecoDto> BuscarPorEstado(string estado)
+        {
+            List<EnderecoDto> enderecosEncontrados;
+            try
+            {
+                var query = @$"SELECT * FROM Endereco where Login LIKE '%{estado}%' ";
+
+                using (var connection = new SqlConnection(_connection))
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+                    enderecosEncontrados = connection.Query<EnderecoDto>(query).ToList();
+
+                }
+
+                return enderecosEncontrados;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro: " + ex.Message);
+                return null;
+            }
+        }
+
     }
 }

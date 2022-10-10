@@ -4,8 +4,7 @@
     {
         public int IdEstabelecimento { get; set; }
         public string NomeFantasia { get; set; }
-        public string Cnpj { get; set; }       
-
+        public string Cnpj { get; set; }
 
     }
 }

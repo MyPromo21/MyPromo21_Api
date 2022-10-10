@@ -172,5 +172,54 @@ namespace MyPromo21_Api.Repositories
             }
             return promocoes;
         }
+
+        public PromocaoDto BuscarPorID(int id)
+        {
+            PromocaoDto promocaoEncontrada;
+            try
+            {
+                var query = @$"SELECT * FROM Promocao where Id = {id} ";
+
+                using (var connection = new SqlConnection(_connection))
+                {
+                    var parametros = new
+                    {
+                        id
+                    };
+                    promocaoEncontrada = connection.QueryFirstOrDefault<PromocaoDto>(query, parametros);
+                }
+                return promocaoEncontrada;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro: " + ex.Message);
+                return null;
+            }
+        }
+
+
+        public List<PromocaoDto> BuscarPorToken(string token)
+        {
+            List<PromocaoDto> PromocoesEncontrados;
+            try
+            {
+                var query = @$"SELECT * FROM Promocao where Login LIKE '%{token}%' ";
+
+                using (var connection = new SqlConnection(_connection))
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+                    PromocoesEncontrados = connection.Query<PromocaoDto>(query).ToList();
+
+                }
+
+                return PromocoesEncontrados;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro: " + ex.Message);
+                return null;
+            }
+        }
+
     }
 }

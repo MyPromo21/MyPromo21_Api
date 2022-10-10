@@ -12,5 +12,7 @@ namespace MyPromo21_Api.Dtos
         public string Descricao { get; set; }
         public decimal Preco { get; set; }
         public string LinkImagem { get; set; }
+
+        //descrição
     }
 }

@@ -32,7 +32,29 @@ namespace MyPromo21_Api.Controllers
 
             return Ok("Não foi possível efetuar o cadastro do serviço!");
         }
-       
+
+        [HttpGet]
+        public IActionResult GetServico(string descricao)
+        {
+            if (string.IsNullOrWhiteSpace(descricao)) return Ok("Parâmetro inválido!");
+
+            var servico = _servicoRepository.BuscarPorDescricao(descricao);
+
+            if (servico != null) return Ok(servico);
+
+            return Ok("Servico não encontrado!");
+        }
+
+        [HttpGet]
+        public IActionResult GetServicoByID(int id)
+        {
+
+            var servico = _servicoRepository.BuscarPorID(id);
+
+            if (servico != null) return Ok(servico);
+
+            return Ok("Servico não encontrado!");
+        }
 
 
         //[HttpPut]

@@ -15,5 +15,7 @@ namespace MyPromo21_Api.Dtos
 		public int Perecivel { get; set; }
 		public DateTime ValidadeProduto { get; set; }
 		public string LinkImagem { get; set; }
+
+		//descrição
 	}
 }

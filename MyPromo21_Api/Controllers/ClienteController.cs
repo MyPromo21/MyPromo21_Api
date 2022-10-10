@@ -32,6 +32,7 @@ namespace MyPromo21_Api.Controllers
             if (string.IsNullOrWhiteSpace(cliente.Cliente.Email)) return Ok("Email do cliente invalido!");
             if (string.IsNullOrWhiteSpace(cliente.Cliente.Telefone)) return Ok("Telefone do cliente invalido!");
             if (cliente.Cliente.DataNascimento == null) return Ok("Data de nascimento do cliente invalido!");
+            if (cliente.Cliente.DataCadastro == null) return Ok("Data de cadastro do cliente invalido!");
 
             var retorno = _clienteRepository.CreateCliente(cliente.Cliente);
 
@@ -50,17 +51,17 @@ namespace MyPromo21_Api.Controllers
 
             return Ok("Não foi possível atualizar o cliente!");
         }
-        [HttpGet]
-        public IActionResult GetCliente(string cpf)
-        {
-            if (string.IsNullOrWhiteSpace(cpf)) return Ok("Nome do cliente informado incorretamente!");
+        //[HttpGet]
+        //public IActionResult GetCliente(string cpf)
+        //{
+        //    if (string.IsNullOrWhiteSpace(cpf)) return Ok("Nome do cliente informado incorretamente!");
 
-            var cliente = _clienteRepository.GetCliente(cpf);
+        //    var cliente = _clienteRepository.GetCliente(cpf);
 
-            if (cliente != null) return Ok(cliente);
+        //    if (cliente != null) return Ok(cliente);
 
-            return Ok("Cliente não localizado!");
-        }
+        //    return Ok("Cliente não localizado!");
+        //}
         [HttpDelete]
         public IActionResult DeleteCliente(DeleteClienteViewModel deleteClienteViewModel)
         {
@@ -71,6 +72,29 @@ namespace MyPromo21_Api.Controllers
             if (result) return Ok("Cliente excluido com sucesso!");
 
             return Ok("Não foi possível excluir o cliente!");
+        }
+
+        [HttpGet]
+        public IActionResult GetCliente(string nome)
+        {
+            if (string.IsNullOrWhiteSpace(nome)) return Ok("Parâmetro inválido!");
+
+            var cliente = _clienteRepository.BuscarPorNome(nome);
+
+            if (cliente != null) return Ok(cliente);
+
+            return Ok("Cliente não encontrado!");
+        }
+
+        [HttpGet]
+        public IActionResult GetClienteByID(int id)
+        {
+
+            var cliente = _clienteRepository.BuscarPorID(id);
+
+            if (cliente != null) return Ok(cliente);
+
+            return Ok("Cliente não encontrado!");
         }
 
     }
