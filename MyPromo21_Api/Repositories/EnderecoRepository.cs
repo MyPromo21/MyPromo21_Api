@@ -54,7 +54,7 @@ namespace MyPromo21_Api.Repositories
             List<EnderecoDto> enderecosEncontrados;
             try
             {
-                var query = @"SELECT Id, Estado, Cidade, Bairro, Rua, Numero, Complemento, Cep FROM Endereco";
+                var query = @"SELECT * FROM Endereco";
 
                 using (_conexao)
                 {

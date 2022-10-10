@@ -83,11 +83,13 @@ CREATE TABLE Servico
 	IdPromocao int NOT NULL,
 	Descricao varchar(150) NOT NULL,
 	Preco decimal NOT NULL,
-	Link_Imagem varchar(150) NOT NULL,
+	LinkImagem varchar(150) NOT NULL,
 
 	CONSTRAINT Pk_Servico PRIMARY KEY (Id),
 	CONSTRAINT Fk_Id_Promocao FOREIGN KEY (IdPromocao) REFERENCES Promocao(Id),
 );
+
+
 
 
 

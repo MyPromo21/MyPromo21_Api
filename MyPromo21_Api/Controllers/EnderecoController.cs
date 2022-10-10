@@ -32,16 +32,16 @@ namespace MyPromo21_Api.Controllers
         }
 
 
-        //[HttpGet]
-        //public IActionResult ReadAll()
-        //{
-        //    var resultado = _enderecoRepository.ReadAllEndereco();
+        [HttpGet]
+        public IActionResult ReadAll()
+        {
+            var resultado = _enderecoRepository.ReadAllEndereco();
 
-        //    if (resultado == null)
-        //        return NotFound();
+            if (resultado == null)
+                return NotFound();
 
-        //    return Ok(resultado);
-        //}
+            return Ok(resultado);
+        }
 
         //[HttpPut]
         //public IActionResult Update(UpdateEnderecoViewModel updateEnderecoViewModel)
