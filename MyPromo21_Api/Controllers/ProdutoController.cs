@@ -56,6 +56,17 @@ namespace MyPromo21_Api.Controllers
             return Ok("Produto não encontrada!");
         }
 
+        [HttpGet]
+        public IActionResult ReadAll()
+        {
+            var resultado = _produtoRepository.GetAll();
+
+            if (resultado == null)
+                return NotFound();
+
+            return Ok(resultado);
+        }
+
         //[HttpPut]
         //public IActionResult UpdateProduto(UpdateProdutoViewlModel produto)
         //{
@@ -90,14 +101,6 @@ namespace MyPromo21_Api.Controllers
 
         //    return Ok("Produto não encontrado!");
         //}
-        //[HttpGet]
-        //public IActionResult GetAll()
-        //{
-        //    var produtos = new GetAllProdutoViewModel();
 
-        //    produtos.Produto = _produtoRepository.GetAll();
-
-        //    return Ok(produtos.Produto);
-        //}
     }
 }

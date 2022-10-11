@@ -51,6 +51,17 @@ namespace MyPromo21_Api.Controllers
 
             return Ok("Não foi possível atualizar o cliente!");
         }
+
+        [HttpGet]
+        public IActionResult ReadAll()
+        {
+            var resultado = _clienteRepository.ReadAllCliente();
+
+            if (resultado == null)
+                return NotFound();
+
+            return Ok(resultado);
+        }
         //[HttpGet]
         //public IActionResult GetCliente(string cpf)
         //{

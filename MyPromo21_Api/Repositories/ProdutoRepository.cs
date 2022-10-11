@@ -15,7 +15,7 @@ namespace MyPromo21_Api.Repositories
     {
 
         //Conexão Luiz
-        private readonly string _connection = @"Data Source=DESKTOP-88BTRFG\SQLEXPRESS;Initial Catalog=mypromo;Integrated Security=True";
+        private readonly string _connection = @"Data Source=ITELABD13\SQLEXPRESS;Initial Catalog=mypromo;Integrated Security=True";
 
         //private readonly string _connection = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=MyPromo21;Data Source=ITELABD03\SQLEXPRESS01";
         //private readonly string _connection = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=MyPromo21;Data Source=Bruno";
@@ -39,7 +39,7 @@ namespace MyPromo21_Api.Repositories
                         "Values(@idProduto, @descricao,@preco,@quantidade,@perecivel,@validadeProduto,@linkImagem)";
                     var parameters = new
                     {
-                        produto.IdProduto,
+                        produto.IdPromocao,
                         produto.Descricao,
                         produto.Preco,
                         produto.Quantidade,

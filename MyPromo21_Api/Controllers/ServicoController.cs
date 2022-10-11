@@ -56,6 +56,18 @@ namespace MyPromo21_Api.Controllers
             return Ok("Servico não encontrado!");
         }
 
+        [HttpGet]
+        public IActionResult ReadAll()
+        {
+            var resultado = _servicoRepository.GetAll();
+
+            if (resultado == null)
+                return NotFound();
+
+            return Ok(resultado);
+        }
+
+
 
         //[HttpPut]
         //public IActionResult UpdateServico(UpdateServicoViewModel servico)
@@ -79,14 +91,6 @@ namespace MyPromo21_Api.Controllers
 
         //    return Ok("Serviço não localizado!");
         //}
-        //[HttpGet]
-        //public IActionResult GetAll()
-        //{
-        //    var servicos = new GetAllServicoViewModel();
-
-        //    servicos.Servicos = _servicoRepository.GetAll();
-
-        //    return Ok(servicos.Servicos);
-        //}
+        
     }
 }

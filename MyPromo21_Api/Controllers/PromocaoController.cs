@@ -86,5 +86,16 @@ namespace MyPromo21_Api.Controllers
             return Ok("Promocao não encontrada!");
         }
 
+        [HttpGet]
+        public IActionResult ReadAll()
+        {
+            var resultado = _promocaoRepository.GetAll();
+
+            if (resultado == null)
+                return NotFound();
+
+            return Ok(resultado);
+        }
+
     }
 }

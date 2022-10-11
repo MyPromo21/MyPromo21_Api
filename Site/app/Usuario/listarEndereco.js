@@ -1,4 +1,4 @@
-async function PreencherTabelaUsuarios(resposta, limpar){
+async function PreencherTabelaEnderecos(resposta, limpar){
     
     let tabela = document.querySelector('#listagem-endereco');    
 
@@ -128,5 +128,5 @@ async function ListarUsuariosUsandoCriterio(criterio){
 //inicia a listagem.
 (async() => {
     let res = await ListarEnderecos();
-    PreencherTabelaUsuarios(res, false);    
+    PreencherTabelaEnderecos(res, false);    
 })();

@@ -1,4 +1,4 @@
-async function PreencherTabelaUsuarios(resposta, limpar){
+async function PreencherTabelaServicos(resposta, limpar){
     
     let tabela = document.querySelector('#listagem-usuario');    
 
@@ -58,7 +58,7 @@ async function PreencherTabelaUsuarios(resposta, limpar){
         });
     }
 }
-async function ListarUsuarios(){  
+async function ListarServicos(){  
     
     const options = {
         method: 'GET',  
@@ -105,6 +105,6 @@ async function ListarUsuariosUsandoCriterio(criterio){
 }
 //inicia a listagem.
 (async() => {
-    let res = await ListarUsuarios();
-    PreencherTabelaUsuarios(res, false);    
+    let res = await ListarServicos();
+    PreencherTabelaServicos(res, false);    
 })();
