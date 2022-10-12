@@ -52,14 +52,10 @@ async function EnviarApi(viewmodel) {
     };
 
     //TODO: mudar a url para o seu localhost.
-    const req =   await fetch('https://localhost:44335/usuario/Create', options)
+    const req = fetch('https://localhost:44335/usuario/Create', options)
         //caso a request dê certo, retornará a resposta;
-        .then(response => {
-            response.text()
-                .then(data => {
-                    alert(data);
-                    return data;
-                });
+        .then(response => {          
+            return response.json()
         })
         //caso dê erro, irá retornar o erro e mostrar no console
         .catch(erro => {
