@@ -32,7 +32,7 @@ async function BuscarPorId(id) {
         method: 'GET',
         headers: { 'content-type': 'application/json' }
     };
-    const req = await fetch('https://localhost:44335/usuario/GetUsuarioByID?id=' + id, options)
+    const req = await fetch('https://localhost:44335/promocao/GetPromocaoByID?id=' + id, options)
         .then(response => {
             return response.json();
         })
@@ -49,11 +49,19 @@ async function PreencherFormulario(json) {
 
 
     let dadosForm = document.querySelector("#form");
-    let id = dadosForm.querySelector("#id-usuario");
-    let login = dadosForm.querySelector("#login");
+    let id = dadosForm.querySelector("#id-promocao");
+    let token = dadosForm.querySelector("#token");
+    let validadePromo = dadosForm.querySelector("#validadePromo");
+    let motivo = dadosForm.querySelector("#motivo");
+    let idEndereco = dadosForm.querySelector("#idEndereco");
+    let idEstabelecimento = dadosForm.querySelector("#idEstabelecimento");
 
     id.value = json.id;
-    login.value = json.login;
+    token.value = json.token;
+    validadePromo.value = json.validadePromo;
+    motivo.value = json.motivo;
+    idEndereco.value = json.idEndereco;
+    idEstabelecimento.value = json.idEstabelecimento;
 }
 
 
@@ -66,7 +74,7 @@ async function EnviarApi(viewmodel) {
     };
 
     //TODO: mudar a url para o seu localhost.
-    const req = await fetch('https://localhost:44335/usuario/alterar', options)
+    const req = await fetch('https://localhost:44335/promocao/alterar', options)
         //caso a request dê certo, retornará a resposta;
         .then(response => {
             response.text()
@@ -125,7 +133,7 @@ async function Atualizar() {
 
 }
 function Voltar() {
-    window.location.href = './listarUsuario.html';
+    window.location.href = './listarPromocao.html';
 }
 function convertToDate(data) {
     var pattern = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;

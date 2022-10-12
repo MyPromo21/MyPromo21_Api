@@ -13,7 +13,7 @@ namespace MyPromo21_Api.Repositories
     public class ClienteRepository
     {
         //Conexão Luiz
-        private readonly string _connection = @"Data Source=ITELABD13\SQLEXPRESS;Initial Catalog=mypromo;Integrated Security=True";
+        private readonly string _connection = @"Data Source=LAPTOP-NQFG8OJ2;Initial Catalog=mypromo;Integrated Security=True";
 
         //Conexão Bruno
         //private readonly string _connection = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=MyPromo21;Data Source=ITELABD03\SQLEXPRESS01";
@@ -34,10 +34,11 @@ namespace MyPromo21_Api.Repositories
             {
                 using (_conexaoBanco)
                 {
-                    var query = "insert into Cliente (Nome, Cpf, DataNascimento, Telefone, Email, DataCadastro)" +
-                        "values (@nome, @cpf, @dataNascimento, @telefone, @email, @dataCadastro)";
+                    var query = "insert into Cliente (IdUsuario, Nome, Cpf, DataNascimento, Telefone, Email, DataCadastro)" +
+                        "values (@idUsuario, @nome, @cpf, @dataNascimento, @telefone, @email, @dataCadastro)";
                     var parameters = new
-                    {                        
+                    {
+                        cliente.IdUsuario,
                         cliente.Nome,
                         cliente.Cpf,
                         cliente.DataNascimento,
@@ -69,13 +70,13 @@ namespace MyPromo21_Api.Repositories
                         " = @telefone,Email = @email,DataCadastro = @dataCadastro where IdCliente = @idCliente";
                     var parameters = new
                     {
+                        cliente.IdUsuario,
                         cliente.Nome,
                         cliente.Cpf,
                         cliente.DataNascimento,
                         cliente.Telefone,
                         cliente.Email,
-                        cliente.DataCadastro,
-                        cliente.IdCliente
+                        cliente.DataCadastro,                        
                     };
                     _conexaoBanco.Query(query, parameters);
                     retorno = true;

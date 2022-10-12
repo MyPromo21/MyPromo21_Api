@@ -7,7 +7,7 @@ namespace MyPromo21_Api.Dtos
 {
     public class ClienteDto
     {
-		public int IdCliente { get; set; }
+		public int IdUsuario { get; set; }
 		public string Nome { get; set; }
 		public string Cpf { get; set; }
 		public DateTime DataNascimento { get; set; }

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Alterar dados da promocao</title>
+
+
+
+
+<body>
+  <section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card bg-light" style="border-radius: 1rem;">
+            <div class="card-body p-5 text-start">
+              <div class="mb-md-5 mt-md-4 pb-5" id="form">
+
+                <input type="hidden" id="id-promocao" />
+
+                <div class="form-outline form-white mb-4">
+                  <label for="token">Token</label>
+                  <input type="text" class="form-control" id="token" placeholder="token" value="" />
+                </div>
+
+                <div class="form-outline form-white mb-4">
+                  <label for="validadePromo">ValidadePromo</label>
+                  <input type="text" class="form-control" id="validadePromo" placeholder="validadePromo" value="" />
+                </div>
+
+                <div class="form-outline form-white mb-4">
+                  <label for="motivo">Motivo</label>
+                  <input type="text" class="form-control" id="motivo" placeholder="motivo" value="" />
+                </div>
+
+                <div class="form-outline form-white mb-4">
+                  <label for="idEndereco">IdEndereco</label>
+                  <input type="text" class="form-control" id="idEndereco" placeholder="idEndereco" value="" />
+                </div>
+
+                <div class="form-outline form-white mb-4">
+                  <label for="idEstabelecimento">IdEstabelecimento</label>
+                  <input type="text" class="form-control" id="idEstabelecimento" placeholder="idEstabelecimento" value="" />
+                </div>
+
+
+              </div>
+              <div class="form-outline form-white mb-4">
+                <input type="button" class="form-control btn btn-primary" value="Atualizar" onclick="Atualizar()" />
+              </div>
+              <div class="form-outline form-white mb-4">
+                <input type="button" class="form-control btn btn-primary" value="Remover" onclick="Remover()" />
+              </div>
+              <div class="form-outline form-white mb-4">
+                <input type="button" class="form-control btn btn-primary" value="Voltar" onclick="Voltar()" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+<script src="app/usuario/alterarPromo.js"></script>
+
+
+
+
+</html>

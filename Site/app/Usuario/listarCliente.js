@@ -1,6 +1,6 @@
 async function PreencherTabelaClientes(resposta, limpar){
     
-    let tabela = document.querySelector('#listagem-usuario');    
+    let tabela = document.querySelector('#listagem-cliente');    
 
     if(limpar)
         tabela.innerHTML = '';
@@ -20,25 +20,25 @@ async function PreencherTabelaClientes(resposta, limpar){
             
             
             let idUsuarioInput = document.createElement('td');
-            idUsuarioInput.classList.add('row-idUsuario-usuario');
+            idUsuarioInput.classList.add('row-idUsuario-cliente');
 
             let nomeTd = document.createElement('td');
-            nomeTd.classList.add('row-nome-usuario');
+            nomeTd.classList.add('row-nome-cliente');
 
             let cpfTd = document.createElement('td');
-            cpfTd.classList.add('row-cpf-usuario');
+            cpfTd.classList.add('row-cpf-cliente');
             
             let dataNascimentoTd = document.createElement('td');
-            dataNascimentoTd.classList.add('row-dataNascimento-usuario');
+            dataNascimentoTd.classList.add('row-dataNascimento-cliente');
 
             let telefoneTd = document.createElement('td');
-            telefoneTd.classList.add('row-telefone-usuario');
+            telefoneTd.classList.add('row-telefone-cliente');
 
             let emailTd = document.createElement('td');
-            emailTd.classList.add('row-email-usuario');
+            emailTd.classList.add('row-email-cliente');
 
             let dataCadastroTd = document.createElement('td');
-            dataCadastroTd.classList.add('row-dataCadastro-usuario');
+            dataCadastroTd.classList.add('row-dataCadastro-cliente');
                         
             idUsuarioInput.innerHTML = e.idUsuario;
             nomeTd.innerHTML = e.nome;

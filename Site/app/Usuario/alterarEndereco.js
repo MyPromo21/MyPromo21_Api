@@ -125,7 +125,7 @@ async function Atualizar() {
 
 }
 function Voltar() {
-    window.location.href = './listarUsuario.html';
+    window.location.href = './listarEndereco.html';
 }
 function convertToDate(data) {
     var pattern = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;

@@ -1,6 +1,6 @@
 async function PreencherTabelaPromos(resposta, limpar){
     
-    let tabela = document.querySelector('#listagem-usuario');    
+    let tabela = document.querySelector('#listagem-promocao');    
 
     if(limpar)
         tabela.innerHTML = '';
@@ -15,27 +15,27 @@ async function PreencherTabelaPromos(resposta, limpar){
             let linha = document.createElement('tr');
             
             linha.addEventListener('click', ()=> {            
-                window.location.href = "./alterarUsuario.html?id=" + e.id;
+                window.location.href = "./alterarPromocao.html?id=" + e.id;
             });
             
             
             let idInput = document.createElement('td');
-            idInput.classList.add('row-id-usuario');
+            idInput.classList.add('row-id-promocao');
 
             let tokenTd = document.createElement('td');
-            tokenTd.classList.add('row-token-usuario');
+            tokenTd.classList.add('row-token-promocao');
 
             let validadepromoTd = document.createElement('td');
-            validadepromoTd.classList.add('row-validadepromo-usuario');
+            validadepromoTd.classList.add('row-validadepromo-promocao');
 
             let motivoTd = document.createElement('td');
-            motivoTd.classList.add('row-motivo-usuario');
+            motivoTd.classList.add('row-motivo-promocao');
 
             let idEnderecoTd = document.createElement('td');
-            idEnderecoTd.classList.add('row-idEndereco-usuario');
+            idEnderecoTd.classList.add('row-idEndereco-promocao');
 
             let idEstabelecimentoTd = document.createElement('td');
-            idEstabelecimentoTd.classList.add('row-idEstabelecimento-usuario');
+            idEstabelecimentoTd.classList.add('row-idEstabelecimento-promocao');
             
                         
             idInput.innerHTML = e.id;
@@ -95,7 +95,7 @@ async function ListarUsuariosUsandoCriterio(criterio){
         method: 'GET',  
         headers:{'content-type': 'application/json'}                     
     };    
-    const req =  await fetch('https://localhost:44335/promocao/GetUsuario?login='+criterio, options )
+    const req =  await fetch('https://localhost:44335/promocao/GetPromocaoByID?id='+criterio, options )
         .then(response => {              
             return response.json();
         })     

@@ -11,7 +11,7 @@ async function Remover() {
         method: 'DELETE',
         headers: { 'content-type': 'application/json' }
     };
-    const req = await fetch('https://localhost:44335/pessoa/remover?id=' + id, options)
+    const req = await fetch('https://localhost:44335/servico/remover?id=' + id, options)
         .then(response => {
             return response.json();
         })
@@ -32,7 +32,7 @@ async function BuscarPorId(id) {
         method: 'GET',
         headers: { 'content-type': 'application/json' }
     };
-    const req = await fetch('https://localhost:44335/usuario/GetUsuarioByID?id=' + id, options)
+    const req = await fetch('https://localhost:44335/servico/GetservicoByID?id=' + id, options)
         .then(response => {
             return response.json();
         })
@@ -49,7 +49,7 @@ async function PreencherFormulario(json) {
 
 
     let dadosForm = document.querySelector("#form");
-    let id = dadosForm.querySelector("#id-usuario");
+    let id = dadosForm.querySelector("#id-servico");
     let login = dadosForm.querySelector("#login");
 
     id.value = json.id;
@@ -66,7 +66,7 @@ async function EnviarApi(viewmodel) {
     };
 
     //TODO: mudar a url para o seu localhost.
-    const req = await fetch('https://localhost:44335/usuario/alterar', options)
+    const req = await fetch('https://localhost:44335/servico/alterar', options)
         //caso a request dê certo, retornará a resposta;
         .then(response => {
             response.text()
@@ -83,19 +83,19 @@ async function EnviarApi(viewmodel) {
 }
 async function Atualizar() {
 
-    let id = parseInt(document.querySelector('#id-usuario').value);
+    let id = parseInt(document.querySelector('#id-servico').value);
     console.log(id);
     let login = document.querySelector('#login').value;
     console.log(login);
 
 
-    let usuarioDto = {
+    let servicoDto = {
         id,
         login,
     };
 
     let atualizarPessoaViewModel = {
-        usuarioDto
+        servicoDto
     };
 
     const options = {
@@ -105,7 +105,7 @@ async function Atualizar() {
     };
 
     //TODO: mudar a url para o seu localhost.
-    const req = await fetch('https://localhost:44335/usuario/Update', options)
+    const req = await fetch('https://localhost:44335/servico/Update', options)
         //caso a request dê certo, retornará a resposta;
         .then(response => {
             return response.json();
@@ -125,7 +125,7 @@ async function Atualizar() {
 
 }
 function Voltar() {
-    window.location.href = './listarUsuario.html';
+    window.location.href = './listarServico.html';
 }
 function convertToDate(data) {
     var pattern = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;

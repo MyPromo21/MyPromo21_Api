@@ -20,15 +20,15 @@ namespace MyPromo21_Api.Controllers
         {
             _promocaoRepository = new PromocaoRepository();
         }
-        [HttpGet]
-        public IActionResult CarregarInicio()
-        {
-            var promocoes = _promocaoRepository.CarregarInicio();
+        //[HttpGet]
+        //public IActionResult CarregarInicio()
+        //{
+        //    var promocoes = _promocaoRepository.CarregarInicio();
 
-            if (promocoes != null) return Ok(promocoes);
+        //    if (promocoes != null) return Ok(promocoes);
 
-            return Ok("Não há dados a serem carregados!");
-        }
+        //    return Ok("Não há dados a serem carregados!");
+        //}
         [HttpPost]
         public IActionResult CreatePromocao(PromocaoViewModel promocao)
         {
@@ -40,17 +40,17 @@ namespace MyPromo21_Api.Controllers
 
             return Ok("Não foi possível cadastrar a promoção!");
         }
-        [HttpPut]
-        public IActionResult UpdatePromocao(UpdatePromocaoViewlModel promocao)
-        {
-            if (promocao.Promocao == null) return Ok("Parâmetros informados incorretamente!");
+        //[HttpPut]
+        //public IActionResult UpdatePromocao(UpdatePromocaoViewlModel promocao)
+        //{
+        //    if (promocao.Promocao == null) return Ok("Parâmetros informados incorretamente!");
 
-            var result = _promocaoRepository.UpdatePromocao(promocao.Promocao);
+        //    var result = _promocaoRepository.UpdatePromocao(promocao.Promocao);
 
-            if (result) return Ok("Promoção atualizada com sucesso!");
+        //    if (result) return Ok("Promoção atualizada com sucesso!");
 
-            return Ok("Não foi possível atualizar a promoção!");
-        }
+        //    return Ok("Não foi possível atualizar a promoção!");
+        //}
         [HttpDelete]
         public IActionResult DeletePromocao(DeletePromocaoViewModel id)
         {
