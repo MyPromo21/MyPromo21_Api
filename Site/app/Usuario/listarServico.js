@@ -1,6 +1,6 @@
 async function PreencherTabelaServicos(resposta, limpar){
     
-    let tabela = document.querySelector('#listagem-usuario');    
+    let tabela = document.querySelector('#listagem-servico');    
 
     if(limpar)
         tabela.innerHTML = '';
@@ -20,33 +20,32 @@ async function PreencherTabelaServicos(resposta, limpar){
             
             
             let idInput = document.createElement('td');
-            idInput.classList.add('row-id-usuario');
+            idInput.classList.add('row-id-servico');
             
             let idPromocaoTd = document.createElement('td');
-            idPromocaoTd.classList.add('row-idPromocao-usuario');
+            idPromocaoTd.classList.add('row-idPromocao-servico');
 
             let descricaoTd = document.createElement('td');
-            descricaoTd.classList.add('row-descricao-usuario');
+            descricaoTd.classList.add('row-descricao-servico');
 
             let precoTd = document.createElement('td');
-            precoTd.classList.add('row-preco-usuario');
+            precoTd.classList.add('row-preco-servico');
 
-            let linkImagemTd = document.createElement('td');
-            linkImagemTd.classList.add('row-linkImagem-usuario');
+
             
                         
             idInput.innerHTML = e.id;
             idPromocaoTd.innerHTML = e.idPromocao;
             descricaoTd.innerHTML = e.descricao;
             precoTd.innerHTML = e.preco;
-            linkImagemTd.innerHTML = e.linkImagem;
+
 
     
             linha.appendChild(idInput);
             linha.appendChild(idPromocaoTd);
             linha.appendChild(descricaoTd);
             linha.appendChild(precoTd); 
-            linha.appendChild(linkImagemTd); 
+
             
             
             

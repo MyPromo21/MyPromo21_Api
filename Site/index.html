@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-	<title>Login V5</title>
+	<title>Index</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+	<link rel="icon" type="image/png" href="images/icons/logoico.ico" />
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 	<!--===============================================================================================-->
@@ -35,53 +35,54 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
 			<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
-				<form class="login100-form validate-form flex-sb flex-w" name="registrar-estabelecimento"
-					class="validate-form">
+				<form class="login100-form validate-form flex-sb flex-w" name="registrar-usuario" class="validate-form">
 					<span class="login100-form-title p-b-53">
-						Listagem de estabelecimentos
-					</span>
+						Tela temporaria
+					</span>		
 
-					<div class="container">
-						<div class="input-group mb-3" id="filtros">
-							<input type="text" class="form-control" id="texto-busca"
-								placeholder="Insira um texto para buscar" oninput="ListarPorCriterio(this)" />
-						</div>
-						<table class="table table-bordered">
-							<thead>
-								<tr>
-									<th>
-										Id
-									</th>
-									<th>
-										Token
-									</th>
-									<th>
-										ValidadePromo
-									</th>
-									<th>
-										Motivo
-									</th>
-								</tr>
-							</thead>
-							<tbody id="listagem-promocao">
-							</tbody>
-						</table>
-					</div>
-
+					
 
 					<div class="container-login100-form-btn m-t-17">
-						<button class="login100-form-btn" onclick="Voltar()">
-							Voltar
-						</button>
+						<a class="login100-form-btn" href="listarUsuario.html">Listar Usuarios</a>
 					</div>
+
+					<div class="container-login100-form-btn m-t-17">
+						<a class="login100-form-btn" href="listarCliente.html">Listar Clientes</a>
+					</div>
+
+					<div class="container-login100-form-btn m-t-17">
+						<a class="login100-form-btn" href="listarEstabelecimento.html">Listar Estabelecimentos</a>
+					</div>
+
+					<div class="container-login100-form-btn m-t-17">
+						<a class="login100-form-btn" href="listarEndereco.html">Listar Endereços</a>
+					</div>
+
+					<div class="container-login100-form-btn m-t-17">
+						<a class="login100-form-btn" href="listarPromocao.html">Listar Promoções</a>
+					</div>
+
+					<div class="container-login100-form-btn m-t-17">
+						<a class="login100-form-btn" href="listarProduto.html">Listar Produtos</a>
+					</div>
+
+					<div class="container-login100-form-btn m-t-17">
+						<a class="login100-form-btn" href="listarServico.html">Listar Servicos</a>
+					</div>
+
+
+
+
+
+
 
 					<div class="w-full text-center p-t-55">
 						<span class="txt2">
-							Deseja retornar?
+							Ainda não possui um usuario?
 						</span>
 
-						<a href="#" class="txt2 bo1">
-							Voltar
+						<a href="cadastroUsuario.html" class="txt2 bo1">
+							Cadastrar-se
 						</a>
 					</div>
 				</form>
@@ -89,6 +90,8 @@
 		</div>
 	</div>
 
+
+	<div id="dropDownSelect1"></div>
 
 	<!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
@@ -106,7 +109,7 @@
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 	<!--===============================================================================================-->
 	<script src="js/main.js"></script>
-	<script src="app/Usuario/listarpromo.js"></script>
+	<script src="app/Usuario/criarUsuario.js"></script>
 
 </body>
 

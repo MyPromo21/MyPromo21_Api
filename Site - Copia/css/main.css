@@ -298,6 +298,15 @@ iframe {
 /*------------------------------------------------------------------
 [ Input ]*/
 
+.wrap-centralizar {
+  width: 100%;
+  position: relative;
+  display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
 .wrap-input100 {
   width: 100%;
   position: relative;
@@ -525,3 +534,8 @@ iframe {
     width: 100%;
   }
 }
+
+
+/*//////////////////////////////////////////////////////////////////
+[ CUSTOM ]*/
+

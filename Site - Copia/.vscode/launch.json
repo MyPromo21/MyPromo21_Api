@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Open index.html",
-            "file": "c:\\Users\\loiz_\\source\\repos\\MyPromo21_Api\\Site\\cadastroestabelecimento.html"      
+            "file": "c:\\Users\\loiz_\\source\\repos\\MyPromo21_Api\\Site\\index.html"      
            
         }
     ]

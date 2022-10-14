@@ -2,9 +2,30 @@
 <html lang="en">
 
 <head>
-	<title>Registro de usuario</title>
+	<title>Login V5</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<!--===============================================================================================-->
 
 </head>
@@ -12,55 +33,53 @@
 <body>
 
 	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<form name="formulario-inicial" class="validate-form">
-					<span class="">
-						Novo usuario
-					</span>
-					<span class="">
-						<i class=""></i>
+		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+			<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
+				<form class="login100-form validate-form flex-sb flex-w" name="registrar-usuario" class="validate-form">
+					<span class="login100-form-title p-b-53">
+						Cadastrar novo usuario
 					</span>
 
-					<div class="" data-validate="login">
-						<input class="" type="text" id="login">
-						<span class="" data-placeholder="Login"></span>
-					</div>
-
-					<div class="" data-validate="senha">
-						<span class="">
-							<i class=""></i>
+					<div class="p-t-31 p-b-9">
+						<span class="txt1">
+							Login
 						</span>
-						<input class="" type="password" id="senha">
-						<span class="" data-placeholder="Senha"></span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Este campo é obrigatório">
+						<input class="input100" type="text" id="login" data-placeholder="Login">
+						<span class="focus-input100"></span>
 					</div>
 
+					<div class="p-t-13 p-b-9">
+						<span class="txt1">
+							Password
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Este campo é obrigatório">
+						<input class="input100" type="password" id="senha" data-placeholder="Password">
+						<span class="focus-input100"></span>
+					</div>				
 
-					<div class="" data-validate="nivel">					
+					<div class="wrap-centralizar validate-input" data-validate="Este campo é obrigatório">					
 						<select id="nivel">
 							<option value="0" selected>Cliente</option>
 							<option value="1">Estabelecimento</option>
 						</select>
 					</div>
 
-
-
-					<div class="">
-						<div class="">
-							<div class=""></div>
-							<button class="" onclick="SalvarUsuario()">
-								Registrar
-							</button>
-						</div>
+					<div class="container-login100-form-btn m-t-17">
+						<button class="login100-form-btn" onclick="SalvarUsuario()">
+							Registrar-se
+						</button>
 					</div>
 
-					<div class="">
-						<span class="">
-							Já tem uma conta?
+					<div class="w-full text-center p-t-55">
+						<span class="txt2">
+							Já possui um usuario?
 						</span>
 
-						<a class="" href="#">
-							Login
+						<a href="#" class="txt2 bo1">
+							Efetuar login
 						</a>
 					</div>
 				</form>
@@ -71,12 +90,23 @@
 
 	<div id="dropDownSelect1"></div>
 
-
+	<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+	<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+	<!--===============================================================================================-->
+	<script src="js/main.js"></script>
 	<script src="app/Usuario/criarUsuario.js"></script>
-
-
-
-	
 
 </body>
 

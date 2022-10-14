@@ -1,6 +1,6 @@
 async function PreencherTabelaProdutos(resposta, limpar){
     
-    let tabela = document.querySelector('#listagem-usuario');    
+    let tabela = document.querySelector('#listagem-produto');    
 
     if(limpar)
         tabela.innerHTML = '';
@@ -20,48 +20,29 @@ async function PreencherTabelaProdutos(resposta, limpar){
             
             
             let idInput = document.createElement('td');
-            idInput.classList.add('row-id-usuario');
-
-            let idPromocaoTd = document.createElement('td');
-            idPromocaoTd.classList.add('row-idPromocao-usuario');
+            idInput.classList.add('row-id-produto');
 
             let descricaoTd = document.createElement('td');
-            descricaoTd.classList.add('row-descricao-usuario');
+            descricaoTd.classList.add('row-descricao-produto');
 
             let precoTd = document.createElement('td');
-            precoTd.classList.add('row-preco-usuario');
+            precoTd.classList.add('row-preco-produto');
 
             let quantidadeTd = document.createElement('td');
-            quantidadeTd.classList.add('row-quantidade-usuario');
+            quantidadeTd.classList.add('row-quantidade-produto');
 
-            let perecivelTd = document.createElement('td');
-            perecivelTd.classList.add('row-perecivel-usuario');
-
-            let validadeProdutoTd = document.createElement('td');
-            validadeProdutoTd.classList.add('row-validadeProduto-usuario');
-
-            let linkImagemTd = document.createElement('td');
-            linkImagemTd.classList.add('row-linkImagem-usuario');
             
                         
             idInput.innerHTML = e.id;
-            idPromocaoTd.innerHTML = e.idPromocao;
             descricaoTd.innerHTML = e.descricao;
             precoTd.innerHTML = e.preco;
             quantidadeTd.innerHTML = e.quantidade;
-            perecivelTd.innerHTML = e.perecivel;
-            validadeProdutoTd.innerHTML = e.validadeProduto;
-            linkImagemTd.innerHTML = e.linkImagem;
             
     
             linha.appendChild(idInput);
-            linha.appendChild(idPromocaoTd);
             linha.appendChild(descricaoTd); 
             linha.appendChild(precoTd);
             linha.appendChild(quantidadeTd);
-            linha.appendChild(perecivelTd);
-            linha.appendChild(validadeProdutoTd);
-            linha.appendChild(linkImagemTd);
                                   
             
             tabela.appendChild(linha);

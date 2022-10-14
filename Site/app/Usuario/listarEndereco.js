@@ -22,17 +22,11 @@ async function PreencherTabelaEnderecos(resposta, limpar){
             let idInput = document.createElement('td');
             idInput.classList.add('row-id-usuario');
 
-            let idEstabelecimentoTd = document.createElement('td');
-            idEstabelecimentoTd.classList.add('row-idEstabelecimento-usuario');
-
             let estadoTd = document.createElement('td');
             estadoTd.classList.add('row-estado-usuario');
 
             let cidadeTd = document.createElement('td');
             cidadeTd.classList.add('row-cidade-usuario');
-
-            let bairroTd = document.createElement('td');
-            bairroTd.classList.add('row-bairro-usuario');
 
             let ruaTd = document.createElement('td');
             ruaTd.classList.add('row-rua-usuario');
@@ -40,37 +34,22 @@ async function PreencherTabelaEnderecos(resposta, limpar){
             let numeroTd = document.createElement('td');
             numeroTd.classList.add('row-numero-usuario');
 
-            let complementoTd = document.createElement('td');
-            complementoTd.classList.add('row-complemento-usuario');
-
-            let cepTd = document.createElement('td');
-            cepTd.classList.add('row-cep-usuario');
             
             
                         
             idInput.innerHTML = e.id;
-            idEstabelecimentoTd.innerHTML = e.idEstabelecimento;
             estadoTd.innerHTML = e.estado;
-            cidadeTd.innerHTML = e.cidade;
-            bairroTd.innerHTML = e.bairro;
+            cidadeTd.innerHTML = e.cidade;            
             ruaTd.innerHTML = e.rua;
             numeroTd.innerHTML = e.numero;
-            complementoTd.innerHTML = e.complemento;
-            cepTd.innerHTML = e.cep;
-
-
             
     
-            linha.appendChild(idInput);
-            linha.appendChild(idEstabelecimentoTd);
-            linha.appendChild(estadoTd);       
+            linha.appendChild(idInput);                 
             linha.appendChild(estadoTd);   
-            linha.appendChild(cidadeTd);   
-            linha.appendChild(bairroTd);   
+            linha.appendChild(cidadeTd);     
             linha.appendChild(ruaTd);   
             linha.appendChild(numeroTd);   
-            linha.appendChild(complementoTd);  
-            linha.appendChild(cepTd);                   
+;                   
             
             tabela.appendChild(linha);
 
