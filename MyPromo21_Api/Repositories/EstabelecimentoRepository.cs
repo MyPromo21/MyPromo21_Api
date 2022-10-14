@@ -13,9 +13,8 @@ namespace MyPromo21_Api.Repositories
     {
 
         //Conexão Luiz
-        private readonly string _connection = @"Data Source=LAPTOP-NQFG8OJ2;Initial Catalog=mypromo;Integrated Security=True";
+        private readonly string _connection = @"Data Source=DESKTOP-88BTRFG\SQLEXPRESS;Initial Catalog=mypromo;Integrated Security=True";
 
-        //private readonly string _connection = @"Data Source=ITELABD12\SQLEXPRESS; Initial Catalog=MyPromo21; Integrated Security=True;";
         private SqlConnection _conexao
         {
             get
@@ -55,7 +54,7 @@ namespace MyPromo21_Api.Repositories
             List<EstabelecimentoDto> estabelecimentosEncontrados;
             try
             {
-                var query = @"SELECT IdUsuario, NomeFantasia, Cnpj, IdEndereco FROM Estabelecimento";
+                var query = @"SELECT * FROM Estabelecimento";
 
                 using (_conexao)
                 {

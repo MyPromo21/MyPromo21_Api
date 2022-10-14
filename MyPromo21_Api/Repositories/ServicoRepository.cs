@@ -12,7 +12,7 @@ namespace MyPromo21_Api.Repositories
 {
     public class ServicoRepository
     {
-        private readonly string _connection = @"Data Source=LAPTOP-NQFG8OJ2;Initial Catalog=mypromo;Integrated Security=True";
+        private readonly string _connection = @"Data Source=DESKTOP-88BTRFG\SQLEXPRESS;Initial Catalog=mypromo;Integrated Security=True";
         private SqlConnection _conexaoBanco
         {
             get

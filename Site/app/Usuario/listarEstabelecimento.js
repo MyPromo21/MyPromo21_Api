@@ -1,6 +1,6 @@
 async function PreencherTabelaEstabelecimentos(resposta, limpar){
     
-    let tabela = document.querySelector('#listagem-usuario');    
+    let tabela = document.querySelector('#listagem-estabelecimento');    
 
     if(limpar)
         tabela.innerHTML = '';
@@ -20,11 +20,11 @@ async function PreencherTabelaEstabelecimentos(resposta, limpar){
             
             
             let idEstabelecimentoInput = document.createElement('td');
-            idEstabelecimentoInput.classList.add('row-idEstabelecimento-usuario');
+            idEstabelecimentoInput.classList.add('row-idEstabelecimento-cliente');
             let nomeFantasiaTd = document.createElement('td');
-            nomeFantasiaTd.classList.add('row-nomeFantasia-usuario');
+            nomeFantasiaTd.classList.add('row-nomeFantasia-cliente');
             let cnpjTd = document.createElement('td');
-            cnpjTd.classList.add('row-cnpj-usuario');
+            cnpjTd.classList.add('row-cnpj-cliente');
             
                         
             idEstabelecimentoInput.innerHTML = e.idEstabelecimento;
@@ -50,7 +50,7 @@ async function ListarEstabelecimentos(){
         method: 'GET',  
         headers:{'content-type': 'application/json'}                     
     };    
-    const req =  fetch('https://localhost:44335/estabelecimento/ReadAll', options )
+    const req =  fetch('https://localhost:44335/Estabelecimento/ReadAll', options )
         .then(response => {                
             return response.json();
         })     

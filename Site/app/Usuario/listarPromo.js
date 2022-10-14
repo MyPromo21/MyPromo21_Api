@@ -31,26 +31,17 @@ async function PreencherTabelaPromos(resposta, limpar){
             let motivoTd = document.createElement('td');
             motivoTd.classList.add('row-motivo-promocao');
 
-            let idEnderecoTd = document.createElement('td');
-            idEnderecoTd.classList.add('row-idEndereco-promocao');
-
-            let idEstabelecimentoTd = document.createElement('td');
-            idEstabelecimentoTd.classList.add('row-idEstabelecimento-promocao');
             
                         
             idInput.innerHTML = e.id;
             tokenTd.innerHTML = e.token;
             validadepromoTd.innerHTML = e.validadepromo;
             motivoTd.innerHTML = e.motivo;
-            idEnderecoTd.innerHTML = e.idEndereco;
-            idEstabelecimentoTd.innerHTML = e.idEstabelecimento;
     
             linha.appendChild(idInput);
             linha.appendChild(tokenTd);
             linha.appendChild(validadepromoTd);     
-            linha.appendChild(motivoTd);
-            linha.appendChild(idEnderecoTd);
-            linha.appendChild(idEstabelecimentoTd);                    
+            linha.appendChild(motivoTd);                 
             
             tabela.appendChild(linha);
 

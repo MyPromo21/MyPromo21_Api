@@ -1,0 +1,83 @@
+﻿﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Cadastro da ficha do Cliente</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+
+</head>
+
+<body>
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form name="formulario-inicial" class="validate-form">
+
+                    <!--id do usuario apos validação ...-->
+                    <input type="hidden" id="idEndereco" value="2" />
+                    <input type="hidden" id="idEstabelecimento" value="4" />
+
+                    <span class="">
+                        Cadastrar uma nova promocao para este estabelecimento
+                    </span>
+                    <span class="">
+                        <i class=""></i>
+                    </span>
+
+                    <div class="" data-validate="Token">
+                        <input type="text" id="token" placeholder="Token" value="" />
+                        <span class="" placeholder="Token"></span>
+                    </div>
+
+                    <div class="" data-validate="ValidadePromo">
+                        <input type="date" id="validadePromo" placeholder="ValidadePromo" value="" />
+                        <span class="" placeholder="ValidadePromo"></span>
+                    </div>
+
+                    <div class="" data-validate="Motivo">
+                        <input type="text" id="motivo" placeholder="Motivo" value="" />
+                        <span class="" placeholder="Motivo"></span>
+                    </div>                 
+
+                   
+
+
+                    <div class="">
+                        <button class="" onclick="SalvarPromo()">
+                            Cadastrar endereço
+                        </button>
+                    </div>
+
+
+                    <div class="">
+                        <span class="">
+                            Deseja retornar?
+                        </span>
+
+                        <a class="" href="#">
+                            Voltar
+                        </a>
+
+                    </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="dropDownSelect1"></div>
+
+
+    <script src="app/Usuario/cadastroPromo.js"></script>
+
+
+
+
+
+</body>
+
+</html>

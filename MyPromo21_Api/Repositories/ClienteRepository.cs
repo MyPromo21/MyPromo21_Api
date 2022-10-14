@@ -13,11 +13,8 @@ namespace MyPromo21_Api.Repositories
     public class ClienteRepository
     {
         //Conexão Luiz
-        private readonly string _connection = @"Data Source=LAPTOP-NQFG8OJ2;Initial Catalog=mypromo;Integrated Security=True";
+        private readonly string _connection = @"Data Source=DESKTOP-88BTRFG\SQLEXPRESS;Initial Catalog=mypromo;Integrated Security=True";
 
-        //Conexão Bruno
-        //private readonly string _connection = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=MyPromo21;Data Source=ITELABD03\SQLEXPRESS01";
-        //private readonly string _connection = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=MyPromo21;Data Source=Bruno";
         private SqlConnection _conexaoBanco
         {
             get
@@ -184,7 +181,7 @@ namespace MyPromo21_Api.Repositories
             List<ClienteDto> ClientesEncontrados;
             try
             {
-                var query = @"SELECT IdCliente, Nome, Cpf, DataNascimento, Telefone, Email, DataCadastro FROM Cliente";
+                var query = @"SELECT * FROM Cliente";
 
                 using (_conexaoBanco)
                 {
