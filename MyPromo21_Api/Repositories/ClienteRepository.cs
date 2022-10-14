@@ -31,8 +31,8 @@ namespace MyPromo21_Api.Repositories
             {
                 using (_conexaoBanco)
                 {
-                    var query = "insert into Cliente (IdUsuario, Nome, Cpf, DataNascimento, Telefone, Email, DataCadastro)" +
-                        "values (@idUsuario, @nome, @cpf, @dataNascimento, @telefone, @email, @dataCadastro)";
+                    var query = "insert into Cliente(IdUsuario, Nome,Cpf,DataNascimento,Telefone,Email,DataCadastro)" +
+                        "Values(@idUsuario, @nome,@cpf,@dataNascimento,@telefone,@email,@dataCadastro)";                    
                     var parameters = new
                     {
                         cliente.IdUsuario,
