@@ -13,7 +13,7 @@ namespace MyPromo21_Api.Dtos
 		public string Motivo { get; set; }
 		public int IdEndereco { get; set; }
 		public int IdEstabelecimento { get; set; }
-
+		public int Desconto { get; set; }
 		//token
 	}
 }

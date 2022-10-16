@@ -12,6 +12,7 @@ namespace MyPromo21_Api.Models
 		public string Motivo { get; set; }
 		public int IdEndereco { get; set; }
 		public int IdEstabelecimento { get; set; }
+		public int Desconto { get; set; }
 	}
 }
 
