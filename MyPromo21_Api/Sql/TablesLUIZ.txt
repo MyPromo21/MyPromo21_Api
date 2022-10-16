@@ -54,7 +54,11 @@ CREATE TABLE Promocao
 	Motivo varchar(150) NOT NULL,
 	IdEndereco int NOT NULL,
 	IdEstabelecimento int NOT NULL,
-	
+	************************
+	Desconto int NOT NULL,
+	* OU
+	**********************
+	alter table Promocao add Desconto int
 
 	CONSTRAINT Pk_Promocao PRIMARY KEY (Id),
 	CONSTRAINT Fk_Id_Endereco FOREIGN KEY (IdEndereco) REFERENCES Endereco(Id),

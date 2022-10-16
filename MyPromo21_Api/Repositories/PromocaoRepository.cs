@@ -12,7 +12,9 @@ namespace MyPromo21_Api.Repositories
 {
     public class PromocaoRepository
     {
-        private readonly string _connection = @"Data Source=DESKTOP-88BTRFG\SQLEXPRESS;Initial Catalog=mypromo;Integrated Security=True";
+        //private readonly string _connection = @"Data Source=DESKTOP-88BTRFG\SQLEXPRESS;Initial Catalog=mypromo;Integrated Security=True";
+        private readonly string _connection = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=MyPromo21;Data Source=" + Environment.MachineName;
+
         private SqlConnection _conexaoBanco
         {
             get
@@ -28,8 +30,8 @@ namespace MyPromo21_Api.Repositories
             {
                 using (_conexaoBanco)
                 {
-                    var query = "insert into Promocao (Token,ValidadePromo,Motivo,IdEndereco,IdEstabelecimento)" +
-                        "values (@token,@validadePromo,@motivo,@idEndereco,@idEstabelecimento)";
+                    var query = "insert into Promocao (Token,ValidadePromo,Motivo,IdEndereco,IdEstabelecimento,Desconto)" +
+                        "values (@token,@validadePromo,@motivo,@idEndereco,@idEstabelecimento,@desconto)";
                     var parameters = new
                     {
                         promocao.Token,
@@ -40,6 +42,7 @@ namespace MyPromo21_Api.Repositories
 
                         promocao.IdEndereco,
                         promocao.IdEstabelecimento,
+                        promocao.Desconto
                     };
                     _conexaoBanco.Query(query,parameters);
                     result = true;
@@ -160,18 +163,25 @@ namespace MyPromo21_Api.Repositories
 
             return estabelecimento;
         }
-        //public GetAllPromocao CarregarInicio()
-        //{
-        //    var promocoes = new GetAllPromocao();
-     
-        //    promocoes.Promocoes = this.GetAll();
-        //    foreach (PromocaoDto p in promocoes.Promocoes)
-        //    {
-        //        promocoes.Estabelecimentos.Add(this.GetEstabelecimento(p.Id_Estabelecimento));
-        //        promocoes.Produtos.Add(this.GetProduto(p.Id_Produto));
-        //    }
-        //    return promocoes;
-        //}
+        public List<PromocaoDto> CarregarInicio()
+        {
+            var promocoes = new List<PromocaoDto>();
+            var validadePromo = DateTime.Now.ToString();
+            try
+            {
+                using (_conexaoBanco)
+                {
+                    var parameters = new { validadePromo };
+                    var query = "select * from promocao where ValidadePromo > @validadePromo";
+                    promocoes = _conexaoBanco.Query<PromocaoDto>(query,parameters).ToList();
+                }
+            }
+            catch (SqlException e)
+            {
+                promocoes = null;
+            }
+            return promocoes;
+        }
 
         public PromocaoDto BuscarPorID(int id)
         {

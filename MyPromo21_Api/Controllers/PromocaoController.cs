@@ -20,15 +20,15 @@ namespace MyPromo21_Api.Controllers
         {
             _promocaoRepository = new PromocaoRepository();
         }
-        //[HttpGet]
-        //public IActionResult CarregarInicio()
-        //{
-        //    var promocoes = _promocaoRepository.CarregarInicio();
+        [HttpGet]
+        public IActionResult CarregarInicio()
+        {
+            var promocoes = _promocaoRepository.CarregarInicio();
 
-        //    if (promocoes != null) return Ok(promocoes);
+            if (promocoes != null) return Ok(promocoes);
 
-        //    return Ok("Não há dados a serem carregados!");
-        //}
+            return Ok("Não há dados a serem carregados!");
+        }
         [HttpPost]
         public IActionResult CreatePromocao(PromocaoViewModel promocao)
         {
