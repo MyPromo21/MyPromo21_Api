@@ -230,6 +230,26 @@ namespace MyPromo21_Api.Repositories
                 return null;
             }
         }
+        public List<PromocaoDto> GetByDesconto(int desconto)
+        {
+            var promocoes = new List<PromocaoDto>();
+
+            try
+            {
+                using (_conexaoBanco)
+                {
+                    var query = "select * from Promocao where Desconto <= @desconto";
+                    var parameters = new { desconto };
+                    promocoes = _conexaoBanco.Query<PromocaoDto>(query,parameters).ToList();
+                }
+            }
+            catch (SqlException e)
+            {
+                promocoes = null;
+            }
+
+            return promocoes;
+        }
 
     }
 }

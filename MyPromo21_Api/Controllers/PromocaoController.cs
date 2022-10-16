@@ -96,6 +96,17 @@ namespace MyPromo21_Api.Controllers
 
             return Ok(resultado);
         }
+        [HttpGet]
+        public IActionResult GetByDesconto(int desconto)
+        {
+            if (desconto <= 0) return Ok("Desconto informado incorretamente!");
+
+            var promocoes = _promocaoRepository.GetByDesconto(desconto);
+
+            if (promocoes != null) return Ok(promocoes);
+
+            return Ok("Não foi possível localizar nenhum registro com o desconto informado!");
+        }
 
     }
 }
