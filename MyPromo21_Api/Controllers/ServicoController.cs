@@ -67,7 +67,16 @@ namespace MyPromo21_Api.Controllers
             return Ok(resultado);
         }
 
+        [HttpGet]
+        public IActionResult ListaDeServicoPorId(int id)
+        {
 
+            var servico = _servicoRepository.ServicoPorIdRetornandoLista(id);
+
+            if (servico != null) return Ok(servico);
+
+            return Ok("Servico não encontrado!");
+        }
 
         //[HttpPut]
         //public IActionResult UpdateServico(UpdateServicoViewModel servico)
@@ -91,6 +100,6 @@ namespace MyPromo21_Api.Controllers
 
         //    return Ok("Serviço não localizado!");
         //}
-        
+
     }
 }

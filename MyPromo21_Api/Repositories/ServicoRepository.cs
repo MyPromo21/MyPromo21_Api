@@ -186,5 +186,26 @@ namespace MyPromo21_Api.Repositories
             }
         }
 
+        public List<ServicoDto> ServicoPorIdRetornandoLista(int id)
+        {
+            var servicos = new List<ServicoDto>();
+
+            try
+            {
+                using (_conexaoBanco)
+                {
+                    var query = @$"SELECT * FROM Servico where IdPromocao = {id} ";
+
+                    servicos = _conexaoBanco.Query<ServicoDto>(query).ToList();
+                }
+            }
+            catch (SqlException)
+            {
+                servicos = null;
+            }
+
+            return servicos;
+        }
+
     }
 }

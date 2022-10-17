@@ -67,6 +67,17 @@ namespace MyPromo21_Api.Controllers
             return Ok(resultado);
         }
 
+        [HttpGet]
+        public IActionResult ListaDeProdutoPorId(int id)
+        {
+
+            var produto = _produtoRepository.ProdutoPorIdRetornandoLista(id);
+
+            if (produto != null) return Ok(produto);
+
+            return Ok("Produto não encontrado!");
+        }
+
         //[HttpPut]
         //public IActionResult UpdateProduto(UpdateProdutoViewlModel produto)
         //{

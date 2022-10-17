@@ -198,5 +198,26 @@ namespace MyPromo21_Api.Repositories
             }
         }
 
+        public List<ProdutoDto> ProdutoPorIdRetornandoLista(int id)
+        {
+            var produtos = new List<ProdutoDto>();
+
+            try
+            {
+                using (_conexaoBanco)
+                {
+                    var query = @$"SELECT * FROM Produto where IdPromocao = {id} ";
+
+                    produtos = _conexaoBanco.Query<ProdutoDto>(query).ToList();
+                }
+            }
+            catch (SqlException)
+            {
+                produtos = null;
+            }
+
+            return produtos;
+        }
+
     }
 }
