@@ -74,7 +74,7 @@ CREATE TABLE Produto
 	Preco float NOT NULL,	
 	Quantidade int NOT NULL,	
 	Perecivel int NOT NULL,	
-	ValidadeProduto date NOT NULL,	
+	ValidadeProduto date,	
 	LinkImagem VARCHAR(150) NOT NULL,		
 	CONSTRAINT Pk_Produto PRIMARY KEY (Id),
 	CONSTRAINT Fk_IdPromocao FOREIGN KEY (IdPromocao) REFERENCES Promocao(Id),

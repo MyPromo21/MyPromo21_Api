@@ -30,6 +30,9 @@ async function SalvarPromo() {
 
     let motivo = document.querySelector('#motivo').value;
     console.log(motivo);
+
+    let desconto = document.querySelector('#desconto').value;
+    console.log(desconto);
    
     
 
@@ -42,6 +45,7 @@ async function SalvarPromo() {
             Motivo : motivo, 
             IdEndereco : parseInt(idEndereco),
             IdEstabelecimento : parseInt(idEstabelecimento),
+            Desconto : parseInt(desconto)
 
             
         }        

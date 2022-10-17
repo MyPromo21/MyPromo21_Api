@@ -15,6 +15,8 @@ namespace MyPromo21_Api.Repositories
         //Conexão Luiz
         private readonly string _connection = @"Data Source=DESKTOP-88BTRFG\SQLEXPRESS;Initial Catalog=mypromo;Integrated Security=True";
 
+
+
         private SqlConnection _conexao
         {
             get

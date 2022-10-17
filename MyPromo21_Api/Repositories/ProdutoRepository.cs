@@ -14,7 +14,7 @@ namespace MyPromo21_Api.Repositories
     public class ProdutoRepository
     {
 
-        
+
         private readonly string _connection = @"Data Source=DESKTOP-88BTRFG\SQLEXPRESS;Initial Catalog=mypromo;Integrated Security=True";
 
 
@@ -155,7 +155,7 @@ namespace MyPromo21_Api.Repositories
             ProdutoDto produtoEncontrado;
             try
             {
-                var query = @$"SELECT * FROM Produto where Id = {id} ";
+                var query = @$"SELECT * FROM Produto where IdPromocao = {id} ";
 
                 using (var connection = new SqlConnection(_connection))
                 {

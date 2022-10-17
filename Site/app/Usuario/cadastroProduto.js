@@ -30,6 +30,7 @@ async function SalvarProduto() {
     console.log(validadeProduto);
     let linkImagem = document.querySelector('#linkImagem').value;
     console.log(linkImagem);
+    
    
 
     let createEstabelecimentoViewModel = {
@@ -41,7 +42,8 @@ async function SalvarProduto() {
             Quantidade : parseInt(quantidade),
             Perecivel : parseInt(perecivel),
             ValidadeProduto : validadeProduto,
-            LinkImagem : linkImagem
+            LinkImagem : linkImagem,
+            
 
         }        
     };

@@ -1,6 +1,6 @@
-async function PreencherTabelaPromos(resposta, limpar){
+async function PreencherTabelaProdutos(resposta, limpar){
     
-    let tabela = document.querySelector('#listagem-promocao');    
+    let tabela = document.querySelector('#listagem-produto');    
 
     if(limpar)
         tabela.innerHTML = '';
@@ -15,33 +15,35 @@ async function PreencherTabelaPromos(resposta, limpar){
             let linha = document.createElement('tr');
             
             linha.addEventListener('click', ()=> {            
-                window.location.href = "./visualizarPromocao.html?id=" + e.id;
+                window.location.href = "./alterarUsuario.html?id=" + e.id;
             });
             
             
             let idInput = document.createElement('td');
-            idInput.classList.add('row-id-promocao');
+            idInput.classList.add('row-id-produto');
 
-            let tokenTd = document.createElement('td');
-            tokenTd.classList.add('row-token-promocao');
+            let descricaoTd = document.createElement('td');
+            descricaoTd.classList.add('row-descricao-produto');
 
-            let validadepromoTd = document.createElement('td');
-            validadepromoTd.classList.add('row-validadepromo-promocao');
+            let precoTd = document.createElement('td');
+            precoTd.classList.add('row-preco-produto');
 
-            let motivoTd = document.createElement('td');
-            motivoTd.classList.add('row-motivo-promocao');
+            let quantidadeTd = document.createElement('td');
+            quantidadeTd.classList.add('row-quantidade-produto');
 
             
                         
             idInput.innerHTML = e.id;
-            tokenTd.innerHTML = e.token;
-            validadepromoTd.innerHTML = e.validadepromo;
-            motivoTd.innerHTML = e.motivo;
+            descricaoTd.innerHTML = e.descricao;
+            precoTd.innerHTML = e.preco;
+            quantidadeTd.innerHTML = e.quantidade;
+            
     
             linha.appendChild(idInput);
-            linha.appendChild(tokenTd);
-            linha.appendChild(validadepromoTd);     
-            linha.appendChild(motivoTd);                 
+            linha.appendChild(descricaoTd); 
+            linha.appendChild(precoTd);
+            linha.appendChild(quantidadeTd);
+                                  
             
             tabela.appendChild(linha);
 
@@ -51,13 +53,13 @@ async function PreencherTabelaPromos(resposta, limpar){
         });
     }
 }
-async function ListarPromos(){  
+async function ListarProdutos(){  
     
     const options = {
         method: 'GET',  
         headers:{'content-type': 'application/json'}                     
     };    
-    const req =  fetch('https://localhost:44335/promocao/ReadAll', options )
+    const req =  fetch('https://localhost:44335/produto/GetProdutoByID=1', options )
         .then(response => {                
             return response.json();
         })     
@@ -86,7 +88,7 @@ async function ListarUsuariosUsandoCriterio(criterio){
         method: 'GET',  
         headers:{'content-type': 'application/json'}                     
     };    
-    const req =  await fetch('https://localhost:44335/promocao/GetPromocaoByID?id='+criterio, options )
+    const req =  await fetch('https://localhost:44335/produto/GetUsuario?login='+criterio, options )
         .then(response => {              
             return response.json();
         })     
@@ -98,6 +100,6 @@ async function ListarUsuariosUsandoCriterio(criterio){
 }
 //inicia a listagem.
 (async() => {
-    let res = await ListarPromos();
-    PreencherTabelaPromos(res, false);    
+    let res = await ListarProdutos();
+    PreencherTabelaProdutos(res, false);    
 })();

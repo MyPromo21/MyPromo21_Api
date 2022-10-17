@@ -13,35 +13,44 @@ namespace MyPromo21_Api.Repositories
     public class UsuarioRepository
     {
         private readonly string _connection = @"Data Source=DESKTOP-88BTRFG\SQLEXPRESS;Initial Catalog=mypromo;Integrated Security=True";
+
         private SqlConnection _conexao { get
             {
                 return new SqlConnection(_connection);
             } }
-        public Usuario CreateUsuario(Usuario usuario)
+
+
+        public bool CreateUsuario(Usuario usuario)
         {
+            var result = false;
             try
             {
-                var query = @"INSERT INTO Usuario 
-                              (Login, Senha, Nivel) VALUES (@login,@senha,@nivel)";
                 using (_conexao)
                 {
+                    var query = @"INSERT INTO Usuario 
+                              (Login, Senha, Nivel) VALUES (@login,@senha,@nivel)";
+
                     var parameters = new
                     {
                         usuario.Login,
                         usuario.Senha,
-                        usuario.Nivel                       
+                        usuario.Nivel
                     };
 
                     _conexao.Query(query, parameters);
-                    return usuario;
-                }                
+                    result = true;
+                }
             }
-            catch (Exception ex)
+
+            catch (SqlException e)
             {
-                Console.WriteLine("Erro: " + ex.Message);
-                return usuario;
+                result = false;
             }
+
+            return result;
         }
+
+
 
         public List<UsuarioDto> ReadAllUsuario()
         {

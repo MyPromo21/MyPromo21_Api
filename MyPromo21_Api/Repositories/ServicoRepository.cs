@@ -12,6 +12,7 @@ namespace MyPromo21_Api.Repositories
 {
     public class ServicoRepository
     {
+
         private readonly string _connection = @"Data Source=DESKTOP-88BTRFG\SQLEXPRESS;Initial Catalog=mypromo;Integrated Security=True";
         private SqlConnection _conexaoBanco
         {
@@ -142,7 +143,7 @@ namespace MyPromo21_Api.Repositories
             ServicoDto pessoaEncontrada;
             try
             {
-                var query = @$"SELECT * FROM Servico where Id = {id} ";
+                var query = @$"SELECT * FROM Servico where IdPromocao = {id} ";
 
                 using (var connection = new SqlConnection(_connection))
                 {

@@ -19,17 +19,18 @@ namespace MyPromo21_Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(UsuarioViewModel createUsuarioViewModel)
+        public IActionResult Create(UsuarioViewModel usuario)
         {
-            if (createUsuarioViewModel.usuario == null)
+            if (usuario.Usuario == null)
                 return Ok("Dados não preenchidos.");
 
-            var resultado = _usuarioRepository.CreateUsuario(createUsuarioViewModel.usuario);
+            var result = _usuarioRepository.CreateUsuario(usuario.Usuario);
 
-            if (resultado.Nivel == 0) return Ok(resultado);
+            if (result) return Ok("Usuario cadastrado com sucesso!");
 
             return Ok("Erro ao cadastrar o usuario.");
         }
+       
 
         [HttpGet]
         public IActionResult ReadAll()
@@ -69,7 +70,7 @@ namespace MyPromo21_Api.Controllers
         public IActionResult Update(UsuarioViewModel updateUsuarioViewModel)
         {
 
-            var resultado = _usuarioRepository.UpdateUsuario(updateUsuarioViewModel.usuarioDto);
+            var resultado = _usuarioRepository.UpdateUsuario(updateUsuarioViewModel.UsuarioDto);
 
             if (resultado) return Ok(new
             {

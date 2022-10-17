@@ -13,7 +13,9 @@ namespace MyPromo21_Api.Repositories
     public class PromocaoRepository
     {
         //private readonly string _connection = @"Data Source=DESKTOP-88BTRFG\SQLEXPRESS;Initial Catalog=mypromo;Integrated Security=True";
-        private readonly string _connection = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=MyPromo21;Data Source=" + Environment.MachineName;
+        // private readonly string _connection = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=MyPromo21;Data Source=" + Environment.MachineName;
+
+        private readonly string _connection = @"Data Source=DESKTOP-88BTRFG\SQLEXPRESS;Initial Catalog=mypromo;Integrated Security=True";
 
         private SqlConnection _conexaoBanco
         {

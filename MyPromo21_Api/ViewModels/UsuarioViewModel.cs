@@ -5,9 +5,9 @@ namespace MyPromo21_Api.ViewModels
 {
     public class UsuarioViewModel
     {
-        public Usuario usuario { get; set; }
+        public Usuario Usuario { get; set; }
 
-        public UsuarioDto usuarioDto { get; set; }
+        public UsuarioDto UsuarioDto { get; set; }
 
 
         //public class CreateUsuarioViewModel

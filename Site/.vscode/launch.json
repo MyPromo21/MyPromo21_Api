@@ -8,7 +8,9 @@
             "type": "chrome",
             "request": "launch",
             "name": "Open index.html",
-            "file": "c:\\Users\\loiz_\\source\\repos\\MyPromo21_Api\\Site\\viewusuario\\listarPromocao.html"      
+            "file": "c:\\Users\\loiz_\\source\\repos\\MyPromo21_Api\\Site\\viewusuario\\listarpromocao.html"
+            
+     
            
         }
     ]

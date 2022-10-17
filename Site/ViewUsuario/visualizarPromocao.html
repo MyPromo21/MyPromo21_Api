@@ -70,6 +70,70 @@
 						</div>
 					</div>
 
+
+
+					<span class="login100-form-title p-b-53">
+						Listagem de produtos
+					</span>
+					<div class="input-group mb-3" id="filtros">
+						<input type="text" class="form-control" id="texto-busca"
+							placeholder="Insira um texto para buscar" oninput="ListarPorCriterio(this)" />
+					</div>
+
+					<div class="container">						
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>
+										Id
+									</th>
+									<th>
+										Descricao
+									</th>
+									<th>
+										Preco
+									</th>
+									<th>
+										Quantidade
+									</th>
+								</tr>
+							</thead>
+							<tbody id="listagem-produto">
+							</tbody>
+						</table>
+					</div>
+
+
+					<span class="login100-form-title p-b-53">
+						Listagem de servicos
+					</span>
+					<div class="input-group mb-3" id="filtros">
+						<input type="text" class="form-control" id="texto-busca"
+							placeholder="Insira um texto para buscar" oninput="ListarPorCriterio(this)" />
+					</div>
+
+					<div class="container">						
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>
+										Id
+									</th>
+									<th>
+										Descricao
+									</th>
+									<th>
+										Preco
+									</th>
+								</tr>
+							</thead>
+							<tbody id="listagem-servico">
+							</tbody>
+						</table>
+					</div>
+
+
+
 					<div class="container-login100-form-btn m-t-17">
 						<button class="login100-form-btn" onclick="SalvarPromo()">
 							Resgatar cupom
@@ -108,6 +172,8 @@
 	<!--===============================================================================================-->
 	<script src="../js/main.js"></script>
 	<script src="../app/Usuario/alterarPromo.js"></script>
+	<script src="../app/Usuario/listarProdutoCadastrado.js"></script>
+	<script src="../app/Usuario/listarServicoCadastrado.js"></script>
 
 </body>
 
