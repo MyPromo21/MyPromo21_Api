@@ -59,7 +59,7 @@ async function ListarProdutos(){
         method: 'GET',  
         headers:{'content-type': 'application/json'}                     
     };    
-    const req =  fetch('https://localhost:44335/produto/GetProdutoByID=1', options )
+    const req =  fetch('https://localhost:44335/produto/GetProdutoByID?id=1', options )
         .then(response => {                
             return response.json();
         })     
