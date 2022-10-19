@@ -53,13 +53,13 @@ async function PreencherTabelaProdutos(resposta, limpar){
         });
     }
 }
-async function ListarProdutos(){  
+async function ListarProdutos(id){  
     
     const options = {
         method: 'GET',  
         headers:{'content-type': 'application/json'}                     
-    };    
-    const req =  fetch('https://localhost:44335/produto/GetProdutoByID?id=1', options )
+    };   
+    const req = await fetch('https://localhost:44335/produto/ListaDeProdutoPorId?id=' + id, options)
         .then(response => {                
             return response.json();
         })     
@@ -69,6 +69,7 @@ async function ListarProdutos(){
         });
     return req;
 }
+
 
 
 
@@ -100,6 +101,8 @@ async function ListarUsuariosUsandoCriterio(criterio){
 }
 //inicia a listagem.
 (async() => {
-    let res = await ListarProdutos();
-    PreencherTabelaProdutos(res, false);    
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    let res = await ListarProdutos(urlParams.get('id'));
+    PreencherTabelaProdutos(res, false);
 })();

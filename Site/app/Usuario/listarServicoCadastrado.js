@@ -21,9 +21,6 @@ async function PreencherTabelaServicos(resposta, limpar){
             
             let idInput = document.createElement('td');
             idInput.classList.add('row-id-servico');
-            
-            let idPromocaoTd = document.createElement('td');
-            idPromocaoTd.classList.add('row-idPromocao-servico');
 
             let descricaoTd = document.createElement('td');
             descricaoTd.classList.add('row-descricao-servico');
@@ -35,14 +32,12 @@ async function PreencherTabelaServicos(resposta, limpar){
             
                         
             idInput.innerHTML = e.id;
-            idPromocaoTd.innerHTML = e.idPromocao;
             descricaoTd.innerHTML = e.descricao;
             precoTd.innerHTML = e.preco;
 
 
     
             linha.appendChild(idInput);
-            linha.appendChild(idPromocaoTd);
             linha.appendChild(descricaoTd);
             linha.appendChild(precoTd); 
 
@@ -57,13 +52,13 @@ async function PreencherTabelaServicos(resposta, limpar){
         });
     }
 }
-async function ListarServicos(){  
+async function ListarServicos(id){  
     
     const options = {
         method: 'GET',  
         headers:{'content-type': 'application/json'}                     
-    };    
-    const req =  await fetch('https://localhost:44335/servico/GetServicoByID?id=1', options )
+    };        
+    const req = await fetch('https://localhost:44335/servico/ListaDeServicoPorId?id=' + id, options)
         .then(response => {                
             return response.json();
         })     
@@ -104,6 +99,9 @@ async function ListarUsuariosUsandoCriterio(criterio){
 }
 //inicia a listagem.
 (async() => {
-    let res = await ListarServicos();
-    PreencherTabelaServicos(res, false);    
+
+    const urlParams = new URLSearchParams(window.location.search);
+    let res = await ListarServicos(urlParams.get('id'));
+    PreencherTabelaServicos(res, false);
+  
 })();
