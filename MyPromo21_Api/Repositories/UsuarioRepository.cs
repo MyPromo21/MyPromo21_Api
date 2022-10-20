@@ -49,7 +49,7 @@ namespace MyPromo21_Api.Repositories
 
             return result;
         }
-
+               
 
 
         public List<UsuarioDto> ReadAllUsuario()
