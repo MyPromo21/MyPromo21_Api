@@ -105,7 +105,7 @@ namespace MyPromo21_Api.Repositories
             {
                 using (_conexaoBanco)
                 {
-                    var query = "delete from Promocao where Id = @id";
+                    var query = "delete from Servico where Id = @id";
                     var parameters = new { id };
                     _conexaoBanco.Query(query, parameters);
                     result = true;

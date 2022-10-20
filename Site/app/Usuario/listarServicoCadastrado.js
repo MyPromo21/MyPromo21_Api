@@ -55,7 +55,7 @@ async function PreencherTabelaServicos(resposta, limpar) {
             linha.appendChild(divremoverservico);
 
             divremoverservico.addEventListener('click', () => {
-                RemoverServico(idInput);
+                RemoverServico(e.id);
             });
 
 
@@ -129,7 +129,7 @@ async function RemoverServico(id) {
         method: 'DELETE',
         headers: { 'content-type': 'application/json' }
     };
-    const req = await fetch('https://localhost:44335/servico/remover?id=' + id, options)
+    const req = await fetch('https://localhost:44335/servico/DeleteServico?id=' + id, options)
         .then(response => {
             return response.json();
         })
@@ -142,6 +142,7 @@ async function RemoverServico(id) {
         Voltar();
     }
     else {
-        alert(req.mensagem);
+        document.location.reload(true);
     }
+    
 }

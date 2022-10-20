@@ -84,7 +84,7 @@ namespace MyPromo21_Api.Controllers
 
             var result = _servicoRepository.DeleteServico(id);
 
-            if (result) return Ok("Promoção excluída com sucesso!");
+            if (result) return Ok("Serviço excluído com sucesso!");
 
             return Ok("Não foi possível excluir a promoção!");
         }
