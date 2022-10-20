@@ -103,7 +103,19 @@ CREATE TABLE Servico
 
 
 
+select * from usuario
 
+select * from cliente
+
+select * from estabelecimento
+
+select * from endereco
+
+select * from promocao
+
+select * from produto
+
+select * from servico
 
 
 

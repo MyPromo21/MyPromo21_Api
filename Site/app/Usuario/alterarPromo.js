@@ -53,15 +53,13 @@ async function PreencherFormulario(json) {
     let token = dadosForm.querySelector("#token");
     let validadePromo = dadosForm.querySelector("#validadePromo");
     let motivo = dadosForm.querySelector("#motivo");
-    let idEndereco = dadosForm.querySelector("#idEndereco");
-    let idEstabelecimento = dadosForm.querySelector("#idEstabelecimento");
+
 
     id.value = json.id;
     token.value = json.token;
     validadePromo.value = json.validadePromo;
     motivo.value = json.motivo;
-    idEndereco.value = json.idEndereco;
-    idEstabelecimento.value = json.idEstabelecimento;
+
 }
 
 

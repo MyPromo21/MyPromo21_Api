@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -35,87 +35,119 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('../images/bg-01.jpg');">
 			<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
-				<form class="login100-form validate-form flex-sb flex-w" name="registrar-usuario" class="validate-form">
+				<form class="login100-form validate-form flex-sb flex-w" name="registrar-estabelecimento"
+					class="validate-form">
 					<span class="login100-form-title p-b-53">
-						
+						Dados da promoção
 					</span>
 
+					<!--id do usuario apos validação ...-->
 
+					<div class="card-body p-5 text-start">
+						<div class="mb-md-5 mt-md-4 pb-5" id="form">
 
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="main_title" style="margin-bottom: 50px;">
+							<input type="hidden" id="id-promocao" />
 
-								<h2>Cupons disponíveis</h2>
-
-								<p>Escolha um filtro de desconto</p>
-
+							<div class="form-outline form-white mb-4">
+								<label for="token">Token</label>
+								<input type="text" class="form-control" id="token" placeholder="token" value=""
+									disabled="" />
 							</div>
-						</div>
 
-						<div class="col-sm-3 col-xs-6">
-							<a href="listarPromocao.html">
-								<div class="main_title">
-									<p>Até 25%</p>
-								</div>
-								<img src="../images/home/ticket (1).jpg" alt="logo" width="100%"
-									style="margin-bottom: 30px;">
-							</a>
-						</div>
+							<div class="form-outline form-white mb-4">
+								<label for="validadePromo">ValidadePromo</label>
+								<input type="text" class="form-control" id="validadePromo" placeholder="validadePromo"
+									value="" disabled="" />
+							</div>
 
-						<div class="col-sm-3 col-xs-6">
-							<a href="#">
-								<div class="main_title">
-									<p>Até 50%</p>
-								</div>
-								<img src="../images/home/ticket (1).jpg" alt="logo" width="100%"
-									style="margin-bottom: 30px;">
-							</a>
-						</div>
+							<div class="form-outline form-white mb-4">
+								<label for="motivo">Motivo</label>
+								<input type="text" class="form-control" id="motivo" placeholder="motivo" value="" />
+							</div>
 
-						<div class="col-sm-3 col-xs-6">
-							<a href="#">
-								<div class="main_title">
-									<p>Até 75%</p>
-								</div>
-								<img src="../images/home/ticket (1).jpg" alt="logo" width="100%"
-									style="margin-bottom: 30px;">
-							</a>
-						</div>
 
-						<div class="col-sm-3 col-xs-6">
-							<a href="#">
-								<div class="main_title">
-									<p>Até 100%</p>
-								</div>
-								<img src="../images/home/ticket (1).jpg" alt="logo" width="100%"
-									style="margin-bottom: 30px;">
-							</a>
 						</div>
-
 					</div>
 
 
 
+					<span class="login100-form-title p-b-53">
+						Listagem de produtos
+					</span>
+					<div class="container">
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>
+										Id
+									</th>
+									<th>
+										Descricao
+									</th>
+									<th>
+										Preco
+									</th>
+									<th>
+										Quantidade
+									</th>
+									<th>
+										Ações
+									</th>
+								</tr>
+							</thead>
+							<tbody id="listagem-produto">
+							</tbody>
+						</table>
+					</div>
+
+
+					<span class="login100-form-title p-b-53">
+						Listagem de servicos
+					</span>
+					<div class="container">
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>
+										Id
+									</th>
+									<th>
+										Descricao
+									</th>
+									<th>
+										Preco
+									</th>
+									<th>
+										Ações
+									</th>
+								</tr>
+							</thead>
+							<tbody id="listagem-servico">
+							</tbody>
+						</table>
+					</div>
 
 
 
+					<div class="container-login100-form-btn m-t-17">
+						<button class="login100-form-btn" onclick="SalvarPromo()">
+							Resgatar cupom
+						</button>
+					</div>
 
 					<div class="w-full text-center p-t-55">
 						<span class="txt2">
-							Ainda não possui um usuario?
+							Deseja retornar?
 						</span>
 
-						<a href="cadastroUsuario.html" class="txt2 bo1">
-							Cadastrar-se
+						<a href="#" class="txt2 bo1">
+							Voltar
 						</a>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
-
-
 
 
 	<!--===============================================================================================-->
@@ -134,7 +166,9 @@
 	<script src="../vendor/countdowntime/countdowntime.js"></script>
 	<!--===============================================================================================-->
 	<script src="../js/main.js"></script>
-	<script src="../app/Usuario/criarUsuario.js"></script>
+	<script src="../app/Usuario/alterarPromo.js"></script>
+	<script src="../app/Usuario/listarProdutoCadastrado.js"></script>
+	<script src="../app/Usuario/listarServicoCadastrado.js"></script>
 
 </body>
 

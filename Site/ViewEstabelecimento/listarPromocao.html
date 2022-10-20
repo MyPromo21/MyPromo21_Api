@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -35,87 +35,59 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('../images/bg-01.jpg');">
 			<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
-				<form class="login100-form validate-form flex-sb flex-w" name="registrar-usuario" class="validate-form">
+				<form class="login100-form validate-form flex-sb flex-w" name="registrar-estabelecimento"
+					class="validate-form">
 					<span class="login100-form-title p-b-53">
-						
+						Listagem de promoções
 					</span>
 
-
-
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="main_title" style="margin-bottom: 50px;">
-
-								<h2>Cupons disponíveis</h2>
-
-								<p>Escolha um filtro de desconto</p>
-
-							</div>
+					<div class="container">
+						<div class="input-group mb-3" id="filtros">
+							<input type="text" class="form-control" id="texto-busca"
+								placeholder="Insira um texto para buscar" oninput="ListarPorCriterio(this)" />
 						</div>
-
-						<div class="col-sm-3 col-xs-6">
-							<a href="listarPromocao.html">
-								<div class="main_title">
-									<p>Até 25%</p>
-								</div>
-								<img src="../images/home/ticket (1).jpg" alt="logo" width="100%"
-									style="margin-bottom: 30px;">
-							</a>
-						</div>
-
-						<div class="col-sm-3 col-xs-6">
-							<a href="#">
-								<div class="main_title">
-									<p>Até 50%</p>
-								</div>
-								<img src="../images/home/ticket (1).jpg" alt="logo" width="100%"
-									style="margin-bottom: 30px;">
-							</a>
-						</div>
-
-						<div class="col-sm-3 col-xs-6">
-							<a href="#">
-								<div class="main_title">
-									<p>Até 75%</p>
-								</div>
-								<img src="../images/home/ticket (1).jpg" alt="logo" width="100%"
-									style="margin-bottom: 30px;">
-							</a>
-						</div>
-
-						<div class="col-sm-3 col-xs-6">
-							<a href="#">
-								<div class="main_title">
-									<p>Até 100%</p>
-								</div>
-								<img src="../images/home/ticket (1).jpg" alt="logo" width="100%"
-									style="margin-bottom: 30px;">
-							</a>
-						</div>
-
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>
+										Id
+									</th>
+									<th>
+										Token
+									</th>
+									<th>
+										ValidadePromo
+									</th>
+									<th>
+										Motivo
+									</th>
+								</tr>
+							</thead>
+							<tbody id="listagem-promocao">
+							</tbody>
+						</table>
 					</div>
 
 
-
-
-
-
+					<div class="container-login100-form-btn m-t-17">
+						<button class="login100-form-btn" onclick="Voltar()">
+							Voltar
+						</button>
+					</div>
 
 					<div class="w-full text-center p-t-55">
 						<span class="txt2">
-							Ainda não possui um usuario?
+							Deseja retornar?
 						</span>
 
-						<a href="cadastroUsuario.html" class="txt2 bo1">
-							Cadastrar-se
+						<a href="#" class="txt2 bo1">
+							Voltar
 						</a>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
-
-
 
 
 	<!--===============================================================================================-->
@@ -134,7 +106,10 @@
 	<script src="../vendor/countdowntime/countdowntime.js"></script>
 	<!--===============================================================================================-->
 	<script src="../js/main.js"></script>
-	<script src="../app/Usuario/criarUsuario.js"></script>
+
+
+	<script src="../app/Usuario/listarpromo.js"></script>
+	
 
 </body>
 

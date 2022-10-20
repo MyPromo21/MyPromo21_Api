@@ -78,6 +78,17 @@ namespace MyPromo21_Api.Controllers
             return Ok("Servico não encontrado!");
         }
 
+        [HttpDelete]
+        public IActionResult DeleteServico(int id)
+        {
+
+            var result = _servicoRepository.DeleteServico(id);
+
+            if (result) return Ok("Promoção excluída com sucesso!");
+
+            return Ok("Não foi possível excluir a promoção!");
+        }
+
         //[HttpPut]
         //public IActionResult UpdateServico(UpdateServicoViewModel servico)
         //{

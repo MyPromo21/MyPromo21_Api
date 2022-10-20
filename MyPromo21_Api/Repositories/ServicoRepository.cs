@@ -97,7 +97,7 @@ namespace MyPromo21_Api.Repositories
 
             return servico;
         }
-        public bool DeleteServico(DeleteServicoViewModel servico)
+        public bool DeleteServico(int id)
         {
             var result = false;
 
@@ -105,13 +105,13 @@ namespace MyPromo21_Api.Repositories
             {
                 using (_conexaoBanco)
                 {
-                    var query = "delete from Servico where Id = @id";
-                    var parameters = new { servico.Id };
-                    _conexaoBanco.Query(query,parameters);
+                    var query = "delete from Promocao where Id = @id";
+                    var parameters = new { id };
+                    _conexaoBanco.Query(query, parameters);
                     result = true;
-                }
+                };
             }
-            catch (SqlException)
+            catch (SqlException e)
             {
                 result = false;
             }
