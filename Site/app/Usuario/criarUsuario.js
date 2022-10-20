@@ -36,7 +36,7 @@ async function SalvarUsuario() {
 
     console.log(createUsuarioViewModel);
 
-    let response =   EnviarApi(createUsuarioViewModel);
+    let response =  await EnviarApi(createUsuarioViewModel);
     console.log(response);
 }
 
@@ -52,7 +52,7 @@ async function EnviarApi(viewmodel) {
     };
 
     //TODO: mudar a url para o seu localhost.
-    const req =  fetch('https://localhost:44335/usuario/Create', options)
+    const req = await fetch('https://localhost:44335/usuario/Create', options)
         //caso a request dê certo, retornará a resposta;
         .then(response => {          
             return response.json()
