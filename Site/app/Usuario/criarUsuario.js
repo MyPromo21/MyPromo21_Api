@@ -36,7 +36,7 @@ async function SalvarUsuario() {
 
     console.log(createUsuarioViewModel);
 
-    let response =  await EnviarApi(createUsuarioViewModel);
+    let response =   EnviarApi(createUsuarioViewModel);
     console.log(response);
 }
 

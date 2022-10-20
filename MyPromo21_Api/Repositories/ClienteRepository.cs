@@ -13,7 +13,7 @@ namespace MyPromo21_Api.Repositories
     public class ClienteRepository
     {
         //Conexão Luiz
-        private readonly string _connection = @"Data Source=ITELABD13\SQLEXPRESS;Initial Catalog=mypromo;Integrated Security=True";
+        private readonly string _connection = @"Data Source=DESKTOP-88BTRFG\SQLEXPRESS;Initial Catalog=mypromo;Integrated Security=True";
 
         private SqlConnection _conexaoBanco
         {
