@@ -1,0 +1,52 @@
+/**
+* Pagination Styles
+*/
+
+.cr-pagination{
+    ul{
+        padding-left: 0;
+        margin-bottom: 0;
+        display: inline-block;
+        li{
+            list-style: none;
+            display: inline-block;
+            margin: 0 4px;
+            margin-top: 5px;
+
+            &:first-child{
+                margin-left: 0;
+                margin-right: 15px;
+            }
+            &:last-child{
+                margin-right: 0;
+                margin-left: 15px;
+            }
+
+            a{
+                height: 35px;
+                width: 35px;
+                line-height: 33px;
+                display: inline-block;
+                border: 1px solid #ebebeb;
+                border-radius: 100px;
+                font-family: $body-font;
+                font-weight: 700;
+                font-size: 14px;
+                color: $body-color;
+                &:hover{
+                    color: $theme-color;
+                    border-color: $theme-color;
+                }
+            }
+
+            &.is-active{
+                a{
+                    color: #ffffff;
+                    background: $theme-color;
+                    border-color: $theme-color;
+                }
+            }
+
+        }
+    }
+}

@@ -1,0 +1,234 @@
+/**
+* Header Styles
+*/
+
+.header{
+    z-index: 80;
+    .header-inner{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        .logo{
+            align-self: stretch;
+            display: flex;
+            align-items: center;
+        }
+        .bn-navigation{
+            flex-grow: 100;
+        }
+    }
+}
+
+.header-inner{
+    .social-icons{
+        padding-left: 30px;
+        ul{
+            li{
+                margin: 0;
+                a{
+                    color: #ffffff;
+                    padding: 10px 8px;
+                    display: inline-block;
+                }
+                &:first-child{
+                    a{
+                        padding-left: 0;
+                    }
+                }
+                &:last-child{
+                    a{
+                        padding-right: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.header-transparent{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    background: rgba(#121112, 0.8);
+    z-index: 81;
+}
+
+
+/* Sticky Header */
+.sticky-header{
+    &.is-sticky{
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        width: 100%;
+        z-index: 82;
+        animation: crSlideInDown 0.5s ease-out 0s 1 both;
+
+        &.header-transparent{
+            background: rgba(18, 17, 18, 0.95)
+        }
+    }
+}
+
+
+
+
+
+
+
+
+/* Header Style 2 */
+.header-style-2{
+    z-index: 80;
+    &.bg-dark{
+        background: #1f1f21 !important;
+    }
+    .header-inner{
+        .logo{
+            position: relative;
+            z-index: 1;
+            &::after{
+                content: "";
+                position: absolute;
+                left: auto;
+                right: -100px;
+                z-index: -1;
+                height: 100%;
+                top: 0;
+                width: 800px;
+                background: $theme-color;
+                transform: skewX(42deg);
+            }
+        }
+    }
+}
+
+@media #{$lg-layout}{
+    .header-style-2{
+        .header-inner{
+            .logo::after{
+                right: -20px;
+            }
+            .social-icons{
+                padding-left: 15px;
+            } 
+        }
+    }
+}
+
+@media #{$md-layout}{
+    .header-transparent{
+        position: relative;
+        background: #333333;
+    }
+}
+
+@media #{$sm-layout}{
+    .header-transparent{
+        position: relative;
+        background: #333333;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Mobile Menu Style */
+.mobile-menu{
+    @include clearfix();
+    .social-icons{
+        position: absolute;
+        top: 15px;
+        right: 0;
+        width: auto;
+        z-index: 100;
+        ul{
+            li{
+                margin: 0;
+                a{
+                    color: #ffffff;
+                    padding: 10px 8px;
+                    display: inline-block;
+                }
+                &:first-child{
+                    a{
+                        padding-left: 0;
+                    }
+                }
+                &:last-child{
+                    a{
+                        padding-right: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media #{$md-layout}{
+    .mean-container a.meanmenu-reveal{
+		left: 0 !important;	
+		right: auto;
+	}
+	.mobile-menu a.logo{
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
+
+@media #{$sm-layout}{
+    .mean-container a.meanmenu-reveal{
+		left: 0 !important;	
+		right: auto;
+	}
+	.mobile-menu a.logo{
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
+
+@media #{$xs-layout}{
+    .mean-container a.meanmenu-reveal{
+		right: 0 !important;	
+		left: auto !important;
+	}
+	.mobile-menu a.logo{
+		left: 0;
+		transform: translateX(0)
+    }
+    .mobile-menu{
+        .social-icons{
+            position: relative;
+            top: 0;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            padding: 5px 0;
+        }
+    }
+    .sticky-header.is-sticky{
+        .mobile-menu{
+            .social-icons{
+                display: none;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+

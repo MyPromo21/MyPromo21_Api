@@ -1,0 +1,148 @@
+/**
+* Brand Logos
+*/
+
+.brand-logos{
+    display: flex;
+    flex-wrap: wrap;
+    border-top: 1px solid #dddddd;
+    border-left: 1px solid #dddddd;
+    .brand-logo{
+        border-bottom: 1px solid #dddddd;
+        border-right: 1px solid #dddddd;
+        flex: 0 0 20%;
+        max-width: 20%;
+        text-align: center;
+        display: inline-block;
+        align-self: stretch;
+        padding: 60px 20px;
+        background: transparent;
+        transition: 0.4s ease-out 0s;
+        max-height: 200px;
+        &:hover{
+            background: rgba(#000000, 0.1);
+        }
+    }
+}
+
+@media #{$md-layout}{
+    .brand-logos .brand-logo{
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+}
+
+@media #{$sm-layout}{
+    .brand-logos .brand-logo{
+        flex: 0 0 33.33%;
+        max-width: 33.33%;
+        padding: 30px 20px;
+    }
+}
+
+@media #{$xs-layout}{
+    .brand-logos .brand-logo{
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding: 30px 20px;
+    }
+}
+
+
+/* Brand Logo 2 */
+.brand-logos-slider{
+    position: relative;
+
+    .brand-logo{
+        text-align: center;
+        a{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            transition: 0.4s ease-out 0s;
+            min-height: 180px;
+            max-height: 180px;
+            &:hover{
+                background: #f3f3f3;
+            }
+        }
+    }
+
+    .cr-navigation{
+        position: absolute;
+        top: 50%;
+        margin-top: -20px;
+        height: 40px;
+        width: 40px;
+        display: inline-block;
+        border-radius: 3px;
+        background: transparent;
+        border: 1px solid $heading-color;
+        font-size: 22px;
+        text-align: center;
+        padding: 6px 0;
+        color: $heading-color;
+        z-index: 2;
+        cursor: pointer;
+        transition: all 0.4s ease-out 0s;
+        visibility: hidden;
+        opacity: 0;
+
+        &:hover{
+            background: $theme-color;
+            border-color: $theme-color;
+            color: #ffffff;
+        }
+
+        &.cr-navigation-prev{
+            left: auto;
+            right: 100%;
+        }
+
+        &.cr-navigation-next{
+            left: 100%;
+            right: auto;
+        }
+
+    }
+    
+    &:hover{
+        .cr-navigation{
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+
+@media #{$md-layout}{
+    .brand-logos-slider{
+        .cr-navigation{
+            &.cr-navigation-prev{
+                left: 0;
+                right: auto;
+            }
+    
+            &.cr-navigation-next{
+                left: auto;
+                right: 0;
+            }
+        }
+    }
+}
+
+@media #{$sm-layout}{
+    .brand-logos-slider{
+        .cr-navigation{
+            &.cr-navigation-prev{
+                left: 0;
+                right: auto;
+            }
+    
+            &.cr-navigation-next{
+                left: auto;
+                right: 0;
+            }
+        }
+    }
+}
