@@ -906,14 +906,14 @@ blockquote {
 
 /* Background Image */
 .bg-image-1 {
-  background-image: url(images/bg/bg-image-1.jpg);
+  background-image: url(images/bg/bg-image-1.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
 }
 
 .bg-image-2 {
-  background-image: url(images/bg/bg-image-2.jpg);
+  background-image: url(images/bg/bg-image-2.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
