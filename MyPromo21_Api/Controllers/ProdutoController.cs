@@ -24,7 +24,6 @@ namespace MyPromo21_Api.Controllers
         [HttpPost]
         public IActionResult CreateProduto(ProdutoViewModel produto)
         {
-            if (produto.Produto == null) return Ok("Parâmetros informados incorretamente!");
 
             var result = _produtoRepository.CreateProduto(produto.Produto);
 
