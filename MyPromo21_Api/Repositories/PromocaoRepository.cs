@@ -125,46 +125,46 @@ namespace MyPromo21_Api.Repositories
 
             return promocoes;
         }
-        public ProdutoDto GetProduto(int id)
-        {
-            var produto = new ProdutoDto();
+        //public ProdutoDto GetProduto(int id)
+        //{
+        //    var produto = new ProdutoDto();
 
-            try
-            {
-                using (_conexaoBanco)
-                {
-                    var query = "select * from Produto where Id = @id";
-                    var parameters = new { id };
-                    produto = _conexaoBanco.QueryFirstOrDefault<ProdutoDto>(query,parameters);
-                }
-            }
-            catch (SqlException e)
-            {
-                produto = null;
-            }
+        //    try
+        //    {
+        //        using (_conexaoBanco)
+        //        {
+        //            var query = "select * from Produto where Id = @id";
+        //            var parameters = new { id };
+        //            produto = _conexaoBanco.QueryFirstOrDefault<ProdutoDto>(query,parameters);
+        //        }
+        //    }
+        //    catch (SqlException e)
+        //    {
+        //        produto = null;
+        //    }
 
-            return produto;
-        }
-        public Estabelecimento GetEstabelecimento(int id)
-        {
-            var estabelecimento = new Estabelecimento();
+        //    return produto;
+        //}
+        //public Estabelecimento GetEstabelecimento(int id)
+        //{
+        //    var estabelecimento = new Estabelecimento();
 
-            try
-            {
-                using (_conexaoBanco)
-                {
-                    var query = "select * from Estabelecimento where Id = @id";
-                    var parameters = new { id };
-                    estabelecimento = _conexaoBanco.QueryFirstOrDefault<Estabelecimento>(query,parameters);
-                }
-            }
-            catch (SqlException e)
-            {
-                estabelecimento = null;
-            }
+        //    try
+        //    {
+        //        using (_conexaoBanco)
+        //        {
+        //            var query = "select * from Estabelecimento where Id = @id";
+        //            var parameters = new { id };
+        //            estabelecimento = _conexaoBanco.QueryFirstOrDefault<Estabelecimento>(query,parameters);
+        //        }
+        //    }
+        //    catch (SqlException e)
+        //    {
+        //        estabelecimento = null;
+        //    }
 
-            return estabelecimento;
-        }
+        //    return estabelecimento;
+        //}
         public List<PromocaoDto> CarregarInicio()
         {
             var promocoes = new List<PromocaoDto>();
@@ -190,7 +190,7 @@ namespace MyPromo21_Api.Repositories
             PromocaoDto promocaoEncontrada;
             try
             {
-                var query = @$"SELECT * FROM Promocao where IdEstabelecimento = {id} ";
+                var query = @$"SELECT * FROM Promocao where Id = {id} ";
 
                 using (var connection = new SqlConnection(_connection))
                 {
