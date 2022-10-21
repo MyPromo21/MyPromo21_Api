@@ -51,13 +51,13 @@ async function PreencherTabelaPromos(resposta, limpar){
         });
     }
 }
-async function ListarPromos(){  
+async function ListarPromos(id){  
     
     const options = {
         method: 'GET',  
         headers:{'content-type': 'application/json'}                     
     };    
-    const req =  fetch('https://localhost:44335/promocao/ReadAll', options )
+    const req = await fetch('https://localhost:44335/promocao/ListaDePromocoesPorId?id=' + id, options)
         .then(response => {                
             return response.json();
         })     
@@ -67,6 +67,7 @@ async function ListarPromos(){
         });
     return req;
 }
+
 
 
 
@@ -96,8 +97,13 @@ async function ListarUsuariosUsandoCriterio(criterio){
         });
     return req;
 }
+
+
 //inicia a listagem.
 (async() => {
-    let res = await ListarPromos();
+    const urlParams = new URLSearchParams(window.location.search);
+    let res = await ListarPromos(2);
     PreencherTabelaPromos(res, false);    
 })();
+
+

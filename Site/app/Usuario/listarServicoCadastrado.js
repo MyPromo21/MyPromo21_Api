@@ -114,13 +114,7 @@ async function ListarUsuariosUsandoCriterio(criterio) {
     return req;
 }
 //inicia a listagem.
-(async () => {
 
-    const urlParams = new URLSearchParams(window.location.search);
-    let res = await ListarServicos(urlParams.get('id'));
-    PreencherTabelaServicos(res, false);
-
-})();
 
 
 async function RemoverServico(id) {
@@ -146,3 +140,12 @@ async function RemoverServico(id) {
     }
     
 }
+
+
+(async () => {
+
+    const urlParams = new URLSearchParams(window.location.search);
+    let res = await ListarServicos(urlParams.get('id'));
+    PreencherTabelaServicos(res, false);
+
+})();

@@ -41,8 +41,6 @@
 						Dados da promoção
 					</span>
 
-					<!--id do usuario apos validação ...-->
-
 					<div class="card-body p-5 text-start">
 						<div class="mb-md-5 mt-md-4 pb-5" id="form">
 
@@ -57,13 +55,21 @@
 							<div class="form-outline form-white mb-4">
 								<label for="validadePromo">ValidadePromo</label>
 								<input type="text" class="form-control" id="validadePromo" placeholder="validadePromo"
-									value="" disabled="" />
+									value="" />
 							</div>
 
 							<div class="form-outline form-white mb-4">
 								<label for="motivo">Motivo</label>
-								<input type="text" class="form-control" id="motivo" placeholder="motivo" value=""
-									disabled="" />
+								<input type="text" class="form-control" id="motivo" placeholder="motivo" value="" />
+							</div>
+
+							<div class="form-outline form-white mb-4">
+								<input type="button" class="form-control btn btn-primary" value="Atualizar Dados"
+									onclick="Atualizar()" />
+							</div>
+							<div class="form-outline form-white mb-4">
+								<input type="button" class="form-control btn btn-primary" value="Remover Cumpom"
+									onclick="Remover()" />
 							</div>
 
 
@@ -75,7 +81,7 @@
 					<span class="login100-form-title p-b-53">
 						Listagem de produtos
 					</span>
-					<div class="container">						
+					<div class="container">
 						<table class="table table-bordered">
 							<thead>
 								<tr>
@@ -105,7 +111,7 @@
 					<span class="login100-form-title p-b-53">
 						Listagem de servicos
 					</span>
-					<div class="container">						
+					<div class="container">
 						<table class="table table-bordered">
 							<thead>
 								<tr>

@@ -190,7 +190,7 @@ namespace MyPromo21_Api.Repositories
             PromocaoDto promocaoEncontrada;
             try
             {
-                var query = @$"SELECT * FROM Promocao where Id = {id} ";
+                var query = @$"SELECT * FROM Promocao where IdEstabelecimento = {id} ";
 
                 using (var connection = new SqlConnection(_connection))
                 {
@@ -246,6 +246,28 @@ namespace MyPromo21_Api.Repositories
                 }
             }
             catch (SqlException e)
+            {
+                promocoes = null;
+            }
+
+            return promocoes;
+        }
+
+
+        public List<PromocaoDto> PromocaoPorIdRetornandoLista(int id)
+        {
+            var promocoes = new List<PromocaoDto>();
+
+            try
+            {
+                using (_conexaoBanco)
+                {
+                    var query = @$"SELECT * FROM promocao where IdEstabelecimento = {id} ";
+
+                    promocoes = _conexaoBanco.Query<PromocaoDto>(query).ToList();
+                }
+            }
+            catch (SqlException)
             {
                 promocoes = null;
             }

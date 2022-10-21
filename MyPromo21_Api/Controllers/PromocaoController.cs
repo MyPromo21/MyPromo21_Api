@@ -108,5 +108,16 @@ namespace MyPromo21_Api.Controllers
             return Ok("Não foi possível localizar nenhum registro com o desconto informado!");
         }
 
+        [HttpGet]
+        public IActionResult ListaDePromocoesPorId(int id)
+        {
+
+            var promocoes = _promocaoRepository.PromocaoPorIdRetornandoLista(id);
+
+            if (promocoes != null) return Ok(promocoes);
+
+            return Ok("Nada registrado!");
+        }
+
     }
 }
