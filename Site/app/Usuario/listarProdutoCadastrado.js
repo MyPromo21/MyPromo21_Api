@@ -67,6 +67,10 @@ async function PreencherTabelaProdutos(resposta, limpar) {
 
             linha.appendChild(divremoverproduto);
 
+            divremoverproduto.addEventListener('click', () => {
+                RemoverProduto(e.id);
+            });
+
 
             tabela.appendChild(linha);
 
@@ -95,7 +99,29 @@ async function ListarProdutos(id) {
 
 
 
+async function RemoverProduto(id) {
 
+    const options = {
+        method: 'DELETE',
+        headers: { 'content-type': 'application/json' }
+    };
+    const req = await fetch('https://localhost:44335/produto/DeleteProduto?id=' + id, options)
+        .then(response => {
+            return response.json();
+        })
+        .catch(erro => {
+            console.log(erro);
+            return erro;
+        });
+    if (req.sucesso) {
+        alert(req.mensagem);
+        Voltar();
+    }
+    else {
+        document.location.reload(true);
+    }
+    
+}
 
 
 function Voltar() {

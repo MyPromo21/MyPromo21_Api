@@ -78,7 +78,16 @@ namespace MyPromo21_Api.Controllers
             return Ok("Produto não encontrado!");
         }
 
-      
+        [HttpDelete]
+        public IActionResult DeleteProduto(int id)
+        {
+
+            var result = _produtoRepository.DeleteProduto(id);
+
+            if (result) return Ok("Produto excluído com sucesso!");
+
+            return Ok("Não foi possível excluir a promoção!");
+        }
 
         //[HttpPut]
         //public IActionResult UpdateProduto(UpdateProdutoViewlModel produto)

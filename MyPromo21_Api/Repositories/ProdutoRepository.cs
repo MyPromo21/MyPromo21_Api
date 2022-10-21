@@ -108,27 +108,27 @@ namespace MyPromo21_Api.Repositories
             }
             return produto;
         }
-        //public bool DeleteProduto(ProdutoDeleteViewModel IdProduto)
-        //{
-        //    var result = false;
+        public bool DeleteProduto(int id)
+        {
+            var result = false;
 
-        //    try
-        //    {
-        //        using (_conexaoBanco)
-        //        {
-        //            var query = "delete from Produto where Id = @Id";
-        //            var parameters = new { IdProduto.Id };
-        //            _conexaoBanco.Query(query,parameters);
-        //            result = true;
-        //        }
-        //    }
-        //    catch (SqlException e)
-        //    {
-        //        result = false;
-        //    }
+            try
+            {
+                using (_conexaoBanco)
+                {
+                    var query = "delete from produto where Id = @id";
+                    var parameters = new { id };
+                    _conexaoBanco.Query(query, parameters);
+                    result = true;
+                };
+            }
+            catch (SqlException e)
+            {
+                result = false;
+            }
 
-        //    return result;
-        //}
+            return result;
+        }
         public List<ProdutoDto> GetAll()
         {
             var produtos = new List<ProdutoDto>();

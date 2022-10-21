@@ -96,8 +96,12 @@ async function ListarUsuariosUsandoCriterio(criterio){
         });
     return req;
 }
+
+
 //inicia a listagem.
 (async() => {
     let res = await ListarPromos();
     PreencherTabelaPromos(res, false);    
 })();
+
+

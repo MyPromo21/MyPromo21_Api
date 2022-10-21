@@ -1,72 +1,65 @@
-async function PreencherTabelaServicos(resposta, limpar){
-    
-    let tabela = document.querySelector('#listagem-servico');    
+async function PreencherTabelaServicos(resposta, limpar) {
 
-    if(limpar)
+    let tabela = document.querySelector('#listagem-servico');
+
+    if (limpar)
         tabela.innerHTML = '';
 
-    if(!resposta)
+    if (!resposta)
         alert(resposta);
-    else if(resposta.length == 0){
+    else if (resposta.length == 0) {
         tabela.innerHTML = 'Não há registros para exibir.';
     }
     else {
-        resposta.forEach(function(e) {
+        resposta.forEach(function (e) {
             let linha = document.createElement('tr');
+
             
-            linha.addEventListener('click', ()=> {            
-                window.location.href = "./alterarUsuario.html?id=" + e.id;
-            });
-            
-            
+
+
             let idInput = document.createElement('td');
             idInput.classList.add('row-id-servico');
-            
-            let idPromocaoTd = document.createElement('td');
-            idPromocaoTd.classList.add('row-idPromocao-servico');
 
             let descricaoTd = document.createElement('td');
             descricaoTd.classList.add('row-descricao-servico');
 
             let precoTd = document.createElement('td');
-            precoTd.classList.add('row-preco-servico');
+            precoTd.classList.add('row-preco-servico');           
 
 
-            
-                        
+
+
             idInput.innerHTML = e.id;
-            idPromocaoTd.innerHTML = e.idPromocao;
             descricaoTd.innerHTML = e.descricao;
             precoTd.innerHTML = e.preco;
 
 
-    
-            linha.appendChild(idInput);
-            linha.appendChild(idPromocaoTd);
-            linha.appendChild(descricaoTd);
-            linha.appendChild(precoTd); 
 
-            
-            
-            
+            linha.appendChild(idInput);
+            linha.appendChild(descricaoTd);
+            linha.appendChild(precoTd);
+
+
+
+
             tabela.appendChild(linha);
 
-            return linha;         
+            return linha;
 
-    
+
         });
     }
 }
-async function ListarServicos(){  
-    
+async function ListarServicos(id) {
+
     const options = {
-        method: 'GET',  
-        headers:{'content-type': 'application/json'}                     
-    };    
-    const req =  fetch('https://localhost:44335/servico/ReadAll', options )
-        .then(response => {                
+        method: 'GET',
+        headers: { 'content-type': 'application/json' }
+    };
+    const req = await fetch('https://localhost:44335/servico/ListaDeServicoPorId?id=' + id, options)
+        .then(response => {
             return response.json();
-        })     
+        })
         .catch(erro => {
             console.log(erro);
             return erro;
@@ -78,24 +71,24 @@ async function ListarServicos(){
 
 
 
-function Voltar(){
-    window.location.href = './index.html';   
+function Voltar() {
+    window.location.href = './index.html';
 }
-async function ListarPorCriterio(elemento){
+async function ListarPorCriterio(elemento) {
     let texto = elemento.value;
     let resposta = await ListarUsuariosUsandoCriterio(texto);
     PreencherTabelaUsuarios(resposta, true);
 }
-async function ListarUsuariosUsandoCriterio(criterio){  
-    
+async function ListarUsuariosUsandoCriterio(criterio) {
+
     const options = {
-        method: 'GET',  
-        headers:{'content-type': 'application/json'}                     
-    };    
-    const req =  await fetch('https://localhost:44335/servico/GetUsuario?login='+criterio, options )
-        .then(response => {              
+        method: 'GET',
+        headers: { 'content-type': 'application/json' }
+    };
+    const req = await fetch('https://localhost:44335/servico/GetUsuario?login=' + criterio, options)
+        .then(response => {
             return response.json();
-        })     
+        })
         .catch(erro => {
             console.log(erro);
             return erro;
@@ -103,7 +96,35 @@ async function ListarUsuariosUsandoCriterio(criterio){
     return req;
 }
 //inicia a listagem.
-(async() => {
-    let res = await ListarServicos();
-    PreencherTabelaServicos(res, false);    
+(async () => {
+
+    const urlParams = new URLSearchParams(window.location.search);
+    let res = await ListarServicos(urlParams.get('id'));
+    PreencherTabelaServicos(res, false);
+
 })();
+
+
+async function RemoverServico(id) {
+
+    const options = {
+        method: 'DELETE',
+        headers: { 'content-type': 'application/json' }
+    };
+    const req = await fetch('https://localhost:44335/servico/DeleteServico?id=' + id, options)
+        .then(response => {
+            return response.json();
+        })
+        .catch(erro => {
+            console.log(erro);
+            return erro;
+        });
+    if (req.sucesso) {
+        alert(req.mensagem);
+        Voltar();
+    }
+    else {
+        document.location.reload(true);
+    }
+    
+}

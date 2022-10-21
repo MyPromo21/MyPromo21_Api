@@ -6,33 +6,33 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="images/icons/logoico.ico" />
+	<link rel="icon" type="image/png" href="../images/icons/logoico.ico" />
 	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap.min.css">
 	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+	<link rel="stylesheet" type="text/css" href="../fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
 	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="../vendor/animate/animate.css">
 	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="../vendor/css-hamburgers/hamburgers.min.css">
 	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+	<link rel="stylesheet" type="text/css" href="../vendor/animsition/css/animsition.min.css">
 	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="../vendor/select2/select2.min.css">
 	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+	<link rel="stylesheet" type="text/css" href="../vendor/daterangepicker/daterangepicker.css">
 	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="../css/util.css">
+	<link rel="stylesheet" type="text/css" href="../css/main.css">
 	<!--===============================================================================================-->
-
-
 
 </head>
 
 <body>
+
+	
 
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
@@ -40,83 +40,89 @@
 				<form class="login100-form validate-form flex-sb flex-w" name="registrar-estabelecimento"
 					class="validate-form">
 					<span class="login100-form-title p-b-53">
-						Cadastrar um produto novo para esta promoção
+						Cadastrar um novo endereço para este estabelecimento
 					</span>
 
 					<!--id do usuario apos validação ...-->
-					<input type="hidden" id="idPromocao" value="2" />
+					<input type="hidden" id="idEstabelecimento" value="2" />
 
-					<div class="p-t-13 p-b-9">
+					<div class="p-t-31 p-b-9">
 						<span class="txt1">
-							Descrição
+							Estado
 						</span>
 					</div>
 					<div class="wrap-input100 validate-input" data-validate="Este campo é obrigatório">
-						<input class="input100" type="text" id="descricao" data-placeholder="Descricao">
+						<input class="input100" type="text" id="estado" data-placeholder="Estado">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="p-t-13 p-b-9">
 						<span class="txt1">
-							Preco
+							Cidade
 						</span>
 					</div>
 					<div class="wrap-input100 validate-input" data-validate="Este campo é obrigatório">
-						<input class="input100" type="text" id="preco" data-placeholder="Preco">
+						<input class="input100" type="text" id="cidade" data-placeholder="Cidade">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="p-t-13 p-b-9">
 						<span class="txt1">
-							Quantidade
-						</span>
-					</div>
-					<div class="wrap-input100" data-validate="Este campo é obrigatório">
-						<input class="input100" type="text" id="quantidade" data-placeholder="Quantidade">
-						<span class="focus-input100"></span>
-					</div>
-
-					<div class="p-t-13 p-b-9">
-						<span class="txt1">
-							O produto é perecível?
-						</span>
-					</div>
-					<div class="wrap-centralizar validate-input" data-validate="Este campo é obrigatório">
-						<select id="perecivel">
-							<option value="0" selected>Produto não perecível</option>
-							<option value="1">Produto perecível</option>
-						</select>
-					</div>
-
-					<div class="p-t-13 p-b-9" id="inputOculto">
-						<span class="txt1">
-							Data de validade do produto, caso não tenha validade pode ficar em branco!
-						</span>
-
-						<div class="wrap-input100 validate-input" data-validate="Este campo é obrigatório">
-							<input class="input100" type="date" id="validadeProduto"
-								data-placeholder="Validade do Produto">
-							<span class="focus-input100"></span>
-						</div>
-					</div>
-
-
-					<div class="p-t-13 p-b-9">
-						<span class="txt1">
-							Link da imagem no google
+							Bairro
 						</span>
 					</div>
 					<div class="wrap-input100 validate-input" data-validate="Este campo é obrigatório">
-						<input class="input100" type="text" id="linkImagem" data-placeholder="Link da Imagem">
+						<input class="input100" type="text" id="bairro" data-placeholder="Bairro">
 						<span class="focus-input100"></span>
 					</div>
+
+					<div class="p-t-13 p-b-9">
+						<span class="txt1">
+							Rua
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Este campo é obrigatório">
+						<input class="input100" type="text" id="rua" data-placeholder="Rua">
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="p-t-13 p-b-9">
+						<span class="txt1">
+							Numero
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Este campo é obrigatório">
+						<input class="input100" type="text" id="numero" data-placeholder="Numero">
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="p-t-13 p-b-9">
+						<span class="txt1">
+							Complemento
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Este campo é obrigatório">
+						<input class="input100" type="text" id="complemento" data-placeholder="Complemento">
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="p-t-13 p-b-9">
+						<span class="txt1">
+							Cep
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Este campo é obrigatório">
+						<input class="input100" type="text" id="cep" data-placeholder="Cep">
+						<span class="focus-input100"></span>
+					</div>
+
 
 
 
 
 					<div class="container-login100-form-btn m-t-17">
-						<button class="login100-form-btn" onclick="SalvarProduto()">
-							Cadastrar produto
+						<button class="login100-form-btn" onclick="SalvarEndereco()">
+							Cadastrar endereço
 						</button>
 					</div>
 
@@ -136,35 +142,24 @@
 
 
 	<!--===============================================================================================-->
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="../vendor/jquery/jquery-3.2.1.min.js"></script>
 	<!--===============================================================================================-->
-	<script src="vendor/animsition/js/animsition.min.js"></script>
+	<script src="../vendor/animsition/js/animsition.min.js"></script>
 	<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../vendor/bootstrap/js/popper.js"></script>
+	<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 	<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
+	<script src="../vendor/select2/select2.min.js"></script>
 	<!--===============================================================================================-->
-	<script src="vendor/daterangepicker/moment.min.js"></script>
-	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+	<script src="../vendor/daterangepicker/moment.min.js"></script>
+	<script src="../vendor/daterangepicker/daterangepicker.js"></script>
 	<!--===============================================================================================-->
-	<script src="vendor/countdowntime/countdowntime.js"></script>
+	<script src="../vendor/countdowntime/countdowntime.js"></script>
 	<!--===============================================================================================-->
-	<script src="js/main.js"></script>
-	<script src="app/Usuario/cadastroProduto.js"></script>
+	<script src="../js/main.js"></script>
 
-	<script>
-		$(document).ready(function () {
-			$('#inputOculto').hide();
-			$('#perecivel').change(function () {
-				if ($('#perecivel').val() == '1') {
-					$('#inputOculto').show();
-				} else {
-					$('#inputOculto').hide();
-				}
-			});
-		});
-	</script>
+
+	<script src="../app/Usuario/cadastroEndereco.js"></script>
 
 </body>
 
