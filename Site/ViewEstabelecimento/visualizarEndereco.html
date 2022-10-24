@@ -36,55 +36,149 @@
 		<a href="index.html"><img src="../images/icons/logo.png" alt="" class="logo"></a>
 		<div class="header-right">
 			<a href="index.html">Home</a>
-			<a href="cadastroCliente.html">Perfil</a>
 			<a href="../index.html">Log-Out</a>
 		</div>
 	</div>
-	
+
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('../images/bg-01.jpg');">
 			<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
 				<form class="login100-form validate-form flex-sb flex-w" name="registrar-estabelecimento"
 					class="validate-form">
 					<span class="login100-form-title p-b-53">
-						Listagem de promoções
+						Dados do endereço
 					</span>
 
-					
+					<div class="card-body p-5 text-start">
+						<div class="mb-md-5 mt-md-4 pb-5" id="form">
 
-					<div class="container">
-						<div class="input-group mb-3" id="filtros">
-							<input type="text" class="form-control" id="texto-busca"
-								placeholder="Insira um texto para buscar" oninput="ListarPorCriterio(this)" />
+							<!--id do usuario apos validação ...-->
+							<input type="hidden" id="idEstabelecimento" value="2" />
+
+							<div class="p-t-31 p-b-9">
+								<span class="txt1">
+									Estado
+								</span>
+							</div>
+							<div class="wrap-input100 validate-input" data-validate="Este campo é obrigatório">
+								<input class="input100" type="text" id="estado" data-placeholder="Estado">
+								<span class="focus-input100"></span>
+							</div>
+
+							<div class="p-t-13 p-b-9">
+								<span class="txt1">
+									Cidade
+								</span>
+							</div>
+							<div class="wrap-input100 validate-input" data-validate="Este campo é obrigatório">
+								<input class="input100" type="text" id="cidade" data-placeholder="Cidade">
+								<span class="focus-input100"></span>
+							</div>
+
+							<div class="p-t-13 p-b-9">
+								<span class="txt1">
+									Bairro
+								</span>
+							</div>
+							<div class="wrap-input100 validate-input" data-validate="Este campo é obrigatório">
+								<input class="input100" type="text" id="bairro" data-placeholder="Bairro">
+								<span class="focus-input100"></span>
+							</div>
+
+							<div class="p-t-13 p-b-9">
+								<span class="txt1">
+									Rua
+								</span>
+							</div>
+							<div class="wrap-input100 validate-input" data-validate="Este campo é obrigatório">
+								<input class="input100" type="text" id="rua" data-placeholder="Rua">
+								<span class="focus-input100"></span>
+							</div>
+
+							<div class="p-t-13 p-b-9">
+								<span class="txt1">
+									Numero
+								</span>
+							</div>
+							<div class="wrap-input100 validate-input" data-validate="Este campo é obrigatório">
+								<input class="input100" type="text" id="numero" data-placeholder="Numero">
+								<span class="focus-input100"></span>
+							</div>
+
+							<div class="p-t-13 p-b-9">
+								<span class="txt1">
+									Complemento
+								</span>
+							</div>
+							<div class="wrap-input100 validate-input" data-validate="Este campo é obrigatório">
+								<input class="input100" type="text" id="complemento" data-placeholder="Complemento">
+								<span class="focus-input100"></span>
+							</div>
+
+							<div class="p-t-13 p-b-9">
+								<span class="txt1">
+									Cep
+								</span>
+							</div>
+							<div class="wrap-input100 validate-input" data-validate="Este campo é obrigatório">
+								<input class="input100" type="text" id="cep" data-placeholder="Cep">
+								<span class="focus-input100"></span>
+							</div>
+
+							<div class="form-outline form-white mb-4">
+								<input type="button" class="form-control btn btn-primary" value="Atualizar Dados"
+									onclick="Atualizar()" />
+							</div>
+							<div class="form-outline form-white mb-4">
+								<input type="button" class="form-control btn btn-primary" value="Remover Endereço"
+									onclick="Remover()" />
+							</div>
+
+
 						</div>
-						<table class="table table-bordered">
-							<thead>
-								<tr>
-									<th>
-										Id
-									</th>
-									<th>
-										Token
-									</th>
-									<th>
-										Motivo
-									</th>
-									<th>
-										Desconto
-									</th>
-								</tr>
-							</thead>
-							<tbody id="listagem-promocao">
-							</tbody>
-						</table>
 					</div>
-
 
 					<div class="container-login100-form-btn m-t-17">
-						<button class="login100-form-btn" onclick="Voltar()">
-							Voltar
-						</button>
+						<a class="login100-form-btn" href="cadastroPromocao.html">Cadastrar um novo cupom</a>
 					</div>
+
+					<form class="login100-form validate-form flex-sb flex-w" name="registrar-estabelecimento"
+						class="validate-form">
+						<span class="login100-form-title p-b-53">
+							Listagem de cupons deste endereço
+						</span>
+
+						<div class="container">
+							<div class="input-group mb-3" id="filtros">
+								<input type="text" class="form-control" id="texto-busca"
+									placeholder="Insira um texto para buscar" oninput="ListarPorCriterio(this)" />
+							</div>
+							<table class="table table-bordered">
+
+								<input type="hidden" id="idEstabelecimento" value='3' />
+
+								<thead>
+									<tr>
+										<th>
+											Id
+										</th>
+										<th>
+											Token
+										</th>
+										<th>
+											ValidadePromo
+										</th>
+										<th>
+											Motivo
+										</th>
+									</tr>
+								</thead>
+								<tbody id="listagem-promocao">
+								</tbody>
+							</table>
+						</div>
+					</form>
+
 
 					<div class="w-full text-center p-t-55">
 						<span class="txt2">
@@ -118,9 +212,9 @@
 	<!--===============================================================================================-->
 	<script src="../js/main.js"></script>
 
+	<script src="../app/Usuario/alterarEndereco.js"></script>
+	<script src="../app/Usuario/listarpromo.js"></script>
 
-	<script src="../app/Usuario/listarPromoUsuario.js"></script>
-	
 
 </body>
 

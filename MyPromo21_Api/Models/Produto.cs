@@ -12,7 +12,7 @@ namespace MyPromo21_Api.Models
 		public float Preco { get; set; }
 		public int Quantidade { get; set; }
 		public int Perecivel { get; set; }
-		public DateTime ValidadeProduto { get; set; }
+		public DateTime? ValidadeProduto { get; set; }
 		public string LinkImagem { get; set; }
 
 	}

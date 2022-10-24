@@ -1,66 +1,73 @@
-async function PreencherTabelaPromos(resposta, limpar){
-    
-    let tabela = document.querySelector('#listagem-promocao');    
+async function PreencherTabelaPromos(resposta, limpar) {
 
-    if(limpar)
+    let tabela = document.querySelector('#listagem-promocao');
+
+    if (limpar)
         tabela.innerHTML = '';
 
-    if(!resposta)
+    if (!resposta)
         alert(resposta);
-    else if(resposta.length == 0){
+    else if (resposta.length == 0) {
         tabela.innerHTML = 'Não há registros para exibir.';
     }
     else {
-        resposta.forEach(function(e) {
+        resposta.forEach(function (e) {
             let linha = document.createElement('tr');
-            
-            linha.addEventListener('click', ()=> {            
+
+            linha.addEventListener('click', () => {
                 window.location.href = "./visualizarPromocao.html?id=" + e.id;
             });
-            
-            
+
+
             let idInput = document.createElement('td');
             idInput.classList.add('row-id-promocao');
 
             let tokenTd = document.createElement('td');
             tokenTd.classList.add('row-token-promocao');
 
-            let validadepromoTd = document.createElement('td');
-            validadepromoTd.classList.add('row-validadepromo-promocao');
-
             let motivoTd = document.createElement('td');
             motivoTd.classList.add('row-motivo-promocao');
 
-            
-                        
+            let descontoTd = document.createElement('td');
+            descontoTd.classList.add('row-desconto-promocao');
+
+
+
+
+
             idInput.innerHTML = e.id;
             tokenTd.innerHTML = e.token;
-            validadepromoTd.innerHTML = e.validadepromo;
+
             motivoTd.innerHTML = e.motivo;
-    
+
+            descontoTd.innerHTML = e.desconto;
+
             linha.appendChild(idInput);
             linha.appendChild(tokenTd);
-            linha.appendChild(validadepromoTd);     
-            linha.appendChild(motivoTd);                 
-            
+
+            linha.appendChild(motivoTd);
+
+            linha.appendChild(descontoTd);
+
+
             tabela.appendChild(linha);
 
-            return linha;         
+            return linha;
 
-    
+
         });
     }
 }
-async function ListarPromos(){  
-    
+async function ListarPromos(valorDesconto) {
+
     const options = {
-        method: 'GET',  
-        headers:{'content-type': 'application/json'}                     
-    };    
-    const req =  fetch('https://localhost:44335/promocao/CarregarInicio', options )
-        .then(response => {                
+        method: 'GET',
+        headers: { 'content-type': 'application/json' }
+    };
+    const req = await fetch('https://localhost:44335/promocao/CarregarInicio?Desconto=' + valorDesconto, options)
+        .then(response => {
             return response.json();
-        })     
+        })
         .catch(erro => {
             console.log(erro);
             return erro;
@@ -72,24 +79,24 @@ async function ListarPromos(){
 
 
 
-function Voltar(){
-    window.location.href = './index.html';   
+function Voltar() {
+    window.location.href = './index.html';
 }
-async function ListarPorCriterio(elemento){
+async function ListarPorCriterio(elemento) {
     let texto = elemento.value;
     let resposta = await ListarUsuariosUsandoCriterio(texto);
     PreencherTabelaUsuarios(resposta, true);
 }
-async function ListarUsuariosUsandoCriterio(criterio){  
-    
+async function ListarUsuariosUsandoCriterio(criterio) {
+
     const options = {
-        method: 'GET',  
-        headers:{'content-type': 'application/json'}                     
-    };    
-    const req =  await fetch('https://localhost:44335/promocao/GetPromocaoByID?id='+criterio, options )
-        .then(response => {              
+        method: 'GET',
+        headers: { 'content-type': 'application/json' }
+    };
+    const req = await fetch('https://localhost:44335/promocao/GetPromocaoByID?id=' + criterio, options)
+        .then(response => {
             return response.json();
-        })     
+        })
         .catch(erro => {
             console.log(erro);
             return erro;
@@ -99,9 +106,10 @@ async function ListarUsuariosUsandoCriterio(criterio){
 
 
 //inicia a listagem.
-(async() => {
-    let res = await ListarPromos();
-    PreencherTabelaPromos(res, false);    
+(async () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    let res = await ListarPromos(urlParams.get('valorDesconto'));
+    PreencherTabelaPromos(res, false);
 })();
 
 

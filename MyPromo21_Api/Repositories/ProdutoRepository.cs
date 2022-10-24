@@ -219,5 +219,32 @@ namespace MyPromo21_Api.Repositories
             return produtos;
         }
 
+        
+        public SomaProdutoDto SomaDoValorProdutos(int id)
+        {
+            SomaProdutoDto SomaValor;
+            try
+            {
+                var query = @$"SELECT SUM(Preco) FROM Produto where IdPromocao = {id} ";
+
+                using (var connection = new SqlConnection(_connection))
+                {
+                    var parametros = new
+                    {
+                        id
+                    };
+                    SomaValor = connection.QueryFirstOrDefault<SomaProdutoDto>(query, parametros);
+                }
+                return SomaValor;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro: " + ex.Message);
+                return null;
+            }
+        }
+
+
+
     }
 }

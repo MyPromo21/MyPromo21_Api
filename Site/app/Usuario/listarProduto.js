@@ -29,10 +29,17 @@ async function PreencherTabelaProdutos(resposta, limpar) {
             precoTd.classList.add('row-preco-produto');
 
             let quantidadeTd = document.createElement('td');
-            quantidadeTd.classList.add('row-quantidade-produto');          
+            quantidadeTd.classList.add('row-quantidade-produto');
 
 
-           
+
+
+            // inputremoverproduto.addEventListener('click', () => {
+            //     window.location.href = "./alterarUsuario.html?id=" + e.id;
+            // });
+
+
+
 
 
             idInput.innerHTML = e.id;
@@ -45,7 +52,8 @@ async function PreencherTabelaProdutos(resposta, limpar) {
             linha.appendChild(idInput);
             linha.appendChild(descricaoTd);
             linha.appendChild(precoTd);
-            linha.appendChild(quantidadeTd);           
+            linha.appendChild(quantidadeTd);
+
 
 
             tabela.appendChild(linha);
@@ -56,6 +64,43 @@ async function PreencherTabelaProdutos(resposta, limpar) {
         });
     }
 }
+
+async function PreencherTabelaSomaValor(soma, limpar) {
+
+    let tabela = document.querySelector('#listagem-somavalor');
+
+    if (limpar)
+        tabela.innerHTML = '';
+
+    if (!soma)
+        alert(soma);
+    else if (soma.length == 0) {
+        tabela.innerHTML = 'Não há registros para exibir.';
+    }
+    else {
+        soma.forEach(function (e) {
+            let linha = document.createElement('tr');
+
+            let somaValorInput = document.createElement('td');
+            somaValorInput.classList.add('row-somaValor-produto');
+
+
+            somaValorInput.innerHTML = e.somaValor;
+
+
+
+
+            linha.appendChild(somaValorInput);
+
+            tabela.appendChild(linha);
+
+            return linha;
+
+
+        });
+    }
+}
+
 async function ListarProdutos(id) {
 
     const options = {
@@ -63,6 +108,23 @@ async function ListarProdutos(id) {
         headers: { 'content-type': 'application/json' }
     };
     const req = await fetch('https://localhost:44335/produto/ListaDeProdutoPorId?id=' + id, options)
+        .then(response => {
+            return response.json();
+        })
+        .catch(erro => {
+            console.log(erro);
+            return erro;
+        });
+    return req;
+}
+
+async function SomarValorProdutos(id) {
+
+    const options = {
+        method: 'GET',
+        headers: { 'content-type': 'application/json' }
+    };
+    const req = await fetch('https://localhost:44335/produto/SomaDeProdutos?id=' + id, options)
         .then(response => {
             return response.json();
         })
@@ -96,7 +158,7 @@ async function RemoverProduto(id) {
     else {
         document.location.reload(true);
     }
-    
+
 }
 
 
@@ -128,6 +190,11 @@ async function ListarUsuariosUsandoCriterio(criterio) {
 (async () => {
 
     const urlParams = new URLSearchParams(window.location.search);
-    let res = await ListarProdutos(urlParams.get('id'));
+    let res = await ListarProdutos(urlParams.get('id'));    
     PreencherTabelaProdutos(res, false);
+
+
+    let soma = await SomarValorProdutos(urlParams.get('id'));
+    PreencherTabelaSomaValor(soma, false);
+
 })();

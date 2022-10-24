@@ -165,7 +165,7 @@ namespace MyPromo21_Api.Repositories
 
         //    return estabelecimento;
         //}
-        public List<PromocaoDto> CarregarInicio()
+        public List<PromocaoDto> CarregarInicio(int desconto)
         {
             var promocoes = new List<PromocaoDto>();
             var validadePromo = DateTime.Now.ToString();
@@ -174,7 +174,7 @@ namespace MyPromo21_Api.Repositories
                 using (_conexaoBanco)
                 {
                     var parameters = new { validadePromo };
-                    var query = "select * from promocao where ValidadePromo > @validadePromo";
+                    var query = $"select * from promocao where ValidadePromo > @validadePromo and Desconto <= {desconto}";
                     promocoes = _conexaoBanco.Query<PromocaoDto>(query,parameters).ToList();
                 }
             }

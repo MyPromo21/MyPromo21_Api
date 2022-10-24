@@ -54,7 +54,7 @@ namespace MyPromo21_Api.Repositories
             List<EnderecoDto> enderecosEncontrados;
             try
             {
-                var query = @"SELECT * FROM Endereco";
+                var query = @"SELECT * FROM Endereco where IdEstabelecimento = 2";
 
                 using (_conexao)
                 {

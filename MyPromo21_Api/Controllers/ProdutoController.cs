@@ -77,6 +77,17 @@ namespace MyPromo21_Api.Controllers
             return Ok("Produto não encontrado!");
         }
 
+        [HttpGet]
+        public IActionResult SomaDeProdutos(int id)
+        {
+
+            var soma = _produtoRepository.SomaDoValorProdutos(id);
+
+            if (soma != null) return Ok(soma);
+
+            return Ok("Produto não encontrado!");
+        }
+
         [HttpDelete]
         public IActionResult DeleteProduto(int id)
         {

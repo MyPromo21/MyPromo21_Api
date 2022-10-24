@@ -32,12 +32,20 @@
 
 <body>
 
+	<div class="header">
+		<a href="index.html"><img src="../images/icons/logo.png" alt="" class="logo"></a>
+		<div class="header-right">
+			<a href="index.html">Home</a>
+			<a href="../index.html">Log-Out</a>
+		</div>
+	</div>
+
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('../images/bg-01.jpg');">
 			<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
 				<form class="login100-form validate-form flex-sb flex-w" name="registrar-usuario" class="validate-form">
 					<span class="login100-form-title p-b-53">
-						
+
 					</span>
 
 
@@ -46,20 +54,50 @@
 						<div class="col-sm-12">
 							<div class="main_title" style="margin-bottom: 50px;">
 
-								<h2>Cupons disponíveis</h2>
+								<h2>Seus estabelecimentos disponíveis</h2>
 
-								<p>Escolha um filtro de desconto</p>
+								<p>Cadastre um endereço para seu estabelecimento, na sequencia cadastre um cupom para
+									este endereço!</p>
 
 							</div>
 						</div>
 
 						<div class="container-login100-form-btn m-t-17">
-							<a class="login100-form-btn" href="cadastroPromocao.html">Cadastrar Cupons</a>
+							<a class="login100-form-btn" href="cadastroEndereco.html">Cadastrar um novo endereço</a>
 						</div>
 
-						<div class="container-login100-form-btn m-t-17">
-							<a class="login100-form-btn" href="listarPromocao.html">Listar meus cupons</a>
-						</div>
+						<form class="login100-form validate-form flex-sb flex-w" name="registrar-estabelecimento"
+							class="validate-form">
+							<span class="login100-form-title p-b-53">
+								Listagem de endereços
+							</span>
+
+							<div class="container">
+								<table class="table table-bordered">
+									<thead>
+										<tr>
+											<th>
+												Id
+											</th>
+											<th>
+												Estado
+											</th>
+											<th>
+												Cidade
+											</th>
+											<th>
+												Rua
+											</th>
+											<th>
+												Numero
+											</th>
+										</tr>
+									</thead>
+									<tbody id="listagem-endereco">
+									</tbody>
+								</table>
+							</div>
+						</form>
 
 					</div>
 
@@ -71,11 +109,11 @@
 
 					<div class="w-full text-center p-t-55">
 						<span class="txt2">
-							Ainda não possui um usuario?
+							Esta gostando o serviço?
 						</span>
 
-						<a href="cadastroUsuario.html" class="txt2 bo1">
-							Cadastrar-se
+						<a href="#" class="txt2 bo1">
+							Conte para nós!
 						</a>
 					</div>
 				</form>
@@ -102,8 +140,10 @@
 	<script src="../vendor/countdowntime/countdowntime.js"></script>
 	<!--===============================================================================================-->
 	<script src="../js/main.js"></script>
-	
+
 	<script src="../app/Usuario/criarUsuario.js"></script>
+
+	<script src="../app/Usuario/listarEndereco.js"></script>
 
 </body>
 

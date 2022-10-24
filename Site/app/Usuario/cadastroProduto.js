@@ -41,7 +41,7 @@ async function SalvarProduto() {
             Preco : parseFloat(preco),
             Quantidade : parseInt(quantidade),
             Perecivel : parseInt(perecivel),
-            ValidadeProduto : validadeProduto,
+            ValidadeProduto : validadeProduto  == ''? null : validadeProduto,
             LinkImagem : linkImagem,
             
 

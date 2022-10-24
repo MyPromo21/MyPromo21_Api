@@ -32,7 +32,7 @@ async function BuscarPorId(id) {
         method: 'GET',
         headers: { 'content-type': 'application/json' }
     };
-    const req = await fetch('https://localhost:44335/usuario/GetUsuarioByID?id=' + id, options)
+    const req = await fetch('https://localhost:44335/endereco/GetEnderecoByID?id=' + id, options)
         .then(response => {
             return response.json();
         })
@@ -49,11 +49,24 @@ async function PreencherFormulario(json) {
 
 
     let dadosForm = document.querySelector("#form");
-    let id = dadosForm.querySelector("#id-usuario");
-    let login = dadosForm.querySelector("#login");
 
-    id.value = json.id;
-    login.value = json.login;
+    let idEstabelecimento = dadosForm.querySelector("#idEstabelecimento");
+    let estado = dadosForm.querySelector("#estado");
+    let cidade = dadosForm.querySelector("#cidade");
+    let bairro = dadosForm.querySelector("#bairro");
+    let rua = dadosForm.querySelector("#rua");
+    let numero = dadosForm.querySelector("#numero");
+    let complemento = dadosForm.querySelector("#complemento");
+    let cep = dadosForm.querySelector("#cep");
+
+    idEstabelecimento.value = json.id;
+    estado.value = json.estado;
+    cidade.value = json.cidade;
+    bairro.value = json.bairro;
+    rua.value = json.rua;
+    numero.value = json.numero;
+    complemento.value = json.complemento;
+    cep.value = json.cep;
 }
 
 
@@ -125,7 +138,7 @@ async function Atualizar() {
 
 }
 function Voltar() {
-    window.location.href = './listarEndereco.html';
+    window.location.href = './index.html';
 }
 function convertToDate(data) {
     var pattern = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;

@@ -21,9 +21,9 @@ namespace MyPromo21_Api.Controllers
             _promocaoRepository = new PromocaoRepository();
         }
         [HttpGet]
-        public IActionResult CarregarInicio()
+        public IActionResult CarregarInicio(int desconto)
         {
-            var promocoes = _promocaoRepository.CarregarInicio();
+            var promocoes = _promocaoRepository.CarregarInicio(desconto);
 
             if (promocoes != null) return Ok(promocoes);
 

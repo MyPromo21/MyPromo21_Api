@@ -30,8 +30,16 @@
 
 </head>
 
-<body>	
+<body>
 
+	<div class="header">
+		<a href="index.html"><img src="../images/icons/logo.png" alt="" class="logo"></a>
+		<div class="header-right">
+			<a href="index.html">Home</a>
+			<a href="cadastroCliente.html">Perfil</a>
+			<a href="../index.html">Log-Out</a>
+		</div>
+	</div>
 
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('../images/bg-01.jpg');">
@@ -55,28 +63,28 @@
 						</div>
 
 						<div class="col-sm-3 col-xs-6">
-							<a href="listarPromocao.html">
+							<a href="listarPromocao.html?valorDesconto=15" id="valorDesconto">
 								<img src="../images/home/ticket (1).png" alt="logo" width="100%"
 									style="margin-bottom: 30px;">
 							</a>
 						</div>
 
 						<div class="col-sm-3 col-xs-6">
-							<a href="#">
+							<a href="listarPromocao.html?valorDesconto=30" id="valorDesconto">
 								<img src="../images/home/ticket (2).png" alt="logo" width="100%"
 									style="margin-bottom: 30px;">
 							</a>
 						</div>
 
 						<div class="col-sm-3 col-xs-6">
-							<a href="#">
+							<a href="listarPromocao.html?valorDesconto=50" id="valorDesconto">
 								<img src="../images/home/ticket (3).png" alt="logo" width="100%"
 									style="margin-bottom: 30px;">
 							</a>
 						</div>
 
 						<div class="col-sm-3 col-xs-6">
-							<a href="#">
+							<a onclick="premiumUser()" id="valorDesconto">
 								<img src="../images/home/ticket (4).png" alt="logo" width="100%"
 									style="margin-bottom: 30px;">
 							</a>
@@ -126,6 +134,13 @@
 	<!--===============================================================================================-->
 	<script src="../js/main.js"></script>
 	<script src="../app/Usuario/criarUsuario.js"></script>
+
+	<script>
+		function premiumUser() {
+			alert("Você precisa ser premium para acessar estes cupons!");
+		}
+	</script>
+
 
 </body>
 

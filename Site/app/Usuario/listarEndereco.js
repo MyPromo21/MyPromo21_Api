@@ -15,7 +15,7 @@ async function PreencherTabelaEnderecos(resposta, limpar){
             let linha = document.createElement('tr');
             
             linha.addEventListener('click', ()=> {            
-                window.location.href = "./alterarUsuario.html?id=" + e.id;
+                window.location.href = "./visualizarendereco.html?id=" + e.id;
             });
             
             
