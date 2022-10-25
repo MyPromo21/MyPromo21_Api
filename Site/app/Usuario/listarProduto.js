@@ -194,7 +194,7 @@ async function ListarUsuariosUsandoCriterio(criterio) {
     PreencherTabelaProdutos(res, false);
 
 
-    let soma = await SomarValorProdutos(urlParams.get('id'));
-    PreencherTabelaSomaValor(soma, false);
+    // let soma = await SomarValorProdutos(urlParams.get('id'));
+    // PreencherTabelaSomaValor(soma, false);
 
 })();

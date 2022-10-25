@@ -14,9 +14,9 @@ async function PreencherTabelaProdutos(resposta, limpar) {
         resposta.forEach(function (e) {
             let linha = document.createElement('tr');
 
-            linha.addEventListener('click', () => {
-                window.location.href = "./alterarUsuario.html?id=" + e.id;
-            });
+            // linha.addEventListener('click', () => {
+            //     window.location.href = "./alterarUsuario.html?id=" + e.id;
+            // });
 
 
             let idInput = document.createElement('td');
